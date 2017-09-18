@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining", "OnlineTraining\OnlineTraining.csproj", "{C8DD5AA7-C5C4-4F92-B2F5-8DBC937C4B70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Entities", "OnlineTraining.Entities\OnlineTraining.Entities.csproj", "{7C4B9D90-C6B4-4561-B800-546C6684D4E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.Entities", "OnlineTraining.Entities\OnlineTraining.Entities.csproj", "{7C4B9D90-C6B4-4561-B800-546C6684D4E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Repositories", "OnlineTraining.Repositories\OnlineTraining.Repositories.csproj", "{FFC34CAC-C179-4411-826E-1C5F5DCADBC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.Repositories", "OnlineTraining.Repositories\OnlineTraining.Repositories.csproj", "{FFC34CAC-C179-4411-826E-1C5F5DCADBC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Services", "OnlineTraining.Services\OnlineTraining.Services.csproj", "{AD79B0F3-203C-4701-B39C-C402B343945B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.Services", "OnlineTraining.Services\OnlineTraining.Services.csproj", "{AD79B0F3-203C-4701-B39C-C402B343945B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Helper", "OnlineTraining.Helper\OnlineTraining.Helper.csproj", "{ACDF31FE-CB6D-41D1-A219-3B17FBDEC151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.Helper", "OnlineTraining.Helper\OnlineTraining.Helper.csproj", "{ACDF31FE-CB6D-41D1-A219-3B17FBDEC151}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.API", "OnlineTraining.API\OnlineTraining.API.csproj", "{68E980BB-0F9B-4117-B4CD-6287248439D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8DD5AA7-C5C4-4F92-B2F5-8DBC937C4B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8DD5AA7-C5C4-4F92-B2F5-8DBC937C4B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8DD5AA7-C5C4-4F92-B2F5-8DBC937C4B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8DD5AA7-C5C4-4F92-B2F5-8DBC937C4B70}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C4B9D90-C6B4-4561-B800-546C6684D4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C4B9D90-C6B4-4561-B800-546C6684D4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C4B9D90-C6B4-4561-B800-546C6684D4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{ACDF31FE-CB6D-41D1-A219-3B17FBDEC151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACDF31FE-CB6D-41D1-A219-3B17FBDEC151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACDF31FE-CB6D-41D1-A219-3B17FBDEC151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
