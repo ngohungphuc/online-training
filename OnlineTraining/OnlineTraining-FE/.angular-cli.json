@@ -25,6 +25,7 @@
         "./styles.scss"
       ],
       "scripts": [
+        "assets/js/signalr-client-1.0.0-alpha1-final.min.js",
         "../node_modules/chart.js/dist/Chart.js",
         "../node_modules/easy-pie-chart/dist/easypiechart.js",
         "../node_modules/screenfull/dist/screenfull.js",
