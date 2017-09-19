@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OnlineTraining.API.Hubs;
+using OnlineTraining.API.Helpers.Extensions;
 
 namespace OnlineTraining.API
 {
@@ -32,22 +33,9 @@ namespace OnlineTraining.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
-
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<OnlineHub>("onlinehub");
-            });
-
+            app.UseDevEnvConfig(env);
+            app.ConfigCors();
+            app.MapSignalR();
             app.UseMvc();
         }
     }
