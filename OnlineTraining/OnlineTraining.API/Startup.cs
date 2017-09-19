@@ -24,16 +24,8 @@ namespace OnlineTraining.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials());
-            });
+            services.AddCors();
             services.AddSignalR();
-            
             services.AddMvc();
         }
 
@@ -45,12 +37,16 @@ namespace OnlineTraining.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+
             app.UseSignalR(routes =>
             {
                 routes.MapHub<OnlineHub>("onlinehub");
             });
-
-            app.UseCors("CorsPolicy");
 
             app.UseMvc();
         }
