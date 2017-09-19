@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
+    this.testConnection();
   }
 
   constructor() {
@@ -17,12 +18,12 @@ export class AppComponent implements OnInit {
   testConnection() {
     const connection = new signalR.HubConnection('http://localhost:51316/onlinehub');
 
-    connection.on('send', data => {
+    connection.on('testSend', data => {
         console.log(data);
     });
 
     connection.start()
-              .then(() => connection.invoke('Send', 'Hello'));
+              .then(() => connection.invoke('send', 'Hello'));
 
   }
 

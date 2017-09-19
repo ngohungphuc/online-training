@@ -7,12 +7,11 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace OnlineTraining.API.Hubs
 {
-    [EnableCors("CorsPolicy")]
     public class OnlineHub: Hub
     {
         public Task Send(string message)
         {
-            return Clients.All.InvokeAsync("Send", message);
+            return Clients.All.InvokeAsync("testSend", message);
         }
     }
 }

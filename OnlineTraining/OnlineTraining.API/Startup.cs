@@ -26,8 +26,8 @@ namespace OnlineTraining.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddSignalR();
             services.AddMvc();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
