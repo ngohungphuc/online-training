@@ -28,6 +28,7 @@ namespace OnlineTraining.API
             services.AddCors();
             services.AddMvc();
             services.AddSignalR();
+            services.IntegrateSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +37,7 @@ namespace OnlineTraining.API
             app.UseDevEnvConfig(env);
             app.ConfigCors();
             app.MapSignalR();
+            app.ConfigSwagger();
             app.UseMvc();
         }
     }

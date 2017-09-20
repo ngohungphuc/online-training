@@ -7,7 +7,7 @@
   -  ASP.Net Core 2.0
   -  SignalR Core
   -  Automapper
-  -  SQL Server or MongoDB
+  -  MongoDB
   -  Webpack
   -  Angular 4 CLI
   -  Redux
