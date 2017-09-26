@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\OnlineTraining.Entities\OnlineTraining.Entities.csproj" />
+    <ProjectReference Include="..\OnlineTraining.Helper\OnlineTraining.Helper.csproj" />
   </ItemGroup>
 
 </Project>

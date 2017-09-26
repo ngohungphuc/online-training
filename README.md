@@ -6,6 +6,7 @@
 
   -  ASP.Net Core 2.0
   -  SignalR Core
+  -  Elasticsearch
   -  Automapper
   -  MongoDB
   -  Webpack
@@ -14,4 +15,5 @@
   -  SASS
   -  [Bootstrap materialize design](https://mdbootstrap.com) 
   -  [MongoDb Driver](https://github.com/mongodb/mongo-csharp-driver)
+  
 ### Todos

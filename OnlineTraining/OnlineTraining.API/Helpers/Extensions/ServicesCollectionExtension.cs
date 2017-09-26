@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 using Swashbuckle.AspNetCore.Swagger;
+using OnlineTraining.Helper.Db;
 
 namespace OnlineTraining.API.Helpers.Extensions
 {
@@ -22,6 +24,12 @@ namespace OnlineTraining.API.Helpers.Extensions
                 });
             });
 
+            return services;
+        }
+
+        public static IServiceCollection InjectServicesCollection(this IServiceCollection services)
+        {
+            //services.AddSingleton<IMongoClient, MongoClient>();
             return services;
         }
     }
