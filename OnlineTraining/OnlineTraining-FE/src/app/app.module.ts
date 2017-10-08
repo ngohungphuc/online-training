@@ -7,17 +7,17 @@ import { MDBBootstrapModule } from './typescripts/free';
 import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
@@ -27,6 +27,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas:      [ NO_ERRORS_SCHEMA ]
+  schemas: [NO_ERRORS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {}

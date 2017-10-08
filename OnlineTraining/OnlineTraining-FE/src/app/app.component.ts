@@ -8,22 +8,9 @@ import * as signalR from '@aspnet/signalr-client';
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
-    this.testConnection();
   }
 
   constructor() {
-
-  }
-
-  testConnection() {
-    const connection = new signalR.HubConnection('http://localhost:51316/onlinehub');
-
-    connection.on('TotalClientConnect', data => {
-        console.log(data);
-    });
-
-    connection.start()
-              .then(() => connection.invoke('GetTotalAccountConnect'));
 
   }
 }
