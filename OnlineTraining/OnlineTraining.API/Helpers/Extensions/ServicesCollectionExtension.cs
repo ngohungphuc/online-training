@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using OnlineTraining.Helper.ElasticSearch;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace OnlineTraining.API.Helpers.Extensions
@@ -29,6 +30,7 @@ namespace OnlineTraining.API.Helpers.Extensions
         public static IServiceCollection InjectServicesCollection(this IServiceCollection services)
         {
             //services.AddSingleton<IMongoClient, MongoClient>();
+            services.AddScoped<IElasticSearch, ElasticSearch>();
             return services;
         }
     }

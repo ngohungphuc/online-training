@@ -4,6 +4,12 @@ namespace OnlineTraining.API.Hubs
 {
     public static class ConnectionList
     {
-        public static HashSet<string> ConnectedIds = new HashSet<string>();
+        private static readonly HashSet<string> connectedIds = new HashSet<string>();
+
+        public static HashSet<string> ConnectedIds
+        {
+            get => connectedIds;
+            set => ConnectedIds = value;
+        }
     }
 }
