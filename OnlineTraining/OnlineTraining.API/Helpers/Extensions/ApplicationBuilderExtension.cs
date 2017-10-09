@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using OnlineTraining.API.Hubs;
+using OnlineTraining.API.Middleware;
 
 namespace OnlineTraining.API.Helpers.Extensions
 {
@@ -50,6 +53,19 @@ namespace OnlineTraining.API.Helpers.Extensions
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            return app;
+        }
+
+        public static IApplicationBuilder UseJwt(this IApplicationBuilder app, string issure,string audience, SymmetricSecurityKey signingKey)
+        {
+            var jwtOptions = new TokenProviderOptions
+            {
+                Audience = audience,
+                Issuer = issure,
+                SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
+            };
+            app.UseJwtTokenProviderMiddleware(Options.Create(jwtOptions));
 
             return app;
         }

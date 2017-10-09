@@ -17,6 +17,8 @@ namespace OnlineTraining.Repositories.Interfaces
 
         Task<List<T>> FindAsync(Expression<Func<T, bool>> filter, int? skip = null);
 
+        Task<T> Where(Expression<Func<T, bool>> filter);
+
         Task<long> CountAsync(Expression<Func<T, bool>> document);
 
         Task InsertAsync(T document);

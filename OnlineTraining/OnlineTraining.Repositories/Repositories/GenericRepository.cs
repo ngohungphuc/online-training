@@ -55,6 +55,14 @@ namespace OnlineTraining.Repositories.Repositories
             return data;
         }
 
+        public async Task<T> Where(Expression<Func<T, bool>> filter)
+        {
+            var collection = GetDbCollection();
+            var data = await collection.AsQueryable<T>().SingleOrDefaultAsync(filter);
+
+            return data;
+        }
+
         public async Task<long> CountAsync(Expression<Func<T, bool>> document)
         {
             var collection = GetDbCollection();

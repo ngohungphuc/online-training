@@ -15,6 +15,6 @@ export class PreloadSelectedModulesList implements PreloadingStrategy {
      * @memberof PreloadSelectedModulesList
      */
     preload(route: Route, load: Function): Observable<any> {
-        return route.data && route.data.preload ? load() : of(null);
+        return route.data && route.data.preload ? load() : Observable.of(null);
     }
 }
