@@ -6,7 +6,8 @@ import { AccountRouting } from './account.routing';
 import {
   AccountComponent,
   LoginComponent,
-  SignUpComponent } from './index';
+  SignUpComponent,
+  ForgotPasswordComponent } from './index';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {
   declarations: [
     AccountComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent
   ]
 })
 export class AccountModule { }
