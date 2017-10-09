@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app.routing';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     HttpModule,
     SharedModule,
+    AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({

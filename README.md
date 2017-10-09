@@ -17,3 +17,9 @@
   -  [MongoDb Driver](https://github.com/mongodb/mongo-csharp-driver)
   
 ### Todos
+
+### Ref doc
+
+https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb
+
+https://vsavkin.com/angular-router-declarative-lazy-loading-7071d1f203ee

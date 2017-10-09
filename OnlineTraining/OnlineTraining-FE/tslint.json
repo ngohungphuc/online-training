@@ -101,8 +101,8 @@
       "check-preblock"
     ],
 
-    "directive-selector": [true, "attribute", "mdb", "camelCase"],
-    "component-selector": [true, "element", "mdb", "kebab-case"],
+    "directive-selector": [true, "attribute", "ota", "camelCase"],
+    "component-selector": [true, "element", "ota", "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
