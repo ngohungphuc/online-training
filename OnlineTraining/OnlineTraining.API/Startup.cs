@@ -26,7 +26,6 @@ namespace OnlineTraining.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            //services.UseJwt(issure, audience, signingKey);
             services.IntegrateSwagger();
             services.AddSignalR();
             services.AddMvc();
@@ -37,7 +36,6 @@ namespace OnlineTraining.API
         {
             app.UseDevEnvConfig(env);
             app.ConfigCors();
-            //app.UseJwt(issure, audience, signingKey);
             app.ConfigSwagger();
             app.MapSignalR();
             app.UseMvc();
