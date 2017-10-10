@@ -52,18 +52,5 @@ namespace OnlineTraining.API.Helpers.Extensions
 
             return app;
         }
-
-        public static IApplicationBuilder UseJwt(this IApplicationBuilder app, string issure,string audience, SymmetricSecurityKey signingKey)
-        {
-            var jwtOptions = new TokenProviderOptions
-            {
-                Audience = audience,
-                Issuer = issure,
-                SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
-            };
-            app.UseJwtTokenProviderMiddleware(Options.Create(jwtOptions));
-
-            return app;
-        }
     }
 }

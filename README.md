@@ -7,6 +7,7 @@
 ### Technology use in this project
 
   -  ASP.Net Core 2.0
+  -  [Identity Server 4](http://docs.identityserver.io)
   -  SignalR Core
   -  Elasticsearch
   -  Automapper

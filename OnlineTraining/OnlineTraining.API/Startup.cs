@@ -1,26 +1,24 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using OnlineTraining.API.Configuration;
 using OnlineTraining.API.Helpers.Extensions;
 
 namespace OnlineTraining.API
 {
     public class Startup
     {
-        private static readonly string secretKey = "mysupersecret_secretkey!123";
-        private static readonly string issure = "ota";
-        private static readonly string audience = "otaAudience";
-        private static SymmetricSecurityKey signingKey;
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
