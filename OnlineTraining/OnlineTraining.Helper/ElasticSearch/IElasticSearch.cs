@@ -1,5 +1,4 @@
-﻿using Elasticsearch.Net;
-using Nest;
+﻿using Nest;
 namespace OnlineTraining.Helper.ElasticSearch
 {
     public interface IElasticSearch

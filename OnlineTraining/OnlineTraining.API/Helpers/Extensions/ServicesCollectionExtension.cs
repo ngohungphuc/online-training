@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Driver;
 using OnlineTraining.Helper.ElasticSearch;
-using OnlineTraining.Repositories.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace OnlineTraining.API.Helpers.Extensions

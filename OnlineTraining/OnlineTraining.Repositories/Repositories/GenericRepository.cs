@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MongoDB.Bson;
@@ -46,12 +45,19 @@ namespace OnlineTraining.Repositories.Repositories
             return data;
         }
 
-        public async Task<List<T>> FindAsync(Expression<Func<T, bool>> filter, int? skip = null)
+        public async Task<List<T>> Filter(Expression<Func<T, bool>> filter, int? skip = null)
         {
             var collection = GetDbCollection();
             var data = await collection.Find(filter)
                             .Skip(skip)
                             .ToListAsync();
+            return data;
+        }
+
+        public async Task<T> FindOne(Expression<Func<T, bool>> filter)
+        {
+            var collection = GetDbCollection();
+            var data = await collection.AsQueryable<T>().SingleOrDefaultAsync(filter);
             return data;
         }
 

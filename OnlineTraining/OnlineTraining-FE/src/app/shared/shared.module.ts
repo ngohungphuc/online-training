@@ -6,7 +6,10 @@ import {
 
 
 @NgModule({
-  providers: [SignalRService, DataHandlerService],
+  providers: [
+      SignalRService,
+      DataHandlerService
+  ],
   exports: [
       FooterComponent
   ],

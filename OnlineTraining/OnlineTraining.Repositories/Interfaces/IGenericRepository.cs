@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver.Linq;
@@ -15,7 +14,9 @@ namespace OnlineTraining.Repositories.Interfaces
             int? pageSize,
             int? pageIndex);
 
-        Task<List<T>> FindAsync(Expression<Func<T, bool>> filter, int? skip = null);
+        Task<List<T>> Filter(Expression<Func<T, bool>> filter, int? skip = null);
+
+        Task<T> FindOne(Expression<Func<T, bool>> filter);
 
         Task<T> Where(Expression<Func<T, bool>> filter);
 

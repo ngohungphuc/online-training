@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using OnlineTraining.Entities.Db;
-using OnlineTraining.Repositories.Interfaces;
 using OnlineTraining.Repositories.Repositories;
 
 namespace OnlineTraining.API.Middleware

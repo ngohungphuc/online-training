@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { AccountRouting } from './account.routing';
-
 import {
   AccountComponent,
+  ForgotPasswordComponent,
   LoginComponent,
-  SignUpComponent,
-  ForgotPasswordComponent } from './index';
-
+  SignUpComponent
+  } from './index';
+import { AccountRouting } from './account.routing';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     AccountRouting
   ],
   declarations: [

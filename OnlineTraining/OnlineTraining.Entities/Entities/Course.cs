@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OnlineTraining.Entities.Entities
+﻿namespace OnlineTraining.Entities.Entities
 {
     public class Course: BaseEntity
     {

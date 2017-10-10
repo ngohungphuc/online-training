@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using OnlineTraining.API.Hubs;
 using OnlineTraining.API.Helpers.Extensions;
-using OnlineTraining.API.Middleware;
 
 namespace OnlineTraining.API
 {
@@ -35,7 +26,7 @@ namespace OnlineTraining.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.UseJwt(issure, audience, signingKey);
+            //services.UseJwt(issure, audience, signingKey);
             services.IntegrateSwagger();
             services.AddSignalR();
             services.AddMvc();
@@ -46,7 +37,7 @@ namespace OnlineTraining.API
         {
             app.UseDevEnvConfig(env);
             app.ConfigCors();
-            app.UseJwt(issure, audience, signingKey);
+            //app.UseJwt(issure, audience, signingKey);
             app.ConfigSwagger();
             app.MapSignalR();
             app.UseMvc();
