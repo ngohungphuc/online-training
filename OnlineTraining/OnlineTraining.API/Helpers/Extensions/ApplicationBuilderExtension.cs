@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using OnlineTraining.API.Hubs;
-using OnlineTraining.API.Middleware;
 
 namespace OnlineTraining.API.Helpers.Extensions
 {
@@ -47,7 +44,7 @@ namespace OnlineTraining.API.Helpers.Extensions
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "My API V1");
             });
 
             return app;

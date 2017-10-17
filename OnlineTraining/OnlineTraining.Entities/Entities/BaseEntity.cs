@@ -1,11 +1,23 @@
 ﻿using System;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace OnlineTraining.Entities.Entities
 {
-    public class BaseEntity
+    public interface IBaseEntity<TKey>
     {
-        public Guid _id { get; set; }
-        public ObjectId Id { get; set; }
+        /// <summary>
+        /// Gets or sets the Id of the Entity.
+        /// </summary>
+        /// <value>Id of the Entity.</value>
+        [BsonId]
+        TKey Id { get; set; }
+    }
+
+    public class BaseEntity: IBaseEntity<ObjectId>
+    {
+        [BsonRepresentation(BsonType.ObjectId)]
+        public virtual ObjectId Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifieddDate { get; set; }
     }

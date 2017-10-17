@@ -6,16 +6,24 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using OnlineTraining.Entities.Db;
+using OnlineTraining.Entities.Entities;
 
 namespace OnlineTraining.Repositories.Repositories
 {
-    public class GenericRepository<T> where T : class
+    public class GenericRepository<T, TKey> where T : IBaseEntity<TKey>
     {
         private readonly IMongoConnect _db;
-
+        private readonly IMongoCollection<T> _collection;
         public GenericRepository(IMongoConnect db)
         {
             _db = db;
+            _collection = GetDbCollection();
+        }
+
+        public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
+        {
+            var cursor = await _collection.FindAsync(predicate);
+            return await cursor.AnyAsync();
         }
 
         public IMongoQueryable<T> GetAll(
@@ -24,8 +32,7 @@ namespace OnlineTraining.Repositories.Repositories
             int? pageSize,
             int? pageIndex)
         {
-            var collection = GetDbCollection();
-            var data = collection.AsQueryable();
+            var data = _collection.AsQueryable();
 
             if (filter != null)
             {
@@ -47,8 +54,7 @@ namespace OnlineTraining.Repositories.Repositories
 
         public async Task<List<T>> Filter(Expression<Func<T, bool>> filter, int? skip = null)
         {
-            var collection = GetDbCollection();
-            var data = await collection.Find(filter)
+            var data = await _collection.Find(filter)
                             .Skip(skip)
                             .ToListAsync();
             return data;
@@ -56,30 +62,24 @@ namespace OnlineTraining.Repositories.Repositories
 
         public async Task<T> FindOne(Expression<Func<T, bool>> filter)
         {
-            var collection = GetDbCollection();
-            var data = await collection.AsQueryable<T>().SingleOrDefaultAsync(filter);
-            return data;
-        }
-
-        public async Task<T> Where(Expression<Func<T, bool>> filter)
-        {
-            var collection = GetDbCollection();
-            var data = await collection.AsQueryable<T>().SingleOrDefaultAsync(filter);
-
+            var data = await _collection.AsQueryable<T>().SingleOrDefaultAsync(filter);
             return data;
         }
 
         public async Task<long> CountAsync(Expression<Func<T, bool>> document)
         {
-            var collection = GetDbCollection();
-            var count = await collection.CountAsync(document);
+            var count = await _collection.CountAsync(document);
             return count;
         }
 
         public async Task InsertAsync(T document)
         {
-            var collection = GetDbCollection();
-            await collection.InsertOneAsync(document);
+            await _collection.InsertOneAsync(document);
+        }
+
+        public async Task InsertManyAsync(IEnumerable<T> entities)
+        {
+            await _collection.InsertManyAsync(entities);
         }
 
         public async Task UpdateAsync(
@@ -87,17 +87,30 @@ namespace OnlineTraining.Repositories.Repositories
             Expression<Func<T, bool>> document,
             object dataToUpdate)
         {
-            var collection = GetDbCollection();
             var filter = Builders<T>.Filter.Eq("_id", documentId);
             var documentToUpdate = Builders<T>.Update.Set(document.ToString(), dataToUpdate);
-            await collection.UpdateOneAsync(filter, documentToUpdate);
+            await _collection.UpdateOneAsync(filter, documentToUpdate);
         }
 
-        public async Task DeleteAsync(ObjectId documentId)
+        public async Task<T> UpdateAsync(T entity)
         {
-            var collection = GetDbCollection();
-            var filter = Builders<T>.Filter.Eq("_id", documentId);
-            await collection.DeleteOneAsync(filter);
+            await _collection.ReplaceOneAsync(x => x.Id.Equals(entity.Id), entity);
+            return entity;
+        }
+
+        public async Task DeleteAsync(T entity)
+        {
+            await DeleteAsync(entity.Id);
+        }
+
+        public async Task DeleteAsync(TKey id)
+        {
+            await _collection.DeleteOneAsync(x => x.Id.Equals(id));
+        }
+
+        public async Task DeleteManyAsync(Expression<Func<T, bool>> predicate)
+        {
+            await _collection.DeleteManyAsync(predicate);
         }
 
         private IMongoCollection<T> GetDbCollection()
