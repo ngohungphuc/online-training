@@ -98,9 +98,9 @@ namespace OnlineTraining.Repositories.Repositories
             return entity;
         }
 
-        public async Task DeleteAsync(T entity)
+        public Task DeleteAsync(T entity)
         {
-            await DeleteAsync(entity.Id);
+            return DeleteAsync(entity.Id);
         }
 
         public async Task DeleteAsync(TKey id)
