@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using OnlineTraining.Helper.ElasticSearch;
+using OnlineTraining.Repositories.Interfaces;
+using OnlineTraining.Repositories.Repositories;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace OnlineTraining.API.Helpers.Extensions
@@ -31,8 +33,8 @@ namespace OnlineTraining.API.Helpers.Extensions
 
         public static IServiceCollection InjectServicesCollection(this IServiceCollection services)
         {
-            //services.AddSingleton<IMongoClient, MongoClient>();
             services.AddScoped<IElasticSearch, ElasticSearch>();
+            services.AddSingleton<IRTokenRepository, RTokenRepository>();
             return services;
         }
 
