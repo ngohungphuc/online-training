@@ -29,4 +29,7 @@ https://vsavkin.com/angular-router-declarative-lazy-loading-7071d1f203ee
 
 http://www.c-sharpcorner.com/article/handle-refresh-token-using-asp-net-core-2-0-and-json-web-token/
 
+https://www.codeproject.com/Articles/608860/Understanding-and-Implementing-Password-Hashing
+
+
 

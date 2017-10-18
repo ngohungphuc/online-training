@@ -13,8 +13,6 @@ namespace OnlineTraining.API.Helpers.Extensions
 {
     public static class ServicesCollectionExtension
     {
-        public static IConfiguration Configuration { get; }
-
         public static IServiceCollection IntegrateSwagger(this IServiceCollection services)
         {
             // Register the Swagger generator, defining one or more Swagger documents
@@ -38,9 +36,9 @@ namespace OnlineTraining.API.Helpers.Extensions
             return services;
         }
 
-        public static void ConfigureJwtAuthService(this IServiceCollection services)
+        public static void ConfigureJwtAuthService(this IServiceCollection services, IConfiguration configuration)
         {
-            var audienceConfig = Configuration.GetSection("Audience");
+            var audienceConfig = configuration.GetSection("Audience");
             var symetricKeyAsBase64 = audienceConfig["Secret"];
             var keyByteArray = Encoding.ASCII.GetBytes(symetricKeyAsBase64);
             var signingKey = new SymmetricSecurityKey(keyByteArray);

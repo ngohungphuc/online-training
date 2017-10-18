@@ -26,6 +26,12 @@ namespace OnlineTraining.Repositories.Repositories
             return await cursor.AnyAsync();
         }
 
+        public async Task<List<T>> GetAll()
+        {
+            var data =  await _collection.Find(_ => true).ToListAsync();
+            return data;
+        }
+
         public IMongoQueryable<T> GetAll(
             Expression<Func<T, bool>> filter,
             Expression<Func<T, bool>> orderBy,

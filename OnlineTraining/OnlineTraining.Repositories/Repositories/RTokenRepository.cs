@@ -31,6 +31,14 @@ namespace OnlineTraining.Repositories.Repositories
             }
         }
 
+        public List<RToken> GetAllToken()
+        {
+            using (var db = new TokenDbContext())
+            {
+                return db.RTokens.ToList();
+            }
+        }
+
         public RToken GetToken(string refreshToken, string clientId)
         {
             using (var db = new TokenDbContext())

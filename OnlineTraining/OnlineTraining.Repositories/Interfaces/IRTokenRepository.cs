@@ -11,6 +11,8 @@ namespace OnlineTraining.Repositories.Interfaces
 
         bool ExpireToken(RToken token);
 
+        List<RToken> GetAllToken();
+
         RToken GetToken(string refreshToken, string clientId);
     }
 }

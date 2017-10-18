@@ -5,17 +5,32 @@ using System.Text;
 
 namespace OnlineTraining.Helper.Hash
 {
+    /// <summary>
+    /// This class responsibility is to generate a random 
+    /// and unique salt every time.
+    /// </summary>
     public static class HashHelper
     {
-        public static string Sha512(string input)
-        {
-            using (var sha = SHA512.Create())
-            {
-                var bytes = Encoding.UTF8.GetBytes(input);
-                var hash = sha.ComputeHash(bytes);
+        private static RNGCryptoServiceProvider m_cryptoServiceProvider = null;
+        private const int SALT_SIZE = 24;
 
-                return Convert.ToBase64String(hash);
-            }
+        static HashHelper()
+        {
+            m_cryptoServiceProvider = new RNGCryptoServiceProvider();
+        }
+
+        public static string GetSaltString()
+        {
+            // create a byte array to store the salt bytes
+            byte[] saltBytes = new byte[SALT_SIZE];
+
+            // generate the salt in the byte array
+            m_cryptoServiceProvider.GetNonZeroBytes(saltBytes);
+
+            // get some string representation for this salt
+            string saltString = Utility.GetString(saltBytes);
+
+            return saltString;
         }
     }
 }
