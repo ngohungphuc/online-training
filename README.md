@@ -7,7 +7,7 @@
 ### Technology use in this project
 
   -  ASP.Net Core 2.0
-  -  [Identity Server 4](http://docs.identityserver.io)
+  -  JWT Authentication with refresh token
   -  SignalR Core
   -  Elasticsearch
   -  Automapper
@@ -26,3 +26,7 @@
 https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb
 
 https://vsavkin.com/angular-router-declarative-lazy-loading-7071d1f203ee
+
+http://www.c-sharpcorner.com/article/handle-refresh-token-using-asp-net-core-2-0-and-json-web-token/
+
+

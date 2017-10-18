@@ -18,6 +18,7 @@ namespace OnlineTraining.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureJwtAuthService();
             services.AddCors();
             services.IntegrateSwagger();
             services.AddSignalR();
@@ -28,6 +29,7 @@ namespace OnlineTraining.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDevEnvConfig(env);
+            app.UseAuthentication();
             app.ConfigCors();
             app.ConfigSwagger();
             app.MapSignalR();
