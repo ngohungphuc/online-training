@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ namespace OnlineTraining.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
             services.ConfigureJwtAuthService(Configuration);
             services.AddCors();
             services.IntegrateSwagger();
@@ -30,7 +32,6 @@ namespace OnlineTraining.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDevEnvConfig(env);
-            app.UseIdentity();
             app.UseAuthentication();
             app.ConfigCors();
             app.ConfigSwagger();

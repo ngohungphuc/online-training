@@ -31,5 +31,6 @@ http://www.c-sharpcorner.com/article/handle-refresh-token-using-asp-net-core-2-0
 
 https://www.codeproject.com/Articles/608860/Understanding-and-Implementing-Password-Hashing
 
+https://dotnetcoretutorials.com/2017/09/23/using-automapper-asp-net-core/
 
-
+https://stackoverflow.com/questions/40275195/how-to-setup-automapper-in-asp-net-core
