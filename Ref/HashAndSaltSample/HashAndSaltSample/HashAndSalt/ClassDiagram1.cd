@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HashAndSalt.HashComputer">
+    <Position X="5.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>HashComputer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HashAndSalt.PasswordManager">
+    <Position X="3" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>PasswordManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HashAndSalt.SaltGenerator">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SaltGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HashAndSalt.Utility">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Entities", "OnlineTraining.Entities\OnlineTraining.Entities.csproj", "{7C4B9D90-C6B4-4561-B800-546C6684D4E1}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Helper", "OnlineTraining.Helper\OnlineTraining.Helper.csproj", "{ACDF31FE-CB6D-41D1-A219-3B17FBDEC151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.API", "OnlineTraining.API\OnlineTraining.API.csproj", "{68E980BB-0F9B-4117-B4CD-6287248439D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.API", "OnlineTraining.API\OnlineTraining.API.csproj", "{68E980BB-0F9B-4117-B4CD-6287248439D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.Scripts", "OnlineTraining.Scripts\OnlineTraining.Scripts.csproj", "{8FC7A9AD-40F9-451C-830B-3D63372CAE77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68E980BB-0F9B-4117-B4CD-6287248439D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC7A9AD-40F9-451C-830B-3D63372CAE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC7A9AD-40F9-451C-830B-3D63372CAE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC7A9AD-40F9-451C-830B-3D63372CAE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC7A9AD-40F9-451C-830B-3D63372CAE77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

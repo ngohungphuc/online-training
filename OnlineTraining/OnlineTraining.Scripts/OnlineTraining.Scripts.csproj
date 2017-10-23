@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineTraining.Entities\OnlineTraining.Entities.csproj" />
+    <ProjectReference Include="..\OnlineTraining.Helper\OnlineTraining.Helper.csproj" />
+    <ProjectReference Include="..\OnlineTraining.Repositories\OnlineTraining.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

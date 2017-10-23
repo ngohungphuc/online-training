@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineTraining.API.Helpers.Extensions;
-
+using Microsoft.AspNetCore.Identity;
 namespace OnlineTraining.API
 {
     public class Startup
@@ -30,6 +30,7 @@ namespace OnlineTraining.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDevEnvConfig(env);
+            app.UseIdentity();
             app.UseAuthentication();
             app.ConfigCors();
             app.ConfigSwagger();

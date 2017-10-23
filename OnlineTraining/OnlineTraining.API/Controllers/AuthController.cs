@@ -20,11 +20,14 @@ namespace OnlineTraining.API.Controllers
     {
         private readonly IOptions<Audience> _settings;
         private readonly IRTokenRepository _tokenRepository;
+        private readonly IGenericRepository<User, ObjectId> _userRepository;
         public AuthController(
             IOptions<Audience> settings,
+            IGenericRepository<User, ObjectId> userRepository,
             IRTokenRepository tokenRepository)
         {
             _settings = settings;
+            _userRepository = userRepository;
             _tokenRepository = tokenRepository;
         }
 
@@ -62,16 +65,14 @@ namespace OnlineTraining.API.Controllers
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        private ResponseData DoPassword(Parameters parameters)
+        private async Task<ResponseData> DoPassword(Parameters parameters)
         {
             //validate the client_id/client_secret/username/password 
-            var isValidated = _tokenRepository.GetAllToken().Any(
-                x => x.ClientId == parameters.client_id
-                     && x.ClientSecret == parameters.client_secret
-                     && x.UserName == parameters.username
-                     && x.Password == parameters.password);
+            var isValidated = await _userRepository
+                .FindOne(x => x.UserName == parameters.username
+                    && x.Password == parameters.password);
 
-            if (!isValidated)
+            if (isValidated == null)
             {
                 return new ResponseData
                 {
