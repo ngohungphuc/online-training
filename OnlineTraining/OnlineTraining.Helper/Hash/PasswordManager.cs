@@ -11,7 +11,8 @@ namespace OnlineTraining.Helper.Hash
         public static string Encrpyted(string input)
         {
             string encryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            byte[] clearBytes = Encoding.Unicode.GetBytes(input);
+            string result = input;
+            byte[] clearBytes = Encoding.Unicode.GetBytes(result);
 
             using (Aes encrytor = Aes.Create())
             {
@@ -29,16 +30,17 @@ namespace OnlineTraining.Helper.Hash
                         cs.Write(clearBytes, 0, clearBytes.Length);
                         cs.Close();
                     }
-                    input = Convert.ToBase64String(ms.ToArray());
+                    result = Convert.ToBase64String(ms.ToArray());
                 }
             }
-            return input;
+            return result;
         }
 
         public static string Decrypt(string input)
         {
             string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            input = input.Replace(" ", "+");
+            string result = input;
+            result = result.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(input);
 
             using (Aes encryptor = Aes.Create())
@@ -56,10 +58,10 @@ namespace OnlineTraining.Helper.Hash
                         cs.Write(cipherBytes, 0, cipherBytes.Length);
                         cs.Close();
                     }
-                    input = Encoding.Unicode.GetString(ms.ToArray());
+                    result = Encoding.Unicode.GetString(ms.ToArray());
                 }
             }
-            return input;
+            return result;
         }
     }
 }
