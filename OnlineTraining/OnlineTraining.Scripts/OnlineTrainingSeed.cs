@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using OnlineTraining.Entities.Db;
@@ -13,12 +14,10 @@ namespace OnlineTraining.Scripts
 {
     public class OnlineTrainingSeed
     {
-        private static readonly PasswordManager _passwordManager = new PasswordManager();
-        private static readonly MongoClient client = new MongoClient("mongodb://localhost:27017");
-        private static readonly IMongoDatabase database = client.GetDatabase("online-training");
+        private static MongoConnect mongoConnect = new MongoConnect();
         public static async Task AddUserToDb()
         {
-            var repo = database.GetCollection<User>("users");
+            var repo = mongoConnect.GetConnection().GetCollection<User>("users");
 
             var userList = new List<User>()
             {
@@ -26,7 +25,7 @@ namespace OnlineTraining.Scripts
                 {
                     Email = "ngohungphuc95@gmail.com",
                     UserName = "phucngo",
-                    Password = "070695",
+                    Password = PasswordManager.Encrpyted("070695"),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Id = new ObjectId("59ee1ba3acf7c53bf4d2504c")
@@ -35,7 +34,7 @@ namespace OnlineTraining.Scripts
                 {
                     Email = "ngohungphuc7695@gmail.com",
                     UserName = "phucngo1",
-                    Password = "070695",
+                    Password = PasswordManager.Encrpyted("070695"),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Id = new ObjectId("59ee1ba3acf7c53bf4d2504d")
