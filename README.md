@@ -1,5 +1,7 @@
 # Online Training website 
 
+> Online Training website like udemy or pluralsight using ASP.Net Core and Angular 4
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/76d4da06634540c39741c7f8afd211f6)](https://www.codacy.com/app/ngohungphuc95/online-training?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ngohungphuc/online-training&amp;utm_campaign=Badge_Grade)
 
 [![codebeat badge](https://codebeat.co/badges/322e5383-f2a2-4d8b-a4d2-b2cda338ee59)](https://codebeat.co/projects/github-com-ngohungphuc-online-training-master)
@@ -18,8 +20,9 @@
   -  SASS
   -  [Bootstrap materialize design](https://mdbootstrap.com) 
   -  [MongoDb Driver](https://github.com/mongodb/mongo-csharp-driver)
-  
-### Todos
+  -  Google drive API 
+  -  Video streaming
+  -  Web job background task
 
 ### Ref doc
 

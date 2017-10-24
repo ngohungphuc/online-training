@@ -141,9 +141,9 @@
   dependencies:
     tsickle "^0.21.0"
 
-"@aspnet/signalr-client@^1.0.0-alpha1-final":
-  version "1.0.0-alpha1-final"
-  resolved "https://registry.yarnpkg.com/@aspnet/signalr-client/-/signalr-client-1.0.0-alpha1-final.tgz#1f590384a5a79c3ae1ea2b9e0f3d8d8cdac44f7d"
+"@aspnet/signalr-client@^1.0.0-alpha2-final":
+  version "1.0.0-alpha2-final"
+  resolved "https://registry.yarnpkg.com/@aspnet/signalr-client/-/signalr-client-1.0.0-alpha2-final.tgz#6bcf7d0102875df8aa6f03a107487c93f4f1feb4"
   dependencies:
     msgpack5 "^3.5.0"
 

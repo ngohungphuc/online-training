@@ -26,6 +26,7 @@
     <ProjectReference Include="..\OnlineTraining.Entities\OnlineTraining.Entities.csproj" />
     <ProjectReference Include="..\OnlineTraining.Helper\OnlineTraining.Helper.csproj" />
     <ProjectReference Include="..\OnlineTraining.Repositories\OnlineTraining.Repositories.csproj" />
+    <ProjectReference Include="..\OnlineTraining.Scripts\OnlineTraining.Scripts.csproj" />
   </ItemGroup>
 
 </Project>

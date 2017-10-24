@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MongoDB.Bson;
-using OnlineTraining.Entities.Entities;
-using OnlineTraining.Helper.Hash;
-using OnlineTraining.Repositories.Interfaces;
-
+using Microsoft.Extensions.Configuration;
 namespace OnlineTraining.Scripts
 {
     public class Program
@@ -18,7 +14,7 @@ namespace OnlineTraining.Scripts
 
         private static async Task InitializeDb()
         {
-            await OnlineTrainingSeed.AddUserToDb();
+             await OnlineTrainingSeed.AddUserToDb();
         }
     }
 }
