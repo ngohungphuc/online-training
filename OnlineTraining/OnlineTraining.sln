@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Helper", "On
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.API", "OnlineTraining.API\OnlineTraining.API.csproj", "{68E980BB-0F9B-4117-B4CD-6287248439D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTraining.Scripts", "OnlineTraining.Scripts\OnlineTraining.Scripts.csproj", "{8FC7A9AD-40F9-451C-830B-3D63372CAE77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineTraining.Scripts", "OnlineTraining.Scripts\OnlineTraining.Scripts.csproj", "{8FC7A9AD-40F9-451C-830B-3D63372CAE77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

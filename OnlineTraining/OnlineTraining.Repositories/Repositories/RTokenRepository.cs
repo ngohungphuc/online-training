@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OnlineTraining.Entities.Auth;
 using OnlineTraining.Entities.Db;
 using OnlineTraining.Repositories.Interfaces;
 
 namespace OnlineTraining.Repositories.Repositories
 {
-    public class RTokenRepository: IRTokenRepository
+    public class RTokenRepository : IRTokenRepository
     {
         public bool AddToken(RToken token)
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OnlineTraining.Entities.Auth
+﻿namespace OnlineTraining.Entities.Auth
 {
     public class ResponseData
     {

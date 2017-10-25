@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineTraining.Entities.Auth
 {
-    [Table("rtoken")]
+//    [Table("rtoken")]
     public class RToken
     {
         [Column("id")]
@@ -12,15 +12,6 @@ namespace OnlineTraining.Entities.Auth
 
         [Column("client_id")]
         public string ClientId { get; set; }
-
-        [Column("client_secret")]
-        public string ClientSecret { get; set; }
-
-        [Column("username")]
-        public string UserName { get; set; }
-
-        [Column("password")]
-        public string Password { get; set; }
 
         [Column("refresh_token")]
         public string RefreshToken { get; set; }

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.IO;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace OnlineTraining.Helper.Config
 {

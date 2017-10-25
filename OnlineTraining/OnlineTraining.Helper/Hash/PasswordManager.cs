@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,22 +9,23 @@ namespace OnlineTraining.Helper.Hash
     {
         public static string Encrpyted(string input)
         {
-            string encryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string result = input;
-            byte[] clearBytes = Encoding.Unicode.GetBytes(result);
+            var encryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var result = input;
+            var clearBytes = Encoding.Unicode.GetBytes(result);
 
-            using (Aes encrytor = Aes.Create())
+            using (var encrytor = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[] {
+                var pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[]
+                {
                     0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
                 });
 
                 encrytor.Key = pdb.GetBytes(32);
                 encrytor.IV = pdb.GetBytes(16);
 
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encrytor.CreateEncryptor(), CryptoStreamMode.Write))
+                    using (var cs = new CryptoStream(ms, encrytor.CreateEncryptor(), CryptoStreamMode.Write))
                     {
                         cs.Write(clearBytes, 0, clearBytes.Length);
                         cs.Close();
@@ -38,22 +38,23 @@ namespace OnlineTraining.Helper.Hash
 
         public static string Decrypt(string input)
         {
-            string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string result = input;
+            var EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var result = input;
             result = result.Replace(" ", "+");
-            byte[] cipherBytes = Convert.FromBase64String(input);
+            var cipherBytes = Convert.FromBase64String(input);
 
-            using (Aes encryptor = Aes.Create())
+            using (var encryptor = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] {
+                var pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[]
+                {
                     0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
                 });
                 encryptor.Key = pdb.GetBytes(32);
                 encryptor.IV = pdb.GetBytes(16);
 
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    using (var cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
                     {
                         cs.Write(cipherBytes, 0, cipherBytes.Length);
                         cs.Close();

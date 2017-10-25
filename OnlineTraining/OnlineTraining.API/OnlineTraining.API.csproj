@@ -18,15 +18,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OnlineTraining.Entities\OnlineTraining.Entities.csproj" />
     <ProjectReference Include="..\OnlineTraining.Helper\OnlineTraining.Helper.csproj" />
     <ProjectReference Include="..\OnlineTraining.Repositories\OnlineTraining.Repositories.csproj" />
     <ProjectReference Include="..\OnlineTraining.Scripts\OnlineTraining.Scripts.csproj" />
+    <ProjectReference Include="..\OnlineTraining.Services\OnlineTraining.Services.csproj" />
   </ItemGroup>
 
 </Project>

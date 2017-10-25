@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Bson;
 using Newtonsoft.Json;
 using OnlineTraining.Entities.Auth;
-using OnlineTraining.Entities.Entities;
 using OnlineTraining.Repositories.Interfaces;
+using OnlineTraining.Services.Interfaces;
 
 namespace OnlineTraining.API.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IOptions<Audience> _settings;
+        private readonly IConfiguration _configuration;
         private readonly IRTokenRepository _tokenRepository;
-        private readonly IGenericRepository<User, ObjectId> _userRepository;
+        private readonly IUserServices _userServices;
+
         public AuthController(
-            IOptions<Audience> settings,
-            IGenericRepository<User, ObjectId> userRepository,
+            IConfiguration configuration,
+            IUserServices userServices,
             IRTokenRepository tokenRepository)
         {
-            _settings = settings;
-            _userRepository = userRepository;
+            _configuration = configuration;
+            _userServices = userServices;
             _tokenRepository = tokenRepository;
         }
 
@@ -35,14 +32,12 @@ namespace OnlineTraining.API.Controllers
         public IActionResult Auth([FromQuery] Parameters parameters)
         {
             if (parameters == null)
-            {
                 return Json(new ResponseData
                 {
                     Code = "901",
                     Message = "null of params",
                     Data = null
                 });
-            }
 
             switch (parameters.grant_type)
             {
@@ -61,26 +56,22 @@ namespace OnlineTraining.API.Controllers
         }
 
         /// <summary>
-        /// get the access-token by username and password  
+        ///     get the access-token by username and password
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        private async Task<ResponseData> DoPassword(Parameters parameters)
+        private ResponseData DoPassword(Parameters parameters)
         {
             //validate the client_id/client_secret/username/password 
-            var isValidated = await _userRepository
-                .FindOne(x => x.UserName == parameters.username
-                    && x.Password == parameters.password);
+            var isValidated = _userServices.Authentication(parameters.username, parameters.password);
 
-            if (isValidated == null)
-            {
+            if (!isValidated)
                 return new ResponseData
                 {
                     Code = "902",
                     Message = "invalid user infomation",
                     Data = null
                 };
-            }
 
             var refresh_token = Guid.NewGuid().ToString().Replace("-", "");
             var rToken = new RToken
@@ -93,14 +84,12 @@ namespace OnlineTraining.API.Controllers
 
             //store the refresh_token   
             if (_tokenRepository.AddToken(rToken))
-            {
                 return new ResponseData
                 {
                     Code = "999",
                     Message = "Ok",
                     Data = GetJwt(parameters.client_id, refresh_token)
                 };
-            }
             return new ResponseData
             {
                 Code = "909",
@@ -114,24 +103,20 @@ namespace OnlineTraining.API.Controllers
             var token = _tokenRepository.GetToken(parameters.refresh_token, parameters.client_id);
 
             if (token == null)
-            {
                 return new ResponseData
                 {
                     Code = "905",
                     Message = "can not refresh token",
                     Data = null
                 };
-            }
 
             if (token.IsStop == 1)
-            {
                 return new ResponseData
                 {
                     Code = "906",
                     Message = "refresh token has expired",
                     Data = null
                 };
-            }
 
             var refresh_token = Guid.NewGuid().ToString().Replace("-", "");
 
@@ -148,59 +133,54 @@ namespace OnlineTraining.API.Controllers
             });
 
             if (updateFlag && addFlag)
-            {
                 return new ResponseData
                 {
                     Code = "999",
                     Message = "Ok",
                     Data = GetJwt(parameters.client_id, refresh_token)
                 };
-            }
-            else
+            return new ResponseData
             {
-                return new ResponseData
-                {
-                    Code = "910",
-                    Message = "can not expire token or a new token",
-                    Data = null
-                };
-            }
+                Code = "910",
+                Message = "can not expire token or a new token",
+                Data = null
+            };
         }
 
         private string GetJwt(string client_id, string refresh_token)
         {
             var now = DateTime.Now;
 
-            var claims = new Claim[]
+            var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, client_id),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(),ClaimValueTypes.Integer64)
+                new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
             };
 
-            var symmetricKeyAsBase64 = _settings.Value.Secrect;
+            var symmetricKeyAsBase64 = _configuration["Audience:Secret"];
             var keyByteArray = Encoding.ASCII.GetBytes(symmetricKeyAsBase64);
             var signingKey = new SymmetricSecurityKey(keyByteArray);
 
             var jwt = new JwtSecurityToken(
-                issuer: _settings.Value.Iss,
-                audience: _settings.Value.Aud,
-                claims: claims,
-                notBefore: now,
-                expires: now.Add(TimeSpan.FromMinutes(2)),
-                signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
-                );
+                _configuration["Audience:Iss"],
+                _configuration["Audience:Aud"],
+                claims,
+                now,
+                now.Add(TimeSpan.FromMinutes(2)),
+                new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
+            );
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             var response = new
             {
                 access_token = encodedJwt,
-                expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds,
-                refresh_token = refresh_token,
+                expires_in = (int) TimeSpan.FromMinutes(2).TotalSeconds,
+                refresh_token
             };
 
-            return JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented });
+            return JsonConvert.SerializeObject(response, new JsonSerializerSettings {Formatting = Formatting.Indented});
         }
     }
 }

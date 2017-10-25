@@ -14,8 +14,8 @@ namespace OnlineTraining.Repositories.Interfaces
 
         Task<List<T>> GetAll();
 
-        IMongoQueryable<T> GetAll(Expression<Func<T, bool>> filter, 
-            Expression<Func<T, bool>> orderBy, 
+        IMongoQueryable<T> GetAll(Expression<Func<T, bool>> filter,
+            Expression<Func<T, bool>> orderBy,
             int? pageSize,
             int? pageIndex);
 

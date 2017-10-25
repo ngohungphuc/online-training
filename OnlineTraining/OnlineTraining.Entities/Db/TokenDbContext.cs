@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
+using Microsoft.EntityFrameworkCore;
 using OnlineTraining.Entities.Auth;
 
 namespace OnlineTraining.Entities.Db
 {
-    public class TokenDbContext: DbContext
+    public class TokenDbContext : DbContext
     {
         public DbSet<RToken> RTokens { get; set; }
 

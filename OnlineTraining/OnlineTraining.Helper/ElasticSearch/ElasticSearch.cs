@@ -6,10 +6,10 @@ using Nest;
 
 namespace OnlineTraining.Helper.ElasticSearch
 {
-    public class ElasticSearch: IElasticSearch
+    public class ElasticSearch : IElasticSearch
     {
-        private readonly string[] _elasticSearchUrls;
         private readonly string _coursesIndex;
+        private readonly string[] _elasticSearchUrls;
 
         public ElasticSearch(IConfiguration configuration)
         {

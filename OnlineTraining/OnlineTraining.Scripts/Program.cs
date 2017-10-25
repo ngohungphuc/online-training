@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+
 namespace OnlineTraining.Scripts
 {
     public class Program
@@ -14,7 +14,7 @@ namespace OnlineTraining.Scripts
 
         private static async Task InitializeDb()
         {
-             await OnlineTrainingSeed.AddUserToDb();
+            await OnlineTrainingSeed.AddUserToDb();
         }
     }
 }

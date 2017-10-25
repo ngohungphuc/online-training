@@ -2,7 +2,7 @@
 
 namespace OnlineTraining.Entities.Entities
 {
-    public class CourseDetail: BaseEntity
+    public class CourseDetail : BaseEntity
     {
         public string Detail { get; set; }
         public ObjectId CourseId { get; set; }

@@ -12,8 +12,9 @@ namespace OnlineTraining.Repositories.Repositories
 {
     public class GenericRepository<T, TKey> where T : IBaseEntity<TKey>
     {
-        private readonly IMongoConnect _db;
         private readonly IMongoCollection<T> _collection;
+        private readonly IMongoConnect _db;
+
         public GenericRepository(IMongoConnect db)
         {
             _db = db;
@@ -28,7 +29,7 @@ namespace OnlineTraining.Repositories.Repositories
 
         public async Task<List<T>> GetAll()
         {
-            var data =  await _collection.Find(_ => true).ToListAsync();
+            var data = await _collection.Find(_ => true).ToListAsync();
             return data;
         }
 
@@ -41,19 +42,13 @@ namespace OnlineTraining.Repositories.Repositories
             var data = _collection.AsQueryable();
 
             if (filter != null)
-            {
                 data.Where(filter);
-            }
 
             if (orderBy != null)
-            {
                 data.OrderBy(orderBy);
-            }
 
             if (pageSize != null && pageIndex != null)
-            {
                 data.Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value);
-            }
 
             return data;
         }
@@ -61,14 +56,14 @@ namespace OnlineTraining.Repositories.Repositories
         public async Task<List<T>> Filter(Expression<Func<T, bool>> filter, int? skip = null)
         {
             var data = await _collection.Find(filter)
-                            .Skip(skip)
-                            .ToListAsync();
+                .Skip(skip)
+                .ToListAsync();
             return data;
         }
 
         public async Task<T> FindOne(Expression<Func<T, bool>> filter)
         {
-            var data = await _collection.AsQueryable<T>().SingleOrDefaultAsync(filter);
+            var data = await _collection.AsQueryable().SingleOrDefaultAsync(filter);
             return data;
         }
 

@@ -9,11 +9,8 @@ namespace OnlineTraining.API.Helpers.Extensions
         public static IApplicationBuilder UseDevEnvConfig(this IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             return app;
-
         }
 
         public static IApplicationBuilder ConfigCors(this IApplicationBuilder app)
@@ -28,10 +25,7 @@ namespace OnlineTraining.API.Helpers.Extensions
 
         public static IApplicationBuilder MapSignalR(this IApplicationBuilder app)
         {
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<OnlineHub>("onlinehub");
-            });
+            app.UseSignalR(routes => { routes.MapHub<OnlineHub>("onlinehub"); });
 
             return app;
         }
@@ -42,10 +36,7 @@ namespace OnlineTraining.API.Helpers.Extensions
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "My API V1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "My API V1"); });
 
             return app;
         }

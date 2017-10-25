@@ -7,6 +7,8 @@ using Microsoft.IdentityModel.Tokens;
 using OnlineTraining.Helper.ElasticSearch;
 using OnlineTraining.Repositories.Interfaces;
 using OnlineTraining.Repositories.Repositories;
+using OnlineTraining.Services.Interfaces;
+using OnlineTraining.Services.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace OnlineTraining.API.Helpers.Extensions
@@ -22,7 +24,7 @@ namespace OnlineTraining.API.Helpers.Extensions
                 {
                     Version = "v1",
                     Title = "Online Training API",
-                    Contact = new Contact { Name = "Tony Hudson", Email = "", Url = "github.com/ngohungphuc" }
+                    Contact = new Contact {Name = "Tony Hudson", Email = "", Url = "github.com/ngohungphuc"}
                 });
             });
 
@@ -32,6 +34,8 @@ namespace OnlineTraining.API.Helpers.Extensions
         public static IServiceCollection InjectServicesCollection(this IServiceCollection services)
         {
             services.AddScoped<IElasticSearch, ElasticSearch>();
+            services.AddScoped<IUserServices, UserServices>();
+            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IRTokenRepository, RTokenRepository>();
             return services;
         }
@@ -64,14 +68,11 @@ namespace OnlineTraining.API.Helpers.Extensions
             };
 
             services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(o =>
-            {
-                o.TokenValidationParameters = tokenValidationParameters;
-            });
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(o => { o.TokenValidationParameters = tokenValidationParameters; });
         }
     }
 }

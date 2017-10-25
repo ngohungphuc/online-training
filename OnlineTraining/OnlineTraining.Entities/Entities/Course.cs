@@ -1,6 +1,6 @@
 ﻿namespace OnlineTraining.Entities.Entities
 {
-    public class Course: BaseEntity
+    public class Course : BaseEntity
     {
         public string CourseName { get; set; }
         public string ShortDescription { get; set; }

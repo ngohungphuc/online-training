@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using OnlineTraining.Helper.Config;
 
@@ -13,6 +12,7 @@ namespace OnlineTraining.Entities.Db
     public class MongoConnect
     {
         private readonly IConfigurationRoot config = ConfigReader.GetConfigFile();
+
         public IMongoDatabase GetConnection()
         {
             var client = new MongoClient(config["MongoConnection:ConnectionString"]);
