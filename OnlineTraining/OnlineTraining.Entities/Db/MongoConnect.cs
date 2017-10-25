@@ -12,11 +12,11 @@ namespace OnlineTraining.Entities.Db
 
     public class MongoConnect
     {
-       
+        private readonly IConfigurationRoot config = ConfigReader.GetConfigFile();
         public IMongoDatabase GetConnection()
         {
-            var client = new MongoClient(ConfigReader.GetConfigFile()["MongoConnection:ConnectionString"]);
-            var database = client.GetDatabase(ConfigReader.GetConfigFile()["MongoConnection:Database"]);
+            var client = new MongoClient(config["MongoConnection:ConnectionString"]);
+            var database = client.GetDatabase(config["MongoConnection:Database"]);
             return database;
         }
     }
