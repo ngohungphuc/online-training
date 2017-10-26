@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineTraining.Entities.Auth
 {
-//    [Table("rtoken")]
     public class RToken
     {
         [Column("id")]

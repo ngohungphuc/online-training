@@ -78,7 +78,7 @@ namespace OnlineTraining.API.Controllers
             {
                 ClientId = parameters.client_id,
                 RefreshToken = refresh_token,
-                Id = new Guid().ToString(),
+                Id = Guid.NewGuid().ToString(),
                 IsStop = 0
             };
 

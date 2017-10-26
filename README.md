@@ -37,3 +37,9 @@ https://www.codeproject.com/Articles/608860/Understanding-and-Implementing-Passw
 https://dotnetcoretutorials.com/2017/09/23/using-automapper-asp-net-core/
 
 https://stackoverflow.com/questions/40275195/how-to-setup-automapper-in-asp-net-core
+
+
+### Url to test authorization
+Authentication http://localhost:51316/auth?grant_type=password&client_id=59ee1ba3acf7c53bf4d2504c&username=phucngo&password=070695
+
+Refresh token http://localhost:51316/api/token/auth?grant_type=refresh_token&client_id={client_id}&refresh_token={refresh_token}
