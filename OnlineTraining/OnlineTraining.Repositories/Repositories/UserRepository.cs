@@ -20,7 +20,6 @@ namespace OnlineTraining.Repositories.Repositories
 
         public bool Authentication(string username, string password)
         {
-   
             var result = _userRepository.Find(x => x.UserName == username
                                                       && x.Password == PasswordManager.Encrpyted(password));
             return result != null;

@@ -9,7 +9,9 @@ namespace OnlineTraining.API.Helpers.Extensions
         public static IApplicationBuilder UseDevEnvConfig(this IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+            }
             return app;
         }
 
