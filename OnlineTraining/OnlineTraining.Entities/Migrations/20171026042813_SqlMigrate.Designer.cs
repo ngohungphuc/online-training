@@ -10,8 +10,8 @@ using System;
 namespace OnlineTraining.Entities.Migrations
 {
     [DbContext(typeof(TokenDbContext))]
-    [Migration("20171025162615_SqliteMigration")]
-    partial class SqliteMigration
+    [Migration("20171026042813_SqlMigrate")]
+    partial class SqlMigrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

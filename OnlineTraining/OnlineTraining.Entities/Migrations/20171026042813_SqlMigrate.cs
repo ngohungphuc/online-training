@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace OnlineTraining.Entities.Migrations
 {
-    public partial class SqliteMigration : Migration
+    public partial class SqlMigrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
