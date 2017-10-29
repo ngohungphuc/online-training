@@ -38,6 +38,10 @@ https://dotnetcoretutorials.com/2017/09/23/using-automapper-asp-net-core/
 
 https://stackoverflow.com/questions/40275195/how-to-setup-automapper-in-asp-net-core
 
+https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6
+
+https://medium.com/@renato.groffe/asp-net-core-2-0-autentica%C3%A7%C3%A3o-em-apis-utilizando-jwt-json-web-tokens-4b1871efd
+https://code.msdn.microsoft.com/How-to-achieve-a-bearer-9448db57
 
 ### Url to test authorization
 Authentication http://localhost:51316/auth?grant_type=password&client_id=59ee1ba3acf7c53bf4d2504c&username=phucngo&password=070695
