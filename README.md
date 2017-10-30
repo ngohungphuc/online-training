@@ -9,6 +9,7 @@
 ### Technology use in this project
 
   -  ASP.Net Core 2.0
+  -  Gzip compression
   -  JWT Authentication with refresh token
   -  SignalR Core
   -  Elasticsearch
@@ -41,8 +42,18 @@ https://stackoverflow.com/questions/40275195/how-to-setup-automapper-in-asp-net-
 https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6
 
 https://medium.com/@renato.groffe/asp-net-core-2-0-autentica%C3%A7%C3%A3o-em-apis-utilizando-jwt-json-web-tokens-4b1871efd
+
 https://code.msdn.microsoft.com/How-to-achieve-a-bearer-9448db57
 
+http://www.talkingdotnet.com/how-to-upload-file-via-swagger-in-asp-net-core-web-api/
+
+http://www.talkingdotnet.com/how-to-enable-gzip-compression-in-asp-net-core/
+
+http://www.talkingdotnet.com/global-exception-handling-in-aspnet-core-webapi/
+
+http://www.talkingdotnet.com/app-use-vs-app-run-asp-net-core-middleware/
+
+http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
 ### Url to test authorization
 Authentication http://localhost:51316/auth?grant_type=password&client_id=59ee1ba3acf7c53bf4d2504c&username=phucngo&password=070695
 
