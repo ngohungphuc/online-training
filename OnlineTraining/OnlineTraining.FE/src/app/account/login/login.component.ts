@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 @Component({
   selector: 'ota-login',
   templateUrl: './login.component.html',
@@ -19,6 +18,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(value) {
-    console.log(value);
+    if (this.loginForm.valid) {
+      console.log(value);
+    }
+
   }
 }

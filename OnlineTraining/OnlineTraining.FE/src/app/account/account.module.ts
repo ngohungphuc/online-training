@@ -3,20 +3,20 @@ import {
   ForgotPasswordComponent,
   LoginComponent,
   SignUpComponent
-  } from './index';
+} from './index';
 import { AccountRouting } from './account.routing';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    AccountRouting
-  ],
+    AccountRouting,
+    NgbModule],
   declarations: [
     AccountComponent,
     LoginComponent,
@@ -24,4 +24,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     ForgotPasswordComponent
   ]
 })
-export class AccountModule { }
+export class AccountModule {}

@@ -1,6 +1,6 @@
-
-import { Component, OnInit } from '@angular/core';
 import * as signalR from '@aspnet/signalr-client';
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'online-training-app',
   templateUrl: 'app.component.html',

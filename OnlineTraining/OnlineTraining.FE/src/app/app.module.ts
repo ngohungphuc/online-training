@@ -1,32 +1,22 @@
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MDBBootstrapModule } from './typescripts/free';
-import { AgmCoreModule } from '@agm/core';
-import { AppComponent } from './app.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
-import { AppRoutingModule } from './app.routing';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     SharedModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
-    AgmCoreModule.forRoot({
-      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key
-      apiKey: 'Your_api_key'
-    })
   ],
   providers: [],
   bootstrap: [AppComponent],
