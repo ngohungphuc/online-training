@@ -3,13 +3,14 @@ import {
   ForgotPasswordComponent,
   LoginComponent,
   SignUpComponent
-} from './index';
+  } from './index';
 import { AccountRouting } from './account.routing';
+import { AuthService } from '../common/services/auth.service';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent
-  ]
+  ],
+  providers: [AuthService]
 })
 export class AccountModule {}

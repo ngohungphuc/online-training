@@ -6,11 +6,11 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthService {
-  private tokenKey = 'token';
+  private tokenKey = 'currentUserInfo';
   private token: string;
   private currentUser;
   constructor(private http: Http) {
-    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUserInfo'));
     this.token = this.currentUser && this.currentUser.token;
   }
 
@@ -80,7 +80,8 @@ export class AuthService {
 
   private getLocalToken(): string {
     if (!this.token) {
-      this.token = sessionStorage.getItem(this.tokenKey);
+      const data = JSON.parse(localStorage.getItem('currentUserInfo'));
+      this.token = data.access_token;
     }
     return this.token;
   }
