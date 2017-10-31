@@ -1,4 +1,4 @@
-import * as signalR from '@aspnet/signalr-client';
+import {SignalRService} from '../app/shared/index';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
+
   }
 
-  constructor() {
+  constructor(private signalRService: SignalRService) {
 
   }
 }

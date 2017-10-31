@@ -11,11 +11,12 @@ namespace OnlineTraining.Entities.Db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var curDir = Directory.GetCurrentDirectory();
-            curDir = curDir.Substring(0, curDir.LastIndexOf("OnlineTraining.API", StringComparison.Ordinal));
-            var dbPath = string.Format("{0}{1}", curDir, "OnlineTraining.Entities");
-            var connStr = Path.Combine(dbPath, "jwt.db");
-            optionsBuilder.UseSqlite($"Data Source={connStr}");
+            //var curDir = Directory.GetCurrentDirectory();
+            //curDir = curDir.Substring(0, curDir.LastIndexOf("OnlineTraining.API", StringComparison.Ordinal));
+            //var dbPath = string.Format("{0}{1}", curDir, "OnlineTraining.Entities");
+            //var connStr = Path.Combine(dbPath, "jwt.db");
+            //optionsBuilder.UseSqlite($"Data Source={connStr}");
+            optionsBuilder.UseSqlite($"Data Source=jwt.db");
         }
     }
 }

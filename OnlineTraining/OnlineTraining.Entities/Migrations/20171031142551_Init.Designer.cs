@@ -10,8 +10,8 @@ using System;
 namespace OnlineTraining.Entities.Migrations
 {
     [DbContext(typeof(TokenDbContext))]
-    [Migration("20171026042813_SqlMigrate")]
-    partial class SqlMigrate
+    [Migration("20171031142551_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,8 +25,8 @@ namespace OnlineTraining.Entities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id");
 
-                    b.Property<string>("ClientId")
-                        .HasColumnName("client_id");
+                    b.Property<string>("ClientName")
+                        .HasColumnName("client_name");
 
                     b.Property<int>("IsStop")
                         .HasColumnName("isstop");

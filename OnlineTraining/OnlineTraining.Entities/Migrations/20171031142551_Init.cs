@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace OnlineTraining.Entities.Migrations
 {
-    public partial class SqlMigrate : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace OnlineTraining.Entities.Migrations
                 columns: table => new
                 {
                     id = table.Column<string>(type: "TEXT", nullable: false),
-                    client_id = table.Column<string>(type: "TEXT", nullable: true),
+                    client_name = table.Column<string>(type: "TEXT", nullable: true),
                     isstop = table.Column<int>(type: "INTEGER", nullable: false),
                     refresh_token = table.Column<string>(type: "TEXT", nullable: true)
                 },

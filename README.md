@@ -54,6 +54,10 @@ http://www.talkingdotnet.com/global-exception-handling-in-aspnet-core-webapi/
 http://www.talkingdotnet.com/app-use-vs-app-run-asp-net-core-middleware/
 
 http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
+
+https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-1
+https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2
+
 ### Url to test authorization
 Authentication http://localhost:51316/auth?grant_type=password&client_id=59ee1ba3acf7c53bf4d2504c&username=phucngo&password=070695
 

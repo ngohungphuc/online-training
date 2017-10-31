@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   login(value) {
     if (this.loginForm.valid) {
-      console.log(value);
+
     }
 
   }

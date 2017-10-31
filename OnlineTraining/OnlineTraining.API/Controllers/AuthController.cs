@@ -76,7 +76,7 @@ namespace OnlineTraining.API.Controllers
             var refresh_token = Guid.NewGuid().ToString().Replace("-", "");
             var rToken = new RToken
             {
-                ClientId = parameters.client_id,
+                ClientName = parameters.username,
                 RefreshToken = refresh_token,
                 Id = Guid.NewGuid().ToString(),
                 IsStop = 0
@@ -88,7 +88,7 @@ namespace OnlineTraining.API.Controllers
                 {
                     Code = "999",
                     Message = "Ok",
-                    Data = GetJwt(parameters.client_id, refresh_token)
+                    Data = GetJwt(parameters.username, refresh_token)
                 };
             return new ResponseData
             {
@@ -100,7 +100,7 @@ namespace OnlineTraining.API.Controllers
 
         private ResponseData GenerateRefreshToken(Parameters parameters)
         {
-            var token = _tokenRepository.GetToken(parameters.refresh_token, parameters.client_id);
+            var token = _tokenRepository.GetToken(parameters.refresh_token, parameters.username);
 
             if (token == null)
                 return new ResponseData
@@ -126,7 +126,7 @@ namespace OnlineTraining.API.Controllers
 
             var addFlag = _tokenRepository.AddToken(new RToken
             {
-                ClientId = parameters.client_id,
+                ClientName = parameters.username,
                 RefreshToken = refresh_token,
                 Id = Guid.NewGuid().ToString(),
                 IsStop = 0
@@ -137,7 +137,7 @@ namespace OnlineTraining.API.Controllers
                 {
                     Code = "999",
                     Message = "Ok",
-                    Data = GetJwt(parameters.client_id, refresh_token)
+                    Data = GetJwt(parameters.username, refresh_token)
                 };
             return new ResponseData
             {
@@ -147,13 +147,13 @@ namespace OnlineTraining.API.Controllers
             };
         }
 
-        private string GetJwt(string client_id, string refresh_token)
+        private string GetJwt(string client_name, string refresh_token)
         {
             var now = DateTime.Now;
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, client_id),
+                new Claim(JwtRegisteredClaimNames.UniqueName, client_name),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
             };

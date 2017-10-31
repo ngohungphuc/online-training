@@ -9,8 +9,8 @@ namespace OnlineTraining.Entities.Auth
         [Key]
         public string Id { get; set; }
 
-        [Column("client_id")]
-        public string ClientId { get; set; }
+        [Column("client_name")]
+        public string ClientName { get; set; }
 
         [Column("refresh_token")]
         public string RefreshToken { get; set; }

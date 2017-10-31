@@ -10,7 +10,7 @@ import { environment } from './../../../environments';
 */
 @Injectable()
 export class SignalRService {
-    onlineHubUrl = environment.hubUrl;
+    onlineHubUrl = environment.serverUrl;
     constructor() {
 
     }

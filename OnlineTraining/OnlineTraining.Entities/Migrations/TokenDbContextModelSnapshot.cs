@@ -24,8 +24,8 @@ namespace OnlineTraining.Entities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id");
 
-                    b.Property<string>("ClientId")
-                        .HasColumnName("client_id");
+                    b.Property<string>("ClientName")
+                        .HasColumnName("client_name");
 
                     b.Property<int>("IsStop")
                         .HasColumnName("isstop");

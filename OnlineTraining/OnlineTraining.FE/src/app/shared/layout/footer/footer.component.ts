@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as signalR from '@aspnet/signalr-client';
 import { SignalRService } from '../../index';
 
 @Component({

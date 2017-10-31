@@ -36,11 +36,11 @@ namespace OnlineTraining.Repositories.Repositories
             }
         }
 
-        public RToken GetToken(string refreshToken, string clientId)
+        public RToken GetToken(string refreshToken, string clientName)
         {
             using (var db = new TokenDbContext())
             {
-                return db.RTokens.FirstOrDefault(x => x.ClientId == clientId && x.RefreshToken == refreshToken);
+                return db.RTokens.FirstOrDefault(x => x.ClientName == clientName && x.RefreshToken == refreshToken);
             }
         }
     }
