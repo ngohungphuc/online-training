@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO.Compression;
+using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -28,6 +32,49 @@ namespace OnlineTraining.API.Helpers.Extensions
                 });
             });
 
+            return services;
+        }
+
+        public static IServiceCollection UseCompressionCollection(this IServiceCollection services)
+        {
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
+            });
+            services.AddResponseCompression(options =>
+            {
+                options.Providers.Add<GzipCompressionProvider>();
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]  {
+                    // Plain Text
+                    "text/html",
+                    "text/plain",
+                    "text/css",
+                    "text/mathml",
+                    "application/rtf",
+                    // JSON
+                    "application/javascript",
+                    "application/json",
+                    "application/json; charset=utf-8",
+                    "application/manifest+json",
+                    "application/x-web-app-manifest+json",
+                    "text/cache-manifest",
+                    // XML
+                    "application/atom+xml",
+                    "application/rss+xml",
+                    "application/xslt+xml",
+                    "application/xml",
+                    // Fonts
+                    "font/opentype",
+                    "font/otf",
+                    "font/truetype",
+                    "application/font-woff",
+                    "application/vnd.ms-fontobject",
+                    "application/x-font-ttf",
+                    // Images
+                    "image/svg+xml",
+                    "image/x-icon"
+                });
+            });
             return services;
         }
 

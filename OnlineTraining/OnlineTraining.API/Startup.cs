@@ -33,12 +33,14 @@ namespace OnlineTraining.API
             services.IntegrateSwagger();
             services.InjectServicesCollection();
             services.AddSignalR();
+            services.UseCompressionCollection();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseResponseCompression();
             app.UseDevEnvConfig(env);
             app.UseAuthentication();
             app.ConfigCors();
