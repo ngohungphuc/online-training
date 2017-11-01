@@ -4,30 +4,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { StatusCode } from '../enum/status-code';
 import { StorageService } from './storage.service';
-import 'rxjs/add/operator/catch';
 import { TokenModel } from '../models/token.model';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthService {
   private tokenKey = 'currentUserInfo';
-  private token: string;
-  private currentUser;
+  private currentUser = JSON.parse(localStorage.getItem(this.tokenKey));
   constructor(private http: Http, private storageService: StorageService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUserInfo'));
-    this.token = this.currentUser && this.currentUser.token;
+
   }
 
   Get(url: string): Observable<any> {
     const apiUrl = this.generateOTApiUrl(url);
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
-    return this.http.get(apiUrl, options).catch(error => {
-      if (error.status === StatusCode.Unauthorized) {
-        this.generateRefreshTokenUrl();
-      } else {
-        return null;
-      }
-    });
+    return this.http.get(apiUrl, options).catch(this.handleServerError);
   }
 
   Post(url: string, data: any): Observable<any> {
@@ -36,13 +28,7 @@ export class AuthService {
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(apiUrl, body, options).catch(error => {
-      if (error.status === StatusCode.Unauthorized) {
-        this.generateRefreshTokenUrl();
-      } else {
-        return null;
-      }
-    });
+    return this.http.post(apiUrl, body, options).catch(this.handleServerError);
   }
 
   Put(url: string, data: Object): Observable<any> {
@@ -51,13 +37,7 @@ export class AuthService {
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.put(apiUrl, body, options).catch(error => {
-      if (error.status === StatusCode.Unauthorized) {
-        this.generateRefreshTokenUrl();
-      } else {
-        return null;
-      }
-    });
+    return this.http.put(apiUrl, body, options).catch(this.handleServerError);
   }
 
   Delete(url: string): Observable<any> {
@@ -65,13 +45,7 @@ export class AuthService {
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.delete(apiUrl, options).catch(error => {
-      if (error.status === StatusCode.Unauthorized) {
-        this.generateRefreshTokenUrl();
-      } else {
-        return null;
-      }
-    });
+    return this.http.delete(apiUrl, options).catch(this.handleServerError);
   }
 
   private initAuthHeaders(): Headers {
@@ -89,10 +63,9 @@ export class AuthService {
   }
 
   private getLocalToken(): string {
-    if (this.token !== null) {
-      this.token = this.currentUser.access_token;
+    if (this.currentUser !== null) {
+      return this.currentUser.access_token;
     }
-    return this.token;
   }
 
   private generateRefreshTokenUrl() {
@@ -101,15 +74,25 @@ export class AuthService {
         .currentUser.account}&refresh_token=${this.currentUser.refresh_token}`;
       this.Get(refreshTokenUrl).subscribe(result => {
         const data = JSON.parse(result.json().data) as TokenModel;
-        if(data !== null) {
+        if (data !== null) {
           localStorage.setItem(
-            'currentUserInfo',
-            JSON.stringify({ 'account': data.account,
-               'access_token': data.access_token,
-               'expire_in': data.expires_in,
-               'refresh_token': data.refresh_token }));
+          this.tokenKey,
+          JSON.stringify({ 'account': data.account,
+             'access_token': data.access_token,
+             'expire_in': data.expires_in,
+             'refresh_token': data.refresh_token }));
         }
       });
     }
+  }
+
+  private handleServerError(err: any) {
+    if (err instanceof Response) {
+      if (err.status === StatusCode.Unauthorized) {
+        this.generateRefreshTokenUrl();
+        return Observable.throw(err.json() || 'backend server error');
+      }
+    }
+    return Observable.throw(err || 'backend server error');
   }
 }
