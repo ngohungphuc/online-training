@@ -29,10 +29,17 @@ export class LoginComponent implements OnInit {
         const result = JSON.parse(res.json().data) as TokenModel;
         localStorage.setItem(
           'currentUserInfo',
-          JSON.stringify({ 'account': formData.account,
+          JSON.stringify({ 'account': result.account,
              'access_token': result.access_token,
-             'expire_in': result.expires_in }));
+             'expire_in': result.expires_in,
+             'refresh_token': result.refresh_token }));
       });
     }
+  }
+
+  getData(){
+    this.authService.Get('api/values').subscribe(res => {
+      console.log(res);
+    });
   }
 }

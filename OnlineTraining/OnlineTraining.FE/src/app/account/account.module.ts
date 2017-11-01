@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { StorageService } from '../common/services/storage.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +25,8 @@ import { SharedModule } from '../shared/shared.module';
     SignUpComponent,
     ForgotPasswordComponent
   ],
-  providers: [AuthService]
+  providers: [
+    AuthService,
+    StorageService]
 })
 export class AccountModule {}
