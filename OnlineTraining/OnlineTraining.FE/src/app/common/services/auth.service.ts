@@ -101,15 +101,14 @@ export class AuthService {
         .currentUser.account}&refresh_token=${this.currentUser.refresh_token}`;
       this.Get(refreshTokenUrl).subscribe(result => {
         const data = JSON.parse(result.json().data) as TokenModel;
-        console.log(data.access_token);
-/*         localStorage.removeItem('currentUserInfo');
-        localStorage.setItem(
-          'currentUserInfo',
-          JSON.stringify({ 'account': data.account,
-             'access_token': data.access_token,
-             'expire_in': data.expires_in,
-             'refresh_token': data.refresh_token })); */
-             debugger;
+        if(data !== null) {
+          localStorage.setItem(
+            'currentUserInfo',
+            JSON.stringify({ 'account': data.account,
+               'access_token': data.access_token,
+               'expire_in': data.expires_in,
+               'refresh_token': data.refresh_token }));
+        }
       });
     }
   }
