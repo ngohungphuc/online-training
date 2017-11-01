@@ -3,11 +3,9 @@
 > Online Training website like udemy or pluralsight using ASP.Net Core and Angular 4
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/76d4da06634540c39741c7f8afd211f6)](https://www.codacy.com/app/ngohungphuc95/online-training?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ngohungphuc/online-training&amp;utm_campaign=Badge_Grade)
-
 [![codebeat badge](https://codebeat.co/badges/322e5383-f2a2-4d8b-a4d2-b2cda338ee59)](https://codebeat.co/projects/github-com-ngohungphuc-online-training-master)
 
 ### Technology use in this project
-
   -  ASP.Net Core 2.0
   -  Gzip compression
   -  JWT Authentication with refresh token
@@ -18,6 +16,7 @@
   -  Webpack
   -  Angular 4 CLI
   -  Redux
+  -  Effect
   -  SASS
   -  [Bootstrap materialize design](https://mdbootstrap.com) 
   -  [MongoDb Driver](https://github.com/mongodb/mongo-csharp-driver)
@@ -43,6 +42,7 @@ https://psamsotha.github.io/angular/2016/12/31/ngrx-effects-with-angular.html
 https://medium.com/@flashMasterJim/setting-up-ngrx-store-in-an-angular-2-project-e5232a7b082e
 
 http://4dev.tech/2016/03/login-screen-and-authentication-with-angular2/
+
 ---
 
 ##### .Net
@@ -73,7 +73,9 @@ http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
 
 https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6
 
+
 ### Url to test authorization
+
 Authentication http://localhost:51316/auth?grant_type=password&client_id=59ee1ba3acf7c53bf4d2504c&username=phucngo&password=070695
 
 Refresh token http://localhost:51316/api/token/auth?grant_type=refresh_token&client_id={client_id}&refresh_token={refresh_token}
