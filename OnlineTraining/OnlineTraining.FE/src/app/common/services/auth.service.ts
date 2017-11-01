@@ -1,10 +1,10 @@
 import { environment } from './../../../environments';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { StatusCode } from '../enum/status-code';
 import { StorageService } from './storage.service';
 import { TokenModel } from '../models/token.model';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
@@ -12,7 +12,6 @@ export class AuthService {
   private tokenKey = 'currentUserInfo';
   private currentUser = JSON.parse(localStorage.getItem(this.tokenKey));
   constructor(private http: Http, private storageService: StorageService) {
-
   }
 
   Get(url: string): Observable<any> {
