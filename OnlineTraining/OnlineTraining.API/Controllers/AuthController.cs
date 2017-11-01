@@ -167,7 +167,7 @@ namespace OnlineTraining.API.Controllers
                 _configuration["Audience:Aud"],
                 claims,
                 now,
-                now.Add(TimeSpan.FromMinutes(1)),
+                now.Add(TimeSpan.FromMinutes(120)),
                 new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
             );
 
@@ -176,7 +176,7 @@ namespace OnlineTraining.API.Controllers
             var response = new
             {
                 access_token = encodedJwt,
-                expires_in = (int) TimeSpan.FromMinutes(1).TotalSeconds,
+                expires_in = (int) TimeSpan.FromMinutes(120).TotalSeconds,
                 refresh_token,
                 account = client_name
             };
