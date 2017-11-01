@@ -37,9 +37,4 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getData(){
-    this.authService.Get('api/values').subscribe(res => {
-      console.log(res);
-    });
-  }
 }

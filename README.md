@@ -27,10 +27,25 @@
 
 ### Ref doc
 
+##### Angular
 https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb
 
 https://vsavkin.com/angular-router-declarative-lazy-loading-7071d1f203ee
 
+https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-1
+
+https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2
+
+http://brianflove.com/2017/04/10/angular-reactive-authentication/
+
+https://psamsotha.github.io/angular/2016/12/31/ngrx-effects-with-angular.html
+
+https://medium.com/@flashMasterJim/setting-up-ngrx-store-in-an-angular-2-project-e5232a7b082e
+
+http://4dev.tech/2016/03/login-screen-and-authentication-with-angular2/
+---
+
+##### .Net
 http://www.c-sharpcorner.com/article/handle-refresh-token-using-asp-net-core-2-0-and-json-web-token/
 
 https://www.codeproject.com/Articles/608860/Understanding-and-Implementing-Password-Hashing
@@ -38,8 +53,6 @@ https://www.codeproject.com/Articles/608860/Understanding-and-Implementing-Passw
 https://dotnetcoretutorials.com/2017/09/23/using-automapper-asp-net-core/
 
 https://stackoverflow.com/questions/40275195/how-to-setup-automapper-in-asp-net-core
-
-https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6
 
 https://medium.com/@renato.groffe/asp-net-core-2-0-autentica%C3%A7%C3%A3o-em-apis-utilizando-jwt-json-web-tokens-4b1871efd
 
@@ -55,10 +68,11 @@ http://www.talkingdotnet.com/app-use-vs-app-run-asp-net-core-middleware/
 
 http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
 
-https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-1
-https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2
+---
+##### Deploy
 
-http://brianflove.com/2017/04/10/angular-reactive-authentication/
+https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6
+
 ### Url to test authorization
 Authentication http://localhost:51316/auth?grant_type=password&client_id=59ee1ba3acf7c53bf4d2504c&username=phucngo&password=070695
 
