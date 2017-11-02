@@ -1,4 +1,4 @@
-import { AuthAction } from '../../common/core/state-management/actions/auth.action';
+import * as Auth from '../../common/core/state-management/actions/auth.action';
 import { AuthService } from '../../common/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private store$: Store<UserState>,
-    private authAction: AuthAction
+    private store$: Store<UserState>
   ) { }
 
   ngOnInit() {
@@ -41,9 +40,5 @@ export class LoginComponent implements OnInit {
              'refresh_token': result.refresh_token }));
       });
     }*/
-    this.store$.dispatch(this.authAction.login({
-      account: formData.account,
-      password: formData.password
-    }));
   }
 }

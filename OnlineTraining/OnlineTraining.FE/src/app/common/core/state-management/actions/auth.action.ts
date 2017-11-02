@@ -1,13 +1,41 @@
-import { BaseAction } from './base.action';
-import { UserCredentials } from './../models/user.credential';
+import { Action } from '@ngrx/store';
+import { UserCredentials, User } from '../models/user.credential';
 
-export class AuthAction {
-  static readonly LOGIN = 'LOGIN';
+export const LOGIN = '[Auth] Login';
+export const LOGOUT = '[Auth] Logout';
+export const LOGIN_SUCCESS = '[Auth] Login Success';
+export const LOGIN_FAILURE = '[Auth] Login Failure';
+export const LOGIN_REDIRECT = '[Auth] Login Redirect';
 
-  login(userCredentials: UserCredentials): BaseAction {
-    return {
-      type: AuthAction.LOGIN,
-      payload: { userCredentials }
-    };
-  }
+export class Login implements Action {
+  readonly type = LOGIN;
+
+  constructor(public payload: UserCredentials){}
 }
+
+export class LoginSuccess implements Action {
+  readonly type = LOGIN_SUCCESS;
+
+  constructor(public payload: { user: User }) {}
+}
+
+export class LoginFailure implements Action {
+  readonly type = LOGIN_FAILURE;
+
+  constructor(public payload: any) {}
+}
+
+export class LoginRedirect implements Action {
+  readonly type = LOGIN_REDIRECT;
+}
+
+export class Logout implements Action {
+  readonly type = LOGOUT;
+}
+
+export type Actions =
+  | Login
+  | LoginSuccess
+  | LoginFailure
+  | LoginRedirect
+  | Logout;

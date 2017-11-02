@@ -14,6 +14,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { StorageService } from '../common/services/storage.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../common/core/state-management/reducers/index.auth.reducer';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +24,8 @@ import { StorageService } from '../common/services/storage.service';
     ReactiveFormsModule,
     AccountRouting,
     NgbModule,
-    EffectsModule.forRoot([AuthEffects])
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [
     AccountComponent,
