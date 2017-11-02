@@ -39,12 +39,11 @@ export class LoginComponent implements OnInit {
              'access_token': result.access_token,
              'expire_in': result.expires_in,
              'refresh_token': result.refresh_token }));
-      }); */
-
-      this.store$.dispatch(this.authAction.login({
-        account: formData.account,
-        password: formData.password
-      }));
-    }
+      });
+    }*/
+    this.store$.dispatch(this.authAction.login({
+      account: formData.account,
+      password: formData.password
+    }));
   }
 }

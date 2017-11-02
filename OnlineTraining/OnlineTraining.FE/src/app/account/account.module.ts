@@ -21,7 +21,8 @@ import { StorageService } from '../common/services/storage.service';
     ReactiveFormsModule,
     AccountRouting,
     NgbModule,
-    EffectsModule.apply(AuthEffects)],
+    EffectsModule.forRoot([AuthEffects])
+  ],
   declarations: [
     AccountComponent,
     LoginComponent,

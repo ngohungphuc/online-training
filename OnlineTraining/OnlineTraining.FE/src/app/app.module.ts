@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,7 +15,7 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     SharedModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

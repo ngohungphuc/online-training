@@ -24,7 +24,7 @@ export class AuthEffects {
   @Effect()
   login$ = this.actions$
     .ofType(AuthAction.LOGIN)
-    .map(({payload}) => payload.credentials as UserCredentials)
+    .map((payload) => payload.credentials as UserCredentials)
     .switchMap(credentials => {
       return this.loginService.login(credentials)
         .map((res: any) => {
