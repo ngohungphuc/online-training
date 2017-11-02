@@ -6,6 +6,7 @@ import { StorageService } from './storage.service';
 import { TokenModel } from '../models/token.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
@@ -70,12 +71,11 @@ export class AuthService {
 
   private generateRefreshTokenUrl() {
     this.currentUser =  JSON.parse(localStorage.getItem(this.tokenKey));
-    console.log(this.currentUser);
 
     if (this.currentUser !== null) {
       const refreshTokenUrl = `auth?grant_type=refresh_token&username=${this
         .currentUser.account}&refresh_token=${this.currentUser.refresh_token}`;
-      this.Get(refreshTokenUrl).subscribe(result => {
+       this.Get(refreshTokenUrl).subscribe(result => {
         const data = JSON.parse(result.json().data) as TokenModel;
         if (data !== null) {
           localStorage.setItem(
@@ -91,8 +91,8 @@ export class AuthService {
 
   private handleServerError(err: any) {
     if (err.status === StatusCode.Unauthorized) {
-      this.generateRefreshTokenUrl();
+     this.generateRefreshTokenUrl();
     }
-    return Observable.throw(err || 'backend server error');
+    return Observable.throw('backend server error');
   }
 }

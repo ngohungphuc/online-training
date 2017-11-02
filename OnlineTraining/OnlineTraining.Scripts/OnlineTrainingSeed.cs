@@ -26,7 +26,8 @@ namespace OnlineTraining.Scripts
                     Password = PasswordManager.Encrpyted("070695"),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504c")
+                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504c"),
+                    AvatarUrl = "https://avatars0.githubusercontent.com/u/13591213?s=460&v=4"
                 },
                 new User
                 {
@@ -35,7 +36,8 @@ namespace OnlineTraining.Scripts
                     Password = PasswordManager.Encrpyted("070695"),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504d")
+                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504d"),
+                    AvatarUrl = "https://avatars0.githubusercontent.com/u/13591213?s=460&v=4"
                 }
             };
 
