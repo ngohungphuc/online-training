@@ -1,60 +1,47 @@
-import { UserCredentials } from './../models/user.credential';
-import { AccessTokenInfo } from '../models/user.credential';
+import { Action } from '@ngrx/store';
+import { AccessTokenInfo, UserCredentials } from '../models/user.credential';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const NOT_LOGIN = 'NOT_LOGIN';
 export const IS_AUTHENTICATE = 'IS_AUTHENTICATE';
-export const LOGIN = 'IS_LOGIN';
+export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const REDIRECT = 'REDIRECT';
 export const TOKEN_EXPIRE = 'TOKEN_EXPIRE';
 
-
-export function redirect() {
-  return {
-    type: REDIRECT
-  };
+export class Login implements Action {
+  readonly type = LOGIN;
+  constructor(public payload: UserCredentials) {}
 }
 
-export function login(userCredentials: UserCredentials) {
-  return {
-    type: LOGIN,
-    payload: {
-      userCredentials
-    }
-  };
+export class Logout implements Action {
+  readonly type = LOGOUT;
+  constructor(public payload: string) {}
 }
 
-export function logout() {
-    return {
-      type: LOGOUT
-    };
-  }
-
-
-export function loginSuccess(acessTokenInfo: AccessTokenInfo) {
-  return {
-    type: LOGIN_SUCCESS,
-    payload: {
-      acessTokenInfo
-    }
-  };
+export class Redirect implements Action {
+  readonly type = REDIRECT;
+  constructor(public payload: string) {}
 }
 
-export function tokenExpire(acessTokenInfo: AccessTokenInfo) {
-    return {
-      type: TOKEN_EXPIRE,
-      payload: {
-        acessTokenInfo
-      }
-    };
-  }
-
-export function loginFail(msg) {
-  return {
-    type: LOGIN_FAIL,
-    payload: {
-      msg
-    }
-  };
+export class LoginSuccess implements Action {
+  readonly type = LOGIN_SUCCESS;
+  constructor(public payload: AccessTokenInfo) {}
 }
+
+export class TokenExpire implements Action {
+  readonly type = TOKEN_EXPIRE;
+  constructor(public payload: AccessTokenInfo) {}
+}
+
+export class LoginFail implements Action {
+  readonly type = LOGIN_FAIL;
+  constructor(public payload: string) {}
+}
+
+/**
+ * Export a type alias of all actions in this action group
+ * so that reducers can easily compose action types
+ */
+export type Actions = Login | Logout | Redirect | LoginSuccess | TokenExpire | LoginFail;
+

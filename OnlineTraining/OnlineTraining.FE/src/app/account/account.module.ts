@@ -5,7 +5,8 @@ import {
   SignUpComponent
   } from './index';
 import { AccountRouting } from './account.routing';
-import { AuthEffects } from '../common/core/state-management/effects/auth.effect';
+import { AuthEffects } from '../common/core/state-management/effects/auth.effects';
+import { authReducer } from '../common/core/state-management/reducers/auth.reducer';
 import { AuthService } from '../common/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
@@ -15,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { StorageService } from '../common/services/storage.service';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from '../common/core/state-management/reducers/auth.reducer';
+import { LoginService } from '../common/services/login.service';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { authReducer } from '../common/core/state-management/reducers/auth.reduc
   ],
   providers: [
     AuthService,
-    StorageService]
+    StorageService,
+    LoginService]
 })
 export class AccountModule {}

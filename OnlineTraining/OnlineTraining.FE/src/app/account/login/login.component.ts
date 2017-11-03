@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { TokenModel } from '../../common/models/token.model';
 import { UserState } from '../../common/core/state-management/state/user.state';
-import { isAuthenticating } from '../../common/core/state-management/actions/auth.actions';
 import { UserCredentials } from '../../common/core/state-management/models/user.credential';
+import { LOGIN } from '../../common/core/state-management/actions/auth.actions';
 
 @Component({
   selector: 'ota-login',
@@ -45,6 +45,9 @@ export class LoginComponent implements OnInit {
       account: formData.account,
       password: formData.password
     };
-    this.store.dispatch(isAuthenticating(userCredentials));
+    this.store.dispatch({
+      type: LOGIN,
+      payload: userCredentials
+    });
   }
 }
