@@ -45,6 +45,8 @@ https://medium.com/@flashMasterJim/the-basics-of-ngrx-effects-effect-and-async-m
 
 http://4dev.tech/2016/03/login-screen-and-authentication-with-angular2/
 
+https://auth0.com/blog/managing-state-in-angular-with-ngrx-store/
+
 ---
 
 ##### .Net

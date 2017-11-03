@@ -1,10 +1,11 @@
-import * as Auth from '../../common/core/state-management/actions/auth.action';
 import { AuthService } from '../../common/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { TokenModel } from '../../common/models/token.model';
 import { UserState } from '../../common/core/state-management/state/user.state';
+import { isAuthenticating } from '../../common/core/state-management/actions/auth.actions';
+import { UserCredentials } from '../../common/core/state-management/models/user.credential';
 
 @Component({
   selector: 'ota-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private store$: Store<UserState>
+    private store: Store<any>
   ) { }
 
   ngOnInit() {
@@ -40,5 +41,10 @@ export class LoginComponent implements OnInit {
              'refresh_token': result.refresh_token }));
       });
     }*/
+    const userCredentials =  {
+      account: formData.account,
+      password: formData.password
+    };
+    this.store.dispatch(isAuthenticating(userCredentials));
   }
 }

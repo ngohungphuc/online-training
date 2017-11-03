@@ -11,6 +11,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './common/core/state-management/reducers/index';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     SharedModule,
     AppRoutingModule,
     NgbModule.forRoot(),
+      /**
+     * StoreModule.forRoot is imported once in the root module, accepting a reducer
+     * function or object map of reducer functions. If passed an object of
+     * reducers, combineReducers will be run creating your application
+     * meta-reducer. This returns all providers for an @ngrx/store
+     * based application.
+     */
+    StoreModule.forRoot(reducers, { metaReducers }),
     /**
      * @ngrx/router-store keeps router state up-to-date in the store.
      */
