@@ -61,9 +61,9 @@ namespace OnlineTraining.API.Controllers
         /// <param name="parameters"></param>
         /// <returns></returns>
         private ResponseData DoPassword(Parameters parameters)
-        {
+        { 
             //validate the client_id/client_secret/username/password 
-            var isValidated = _userServices.Authentication(parameters.username, parameters.password);
+            var isValidated = _userServices.Authentication(parameters.username.Trim(), parameters.password.Trim());
 
             if (!isValidated)
                 return new ResponseData
@@ -88,7 +88,7 @@ namespace OnlineTraining.API.Controllers
                 {
                     Code = "999",
                     Message = "Ok",
-                    Data = GetJwt(parameters.username, refresh_token)
+                    Data = GetJwt(parameters.username.Trim(), refresh_token)
                 };
             return new ResponseData
             {
@@ -100,7 +100,7 @@ namespace OnlineTraining.API.Controllers
 
         private ResponseData GenerateRefreshToken(Parameters parameters)
         {
-            var token = _tokenRepository.GetToken(parameters.refresh_token, parameters.username);
+            var token = _tokenRepository.GetToken(parameters.refresh_token.Trim(), parameters.username.Trim());
 
             if (token == null)
                 return new ResponseData
@@ -126,7 +126,7 @@ namespace OnlineTraining.API.Controllers
 
             var addFlag = _tokenRepository.AddToken(new RToken
             {
-                ClientName = parameters.username,
+                ClientName = parameters.username.Trim(),
                 RefreshToken = refresh_token,
                 Id = Guid.NewGuid().ToString(),
                 IsStop = 0
@@ -137,7 +137,7 @@ namespace OnlineTraining.API.Controllers
                 {
                     Code = "999",
                     Message = "Ok",
-                    Data = GetJwt(parameters.username, refresh_token)
+                    Data = GetJwt(parameters.username.Trim(), refresh_token)
                 };
             return new ResponseData
             {
@@ -153,7 +153,7 @@ namespace OnlineTraining.API.Controllers
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.UniqueName, client_name),
+                new Claim(JwtRegisteredClaimNames.UniqueName, client_name.Trim()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
             };
@@ -177,8 +177,8 @@ namespace OnlineTraining.API.Controllers
             {
                 access_token = encodedJwt,
                 expires_in = (int) TimeSpan.FromMinutes(120).TotalSeconds,
-                refresh_token,
-                account = client_name
+                refresh_token = refresh_token.Trim(),
+                account = client_name.Trim()
             };
 
             return JsonConvert.SerializeObject(response, new JsonSerializerSettings {Formatting = Formatting.Indented});

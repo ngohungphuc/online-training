@@ -8,5 +8,6 @@ export enum StatusCode {
   NotFound = 404,
   InternalServerError = 500,
   NullOfParams = 901,
-  InvalidUserInfo = 902
+  InvalidUserInfo = 902,
+  LoginSuccess = 999
 }

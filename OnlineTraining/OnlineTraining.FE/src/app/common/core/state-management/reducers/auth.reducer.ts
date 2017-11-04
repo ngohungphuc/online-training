@@ -15,6 +15,7 @@ export function authReducer(state = [], action: BaseAction) {
         user: action.payload
       });
     case LOGIN_SUCCESS:
+      console.log(action.payload);
       return Object.assign({}, state, {
         tokenInfo: action.payload
       });

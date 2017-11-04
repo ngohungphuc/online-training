@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
       });
     }*/
     const userCredentials =  {
-      account: formData.account,
-      password: formData.password
+      account: formData.account.trim(),
+      password: formData.password.trim()
     };
     this.store.dispatch({
       type: LOGIN,

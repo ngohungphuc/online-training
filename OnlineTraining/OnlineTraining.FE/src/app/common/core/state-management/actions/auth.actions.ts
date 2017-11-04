@@ -26,7 +26,8 @@ export class Redirect implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
-  constructor(public payload: AccessTokenInfo) {}
+  constructor(public payload: AccessTokenInfo) {
+  }
 }
 
 export class TokenExpire implements Action {
