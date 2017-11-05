@@ -18,7 +18,6 @@ import { StorageService } from '../common/services/storage.service';
 import { StoreModule } from '@ngrx/store';
 import { LoginService } from '../common/services/login.service';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -38,6 +37,7 @@ import { LoginService } from '../common/services/login.service';
   providers: [
     AuthService,
     StorageService,
-    LoginService]
+    LoginService
+  ]
 })
 export class AccountModule {}

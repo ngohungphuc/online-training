@@ -11,7 +11,7 @@ export class StorageService {
   }
 
   updateItem(key, property, value) {
-    var obj = this.getObject(key);
+    const obj = this.getObject(key);
     obj[property] = value;
     this.setObject(key, obj);
   }

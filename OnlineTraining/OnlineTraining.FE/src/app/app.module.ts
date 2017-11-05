@@ -6,18 +6,24 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { metaReducers, reducers } from './common/core/state-management/reducers/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './common/core/state-management/reducers/index';
-
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastOptions} from 'ng2-toastr';
+import { ToastOption } from './shared/helper/toast.options';
+import { AuthGuard } from './account/auth.guard';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     FormsModule,
     HttpModule,
     SharedModule,
@@ -55,6 +61,8 @@ import { reducers, metaReducers } from './common/core/state-management/reducers/
      * by `@ngrx/router-store` to include only the desired pieces of the snapshot.
      */
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    {provide: ToastOptions, useClass: ToastOption},
+    AuthGuard
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

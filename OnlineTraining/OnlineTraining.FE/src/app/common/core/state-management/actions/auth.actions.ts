@@ -21,7 +21,6 @@ export class Logout implements Action {
 
 export class Redirect implements Action {
   readonly type = REDIRECT;
-  constructor(public payload: string) {}
 }
 
 export class LoginSuccess implements Action {

@@ -1,12 +1,14 @@
 import { AuthService } from '../../common/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { TokenModel } from '../../common/models/token.model';
 import { UserState } from '../../common/core/state-management/state/user.state';
 import { UserCredentials } from '../../common/core/state-management/models/user.credential';
-import { LOGIN } from '../../common/core/state-management/actions/auth.actions';
+import { LOGIN, LOGIN_FAIL } from '../../common/core/state-management/actions/auth.actions';
 
+import * as authStore from '../../common/core/state-management/reducers/auth.reducer';
+import { ToastsManager } from 'ng2-toastr';
 @Component({
   selector: 'ota-login',
   templateUrl: './login.component.html',
@@ -14,12 +16,16 @@ import { LOGIN } from '../../common/core/state-management/actions/auth.actions';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
+  errorMsg: any;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private store: Store<any>
-  ) { }
+    private store: Store<any>,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -29,25 +35,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(formData) {
-    /* const loginUrl = `auth?grant_type=password&username=${formData.account}&password=${formData.password}`;
-    if (this.loginForm.valid) {
-      this.authService.Get(loginUrl).subscribe(res => {
-        const result = JSON.parse(res.json().data) as TokenModel;
-        localStorage.setItem(
-          'currentUserInfo',
-          JSON.stringify({ 'account': result.account,
-             'access_token': result.access_token,
-             'expire_in': result.expires_in,
-             'refresh_token': result.refresh_token }));
-      });
-    }*/
-    const userCredentials =  {
-      account: formData.account.trim(),
-      password: formData.password.trim()
-    };
     this.store.dispatch({
       type: LOGIN,
-      payload: userCredentials
-    });
+      payload: {
+        account: formData.account.trim(),
+        password: formData.password.trim()
+      }
+    });/*
+     this.store.select(authStore.getAuthState).subscribe(res => {
+        this.toastr.error(res.loggedIn.valueOf.toString());
+    }); */
   }
 }

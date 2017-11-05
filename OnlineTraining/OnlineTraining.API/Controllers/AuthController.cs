@@ -32,19 +32,28 @@ namespace OnlineTraining.API.Controllers
         public IActionResult Auth([FromQuery] Parameters parameters)
         {
             if (parameters == null)
+            {
                 return Json(new ResponseData
                 {
                     Code = "901",
                     Message = "null of params",
                     Data = null
                 });
+            }
+
+            var isValidated = _userServices.Authentication(parameters.username.Trim(), parameters.password.Trim());
+
+            if (!isValidated)
+            {
+                return BadRequest();
+            }
 
             switch (parameters.grant_type)
             {
                 case "password":
-                    return Json(DoPassword(parameters));
+                    return Ok(GenerateJwt(parameters));
                 case "refresh_token":
-                    return Json(GenerateRefreshToken(parameters));
+                    return Ok(GenerateRefreshToken(parameters));
                 default:
                     return Json(new ResponseData
                     {
@@ -60,19 +69,8 @@ namespace OnlineTraining.API.Controllers
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        private ResponseData DoPassword(Parameters parameters)
-        { 
-            //validate the client_id/client_secret/username/password 
-            var isValidated = _userServices.Authentication(parameters.username.Trim(), parameters.password.Trim());
-
-            if (!isValidated)
-                return new ResponseData
-                {
-                    Code = "902",
-                    Message = "invalid user infomation",
-                    Data = null
-                };
-
+        private ResponseData GenerateJwt(Parameters parameters)
+        {
             var refresh_token = Guid.NewGuid().ToString().Replace("-", "");
             var rToken = new RToken
             {
@@ -84,12 +82,15 @@ namespace OnlineTraining.API.Controllers
 
             //store the refresh_token   
             if (_tokenRepository.AddToken(rToken))
+            {
                 return new ResponseData
                 {
                     Code = "999",
                     Message = "Ok",
                     Data = GetJwt(parameters.username.Trim(), refresh_token)
                 };
+            }
+
             return new ResponseData
             {
                 Code = "909",
@@ -103,6 +104,8 @@ namespace OnlineTraining.API.Controllers
             var token = _tokenRepository.GetToken(parameters.refresh_token.Trim(), parameters.username.Trim());
 
             if (token == null)
+            {
+
                 return new ResponseData
                 {
                     Code = "905",
@@ -110,13 +113,17 @@ namespace OnlineTraining.API.Controllers
                     Data = null
                 };
 
+            }
             if (token.IsStop == 1)
+            {
+
                 return new ResponseData
                 {
                     Code = "906",
                     Message = "refresh token has expired",
                     Data = null
                 };
+            }
 
             var refresh_token = Guid.NewGuid().ToString().Replace("-", "");
 
@@ -133,12 +140,15 @@ namespace OnlineTraining.API.Controllers
             });
 
             if (updateFlag && addFlag)
+            {
                 return new ResponseData
                 {
                     Code = "999",
                     Message = "Ok",
                     Data = GetJwt(parameters.username.Trim(), refresh_token)
                 };
+            }
+
             return new ResponseData
             {
                 Code = "910",
@@ -176,12 +186,12 @@ namespace OnlineTraining.API.Controllers
             var response = new
             {
                 access_token = encodedJwt,
-                expires_in = (int) TimeSpan.FromMinutes(120).TotalSeconds,
+                expires_in = (int)TimeSpan.FromMinutes(120).TotalSeconds,
                 refresh_token = refresh_token.Trim(),
                 account = client_name.Trim()
             };
 
-            return JsonConvert.SerializeObject(response, new JsonSerializerSettings {Formatting = Formatting.Indented});
+            return JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented });
         }
     }
 }

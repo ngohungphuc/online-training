@@ -7,34 +7,57 @@ import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS } from '../actions/auth.actions';
 import { LoginService } from '../../../services/login.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { Router } from '@angular/router';
 import { StatusCode } from '../../../enum/status-code';
+import { TokenModel } from '../../../models/token.model';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private loginService: LoginService) {}
+  constructor(
+    private actions$: Actions,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   @Effect()
   login$: Observable<Action> = this.actions$
-    .ofType<auth.Login>(auth.LOGIN)
-    .mergeMap(action =>
+    .ofType(auth.LOGIN)
+    .mergeMap((action: auth.Login) =>
       this.loginService
         .login(action.payload)
-        .switchMap(responseData => {
+        .map(responseData => {
           const statusCode = responseData.json().code;
-          const data = responseData.json().data;
+          const data = JSON.parse(responseData.json().data) as TokenModel;
           const message = responseData.json().message;
-          console.log(responseData.json());
-
-          if (statusCode === StatusCode.InvalidUserInfo) {
-            return of({ type: LOGIN_FAIL , payload : { message: message } });
-          }
-          if (statusCode === StatusCode.LoginSuccess) {
-            return of({ type: LOGIN_SUCCESS , payload : { data: data } });
-          }
-        }).catch(() => of({ type: LOGIN_FAIL }))
+          localStorage.setItem(
+            environment.authKey,
+            JSON.stringify({
+              account: data.account,
+              access_token: data.access_token,
+              expire_in: data.expires_in,
+              refresh_token: data.refresh_token
+            })
+          );
+          return { type: LOGIN_SUCCESS, payload: data };
+        })
+        .catch(error => {
+          return of({ type: LOGIN_FAIL, payload: error.statusText });
+        })
     );
+
+  @Effect({ dispatch: false })
+  loginSuccess$ = this.actions$
+    .ofType(auth.LOGIN_SUCCESS)
+    .do(() => this.router.navigate(['/online-training/portal']));
+
+  @Effect({ dispatch: false })
+  loginRedirect$ = this.actions$
+    .ofType(auth.LOGOUT)
+    .do(authed => this.router.navigate(['/account/login']));
 }
