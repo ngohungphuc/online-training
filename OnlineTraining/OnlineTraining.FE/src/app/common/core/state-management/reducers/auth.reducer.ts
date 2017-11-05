@@ -10,8 +10,9 @@ import {
   TOKEN_EXPIRE
 } from './../actions/auth.actions';
 
-export const initialState: AuthState = {
-  loggedIn: false
+export const initialState: LoginState = {
+  loggedIn: false,
+  errorMsg: ''
 };
 
 export function authReducer(state = initialState, action: BaseAction) {
@@ -44,6 +45,7 @@ export function authReducer(state = initialState, action: BaseAction) {
 
 export interface LoginState {
   errorMsg: string;
+  loggedIn: boolean;
 }
 
 export const getLoginState = createFeatureSelector<LoginState>('auth');
@@ -52,14 +54,11 @@ export const getLoginStateStatus = createSelector(
   (state: LoginState) => state.errorMsg
 );
 
-export interface AuthState {
-  loggedIn: boolean;
-}
 
-export const getAuthState = createFeatureSelector<AuthState>('auth');
+export const getAuthState = createFeatureSelector<LoginState>('auth');
 
 export const getAuthStateStatus = createSelector(
   getAuthState,
-  (state: AuthState) => state.loggedIn
+  (state: LoginState) => state.loggedIn
 );
 

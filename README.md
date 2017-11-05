@@ -47,6 +47,9 @@ http://4dev.tech/2016/03/login-screen-and-authentication-with-angular2/
 
 https://auth0.com/blog/managing-state-in-angular-with-ngrx-store/
 
+http://brianflove.com/2017/09/09/updating-to-ngrx-4/
+
+
 ---
 
 ##### .Net

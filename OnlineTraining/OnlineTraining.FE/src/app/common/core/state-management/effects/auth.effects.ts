@@ -51,6 +51,10 @@ export class AuthEffects {
         })
     );
 
+  /**
+   * set the dispatch property value to false in the decorator
+   * to note that the effect will not dispatch any new actions
+   */
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
     .ofType(auth.LOGIN_SUCCESS)
