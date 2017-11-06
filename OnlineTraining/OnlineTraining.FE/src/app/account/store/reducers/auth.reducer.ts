@@ -43,6 +43,8 @@ export function authReducer(state = initialState, action: BaseAction) {
   }
 }
 
+export const getLoginState = (state: AuthState) => state.loggedIn;
+
 
 
 

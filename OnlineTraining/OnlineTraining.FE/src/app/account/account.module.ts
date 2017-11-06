@@ -26,7 +26,7 @@ import { StoreModule } from '@ngrx/store';
     ReactiveFormsModule,
     AccountRouting,
     NgbModule,
-    StoreModule.forFeature('authReducer', authReducer),
+    StoreModule.forFeature('authModule', authReducer),
     EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [

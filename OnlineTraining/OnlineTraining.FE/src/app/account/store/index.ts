@@ -7,14 +7,11 @@ export interface AuthState {
   loggedIn: boolean;
 }
 
-export interface State extends fromRoot.State {
-    auth: AuthState;
-}
-
-export const selectAuthState = createFeatureSelector<AuthState>('authReducer');
+const selectAuthModule = createFeatureSelector<AuthState>('authModule');
 
 export const selectAuthStatusState = createSelector(
-  selectAuthState,
-  (state: AuthState) => state.loggedIn
+    selectAuthModule,
+    (state: AuthState) => state.loggedIn
 );
+
 
