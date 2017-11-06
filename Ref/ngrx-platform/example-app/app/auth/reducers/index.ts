@@ -8,9 +8,7 @@ export interface AuthState {
   loginPage: fromLoginPage.State;
 }
 
-export interface State extends fromRoot.State {
-  auth: AuthState;
-}
+
 
 export const reducers = {
   status: fromAuth.reducer,

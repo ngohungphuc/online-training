@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private store: Store<fromAuth.AuthState>) {
+  constructor(private store: Store<fromAuth.State>) {
   }
 
   canActivate(): Observable<boolean> {
