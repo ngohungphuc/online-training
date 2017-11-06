@@ -1,8 +1,8 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { UserCredentials } from '../core/state-management/models/user.credential';
-import { environment } from '../../../environments/environment';
+import { UserCredentials } from '../models/user.credential';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class LoginService {

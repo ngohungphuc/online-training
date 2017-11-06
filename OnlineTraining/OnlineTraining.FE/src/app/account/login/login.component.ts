@@ -1,14 +1,15 @@
+import * as authStore from '../store/reducers/auth.reducer';
 import { AuthService } from '../../common/services/auth.service';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LOGIN, LOGIN_FAIL } from '../store/actions/auth.actions';
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import { ToastsManager } from 'ng2-toastr';
 import { TokenModel } from '../../common/models/token.model';
 import { UserState } from '../../common/core/state-management/state/user.state';
-import { UserCredentials } from '../../common/core/state-management/models/user.credential';
-import { LOGIN, LOGIN_FAIL } from '../../common/core/state-management/actions/auth.actions';
 
-import * as authStore from '../../common/core/state-management/reducers/auth.reducer';
-import { ToastsManager } from 'ng2-toastr';
+
 @Component({
   selector: 'ota-login',
   templateUrl: './login.component.html',
@@ -17,6 +18,7 @@ import { ToastsManager } from 'ng2-toastr';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMsg: any;
+  error$: Observable<string>;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -41,9 +43,6 @@ export class LoginComponent implements OnInit {
         account: formData.account.trim(),
         password: formData.password.trim()
       }
-    });/*
-     this.store.select(authStore.getAuthState).subscribe(res => {
-        this.toastr.error(res.loggedIn.valueOf.toString());
-    }); */
+    });
   }
 }

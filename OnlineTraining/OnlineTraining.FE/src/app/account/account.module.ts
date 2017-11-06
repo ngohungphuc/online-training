@@ -5,18 +5,19 @@ import {
   SignUpComponent
   } from './index';
 import { AccountRouting } from './account.routing';
-import { AuthEffects } from '../common/core/state-management/effects/auth.effects';
-import { authReducer } from '../common/core/state-management/reducers/auth.reducer';
+import { AuthEffects } from './store/effects/auth.effects';
+import { authReducer } from './store/reducers/auth.reducer';
 import { AuthService } from '../common/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
+import { LoginService } from './store/services/login.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { StorageService } from '../common/services/storage.service';
 import { StoreModule } from '@ngrx/store';
-import { LoginService } from '../common/services/login.service';
+
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { LoginService } from '../common/services/login.service';
     ReactiveFormsModule,
     AccountRouting,
     NgbModule,
-    StoreModule.forFeature('auth', authReducer),
+    StoreModule.forFeature('authReducer', authReducer),
     EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [

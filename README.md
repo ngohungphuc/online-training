@@ -49,6 +49,7 @@ https://auth0.com/blog/managing-state-in-angular-with-ngrx-store/
 
 http://brianflove.com/2017/09/09/updating-to-ngrx-4/
 
+https://blog.nrwl.io/using-ngrx-4-to-manage-state-in-angular-applications-64e7a1f84b7b
 
 ---
 

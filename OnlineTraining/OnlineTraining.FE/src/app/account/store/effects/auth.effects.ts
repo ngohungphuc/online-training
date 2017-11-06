@@ -2,27 +2,29 @@ import * as auth from '../actions/auth.actions';
 import { AccessTokenInfo } from '../models/user.credential';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
+import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS } from '../actions/auth.actions';
-import { LoginService } from '../../../services/login.service';
+import { LoginService } from '../services/login.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
-import { StatusCode } from '../../../enum/status-code';
-import { TokenModel } from '../../../models/token.model';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import { StorageService } from '../../../common/services/storage.service';
+import { TokenModel } from '../../../common/models/token.model';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import { environment } from '../../../../../environments/environment';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private storageSerivce: StorageService
   ) {}
 
   @Effect()
@@ -35,15 +37,13 @@ export class AuthEffects {
           const statusCode = responseData.json().code;
           const data = JSON.parse(responseData.json().data) as TokenModel;
           const message = responseData.json().message;
-          localStorage.setItem(
-            environment.authKey,
-            JSON.stringify({
-              account: data.account,
-              access_token: data.access_token,
-              expire_in: data.expires_in,
-              refresh_token: data.refresh_token
-            })
-          );
+          const userInfo = {
+            account: data.account,
+            access_token: data.access_token,
+            expire_in: data.expires_in,
+            refresh_token: data.refresh_token
+          };
+          this.storageSerivce.setObject(environment.authKey, userInfo);
           return { type: LOGIN_SUCCESS, payload: data };
         })
         .catch(error => {
@@ -62,6 +62,6 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$
-    .ofType(auth.LOGOUT)
-    .do(authed => this.router.navigate(['/account/login']));
+    .ofType(auth.LOGOUT, auth.REDIRECT)
+    .do(() => this.router.navigate(['/account/login']));
 }
