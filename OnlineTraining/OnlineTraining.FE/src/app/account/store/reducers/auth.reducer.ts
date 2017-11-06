@@ -36,7 +36,7 @@ export function authReducer(state = initialState, action: BaseAction) {
     case LOGIN_FAIL:
       return {
         ...state,
-        errorMsg: action.payload,
+        errorMsg: 'Invalid user credential'
       };
     default:
       return state;
@@ -44,7 +44,7 @@ export function authReducer(state = initialState, action: BaseAction) {
 }
 
 export const getLoginState = (state: AuthState) => state.loggedIn;
-
+export const getLoginStatus = (state: AuthState) => state.errorMsg;
 
 
 

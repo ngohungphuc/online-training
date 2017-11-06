@@ -18,8 +18,7 @@ export class AuthGuard implements CanActivate {
       .select(fromAuth.selectAuthStatusState)
       .map(authed => {
         if (!authed) {
-          //this.store.dispatch({type: REDIRECT});
-          window.location.href = '/account/login';
+          this.store.dispatch({type: REDIRECT});
           return false;
         }
         return true;

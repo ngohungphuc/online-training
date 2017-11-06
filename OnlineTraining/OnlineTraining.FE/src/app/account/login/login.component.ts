@@ -1,4 +1,4 @@
-import * as authStore from '../store/reducers/auth.reducer';
+import * as authStore from '../store/index';
 import { AuthService } from '../../common/services/auth.service';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { ToastsManager } from 'ng2-toastr';
 import { TokenModel } from '../../common/models/token.model';
 import { UserState } from '../../common/core/state-management/state/user.state';
-
+import {debounceTime} from 'rxjs/operator/debounceTime';
 
 @Component({
   selector: 'ota-login',
@@ -18,7 +18,7 @@ import { UserState } from '../../common/core/state-management/state/user.state';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMsg: any;
-  error$: Observable<string>;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     vcr: ViewContainerRef
   ) {
     this.toastr.setRootViewContainerRef(vcr);
+
   }
 
   ngOnInit() {
@@ -44,5 +45,9 @@ export class LoginComponent implements OnInit {
         password: formData.password.trim()
       }
     });
+    this.store.select(authStore.selectLoginState).subscribe(res => {
+      this.errorMsg = res;
+    });
   }
+
 }

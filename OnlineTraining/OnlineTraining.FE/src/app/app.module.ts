@@ -1,5 +1,7 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
+import { AuthGuard } from './account/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CustomRouterStateSerializer } from './shared/utils';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,10 +16,9 @@ import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToastOptions} from 'ng2-toastr';
 import { ToastOption } from './shared/helper/toast.options';
-import { AuthGuard } from './account/auth.guard';
+import { ToastOptions } from 'ng2-toastr';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

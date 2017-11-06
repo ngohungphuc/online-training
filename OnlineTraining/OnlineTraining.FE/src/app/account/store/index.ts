@@ -14,4 +14,9 @@ export const selectAuthStatusState = createSelector(
     fromAuth.getLoginState
 );
 
+export const selectLoginState = createSelector(
+  getIsLoggedIn,
+  fromAuth.getLoginStatus
+);
+
 

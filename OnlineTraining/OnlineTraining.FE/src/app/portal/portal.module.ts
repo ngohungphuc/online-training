@@ -1,13 +1,15 @@
-import {SharedModule} from '../shared/shared.module';
-import { NgModule } from '@angular/core';
+import { AuthEffects } from '../account/store/effects/auth.effects';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PortalRouting } from './portal.routing';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
 import { PortalIndexComponent } from './index';
-import { authReducer } from '../account/store/reducers/auth.reducer';
+import { portalReducer } from './store/reducers/portal.reducer';
+import { PortalRouting } from './portal.routing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+
 
 @NgModule({
   imports: [
@@ -16,9 +18,11 @@ import { authReducer } from '../account/store/reducers/auth.reducer';
     ReactiveFormsModule,
     PortalRouting,
     NgbModule,
-    StoreModule.forFeature('authModule', authReducer),
+    StoreModule.forFeature('portalModule', portalReducer),
     EffectsModule.forFeature([])
   ],
-  declarations: [PortalIndexComponent]
+  declarations: [PortalIndexComponent],
+  providers: [
+  ]
 })
 export class PortalModule { }
