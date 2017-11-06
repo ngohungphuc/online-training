@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { AccessTokenInfo, UserCredentials } from '../models/user.credential';
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const NOT_LOGIN = 'NOT_LOGIN';

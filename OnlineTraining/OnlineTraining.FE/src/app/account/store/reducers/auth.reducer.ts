@@ -1,14 +1,6 @@
 import { BaseAction } from '../../../common/core/state-management/actions/base.action';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import {
-  IS_AUTHENTICATE,
-  LOGIN,
-  LOGIN_FAIL,
-  LOGIN_SUCCESS,
-  NOT_LOGIN,
-  TOKEN_EXPIRE,
-  LOGOUT
-} from './../actions/auth.actions';
+import * as auth from './../actions/auth.actions';
 
 export interface AuthState {
   loggedIn: boolean;
@@ -20,33 +12,31 @@ export const initialState: AuthState = {
   errorMsg: null
 };
 
-export function authReducer(state = initialState, action: BaseAction) {
+export function authReducer(state = initialState, action: auth.Actions) {
   switch (action.type) {
-    case LOGIN:
+    case auth.LOGIN:
       return {
         ...state,
         user: action.payload
       };
-    case LOGIN_SUCCESS:
+    case auth.LOGIN_SUCCESS:
       return {
         ...state,
         loggedIn: true,
         tokenInfo: action.payload
       };
-    case TOKEN_EXPIRE:
+    case auth.TOKEN_EXPIRE:
       return {
         ...state,
         tokenInfo: action.payload
       };
-    case LOGIN_FAIL:
+    case auth.LOGIN_FAIL:
       return {
         ...state,
         errorMsg: 'Invalid user credential'
       };
-
-    case LOGOUT:
+    case auth.LOGOUT:
       return initialState;
-
     default:
       return state;
   }
