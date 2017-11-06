@@ -7,11 +7,11 @@ export interface AuthState {
   loggedIn: boolean;
 }
 
-const selectAuthModule = createFeatureSelector<AuthState>('authModule');
+export const getIsLoggedIn = createFeatureSelector<AuthState>('authModule');
 
 export const selectAuthStatusState = createSelector(
-    selectAuthModule,
-    (state: AuthState) => state.loggedIn
+    getIsLoggedIn,
+    fromAuth.getLoginState
 );
 
 

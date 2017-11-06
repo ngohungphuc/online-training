@@ -7,6 +7,7 @@ import { PortalRouting } from './portal.routing';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { PortalIndexComponent } from './index';
+import { authReducer } from '../account/store/reducers/auth.reducer';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { PortalIndexComponent } from './index';
     ReactiveFormsModule,
     PortalRouting,
     NgbModule,
-    // StoreModule.forFeature('portal'),
+    StoreModule.forFeature('authModule', authReducer),
     EffectsModule.forFeature([])
   ],
   declarations: [PortalIndexComponent]

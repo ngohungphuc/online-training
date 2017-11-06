@@ -3,6 +3,7 @@ import * as fromAuth from './store/index';
 import { CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { REDIRECT } from './store/actions/auth.actions';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
@@ -17,7 +18,8 @@ export class AuthGuard implements CanActivate {
       .select(fromAuth.selectAuthStatusState)
       .map(authed => {
         if (!authed) {
-          this.store.dispatch(new Auth.Redirect());
+          //this.store.dispatch({type: REDIRECT});
+          window.location.href = '/account/login';
           return false;
         }
         return true;

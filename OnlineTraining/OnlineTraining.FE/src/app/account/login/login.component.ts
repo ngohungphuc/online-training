@@ -2,7 +2,7 @@ import * as authStore from '../store/reducers/auth.reducer';
 import { AuthService } from '../../common/services/auth.service';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LOGIN, LOGIN_FAIL } from '../store/actions/auth.actions';
+import { LOGIN, LOGIN_FAIL, REDIRECT } from '../store/actions/auth.actions';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { ToastsManager } from 'ng2-toastr';
