@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
       }
     });
     this.store.select(authStore.selectLoginState).subscribe(res => {
-      this.errorMsg = res;
+      if (res !== null) {
+        this.toastr.warning(res);
+      }
     });
   }
 

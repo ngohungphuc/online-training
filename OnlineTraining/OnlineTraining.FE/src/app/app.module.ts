@@ -1,3 +1,4 @@
+import { AccountModule } from './account/account.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { AuthGuard } from './account/auth.guard';
@@ -53,7 +54,8 @@ import { ToastOptions } from 'ng2-toastr';
       * See: https://github.com/zalmoxisus/redux-devtools-extension
     */
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    AccountModule
   ],
   providers: [
     /**

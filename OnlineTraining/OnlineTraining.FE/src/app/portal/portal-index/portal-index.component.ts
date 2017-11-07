@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Store } from '@ngrx/store';
+import * as authStore from '../../account/store/index';
 @Component({
   selector: 'ota-portal-index',
   templateUrl: './portal-index.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortalIndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.select(authStore.selectAuthStatusState).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }
