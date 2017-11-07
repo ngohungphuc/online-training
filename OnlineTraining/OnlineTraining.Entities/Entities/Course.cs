@@ -6,5 +6,6 @@
         public string ShortDescription { get; set; }
         public string CreatedBy { get; set; }
         public string TargetAudience { get; set; }
+        public string LearningPathId { get; set; }
     }
 }

@@ -15,6 +15,9 @@ namespace OnlineTraining.Scripts
         private static async Task InitializeDb()
         {
             await OnlineTrainingSeed.AddUserToDb();
+            await OnlineTrainingSeed.AddLearningPath();
+            await OnlineTrainingSeed.AddCourse();
+            await OnlineTrainingSeed.AddCourseDetail();
         }
     }
 }
