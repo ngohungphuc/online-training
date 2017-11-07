@@ -19,6 +19,8 @@ import { StoreModule } from '@ngrx/store';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastOption } from './shared/helper/toast.options';
 import { ToastOptions } from 'ng2-toastr';
+import { PortalModule } from './portal/portal.module';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -55,7 +57,8 @@ import { ToastOptions } from 'ng2-toastr';
     */
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
-    AccountModule
+    AccountModule,
+    PortalModule
   ],
   providers: [
     /**
@@ -65,7 +68,8 @@ import { ToastOptions } from 'ng2-toastr';
      */
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
     {provide: ToastOptions, useClass: ToastOption},
-    AuthGuard
+    AuthGuard,
+    CookieService
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

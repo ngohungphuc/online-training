@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   serverUrl: 'http://localhost:51316',
-  authKey: 'currentUserInfo'
+  authKey: 'currentUserInfo',
+  cookieKey: 'isLogin'
 };
