@@ -60,7 +60,7 @@ namespace OnlineTraining.Scripts
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "Microsoft Azure for Developers",
-                    PathIcon = "/path/azure-blue.png",
+                    PathIcon = "path/azure-blue.png",
                     TotalCourses = 1
                 },
                 new LearningPath
@@ -69,7 +69,7 @@ namespace OnlineTraining.Scripts
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "Angular",
-                    PathIcon = "/path/angular.png",
+                    PathIcon = "path/angular.png",
                     TotalCourses = 0
                 },
                 new LearningPath
@@ -78,8 +78,17 @@ namespace OnlineTraining.Scripts
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "ASP.Net MVC",
-                    PathIcon = "/path/asp-dot-net.png",
+                    PathIcon = "path/asp-dot-net.png",
                     TotalCourses = 1
+                },
+                new LearningPath
+                {
+                    Id = new ObjectId("5a01f9a7990092a25640ebcc"),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    Name = "C#",
+                    PathIcon = "path/csharp.png",
+                    TotalCourses = 0
                 }
             };
 

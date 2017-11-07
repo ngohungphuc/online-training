@@ -9,13 +9,12 @@ namespace OnlineTraining.Repositories.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly MongoConnect _mongoConnect;
         private readonly IMongoCollection<User> _userRepository;
 
         public UserRepository()
         {
-            _mongoConnect = new MongoConnect();
-            _userRepository = _mongoConnect.GetConnection().GetCollection<User>("users");
+            var mongoConnect = new MongoConnect();
+            _userRepository = mongoConnect.GetConnection().GetCollection<User>("Users");
         }
 
         public bool Authentication(string username, string password)
