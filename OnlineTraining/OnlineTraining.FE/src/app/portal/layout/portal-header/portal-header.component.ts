@@ -1,4 +1,6 @@
+import { StorageService } from '../../../common/services/storage.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'ota-portal-header',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portal-header.component.scss']
 })
 export class PortalHeaderComponent implements OnInit {
-
-  constructor() { }
+  userName: string;
+  constructor(
+    private storageService: StorageService) { }
 
   ngOnInit() {
+    const userInfo = this.storageService.getObject(environment.authKey);
+    this.userName = userInfo.account;
   }
 
 }

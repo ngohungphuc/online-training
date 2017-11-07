@@ -60,7 +60,10 @@ export class LoginComponent implements OnInit {
 
     this.store.select(authStore.selectAuthStatusState).subscribe(res => {
       if (res) {
-        this.cookieService.set(environment.cookieKey, 'true', 1, null, null, false);
+        const isLogin: boolean = this.cookieService.check(environment.cookieKey);
+        if (!isLogin) {
+          this.cookieService.set(environment.cookieKey, 'true', 1, null, null, false);
+        }
       }
     });
   }
