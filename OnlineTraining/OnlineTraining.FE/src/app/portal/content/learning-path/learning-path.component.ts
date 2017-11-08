@@ -15,8 +15,7 @@ export class LearningPathComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch({type: GET_LEARNING_PATH});
     this.store.select(fromLearningPathList.selectLearningPathList).subscribe(res => {
-      console.log(res);
-      this.pathList = res;
+       this.pathList = res.pathList;
     });
   }
 

@@ -1,17 +1,19 @@
 import * as learningPath from '../actions/learning-path.actions';
 
-export interface LearningPathListState {
+export interface LearningPathState {
     pathList: any;
+    learningPathReducer: any;
 }
 
-export interface LearningPathState {
+export interface LearningPath {
     name: string;
     totalCourses: string;
     pathIcon: string;
 }
 
-export const initialState: LearningPathListState = {
-    pathList: []
+export const initialState: LearningPathState = {
+    pathList: null,
+    learningPathReducer: null
 };
 
 export function learningPathReducer(state = initialState, action: learningPath.Actions) {
@@ -26,5 +28,5 @@ export function learningPathReducer(state = initialState, action: learningPath.A
     }
 }
 
-export const getPathList = (state: LearningPathListState) => state.pathList;
+export const getPathList = (state: LearningPathState) => state.pathList;
 
