@@ -1,7 +1,4 @@
-import { BaseAction } from '../../../common/core/state-management/actions/base.action';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as auth from './../actions/auth.actions';
-
 export interface AuthState {
   loggedIn: boolean;
   errorMsg: string;

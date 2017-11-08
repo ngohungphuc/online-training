@@ -2,7 +2,7 @@
 
 namespace OnlineTraining.Entities.Entities
 {
-    public class Comment
+    public class Comment : BaseEntity
     {
         public ObjectId CommentId { get; set; }
         public string Content { get; set; }
