@@ -8,7 +8,7 @@ export const initialState: LearningPathLayoutState = {
     isDetailPage: false
 };
 
-export function learningPathReducer(state = initialState, action: learningPath.Actions) {
+export function learningPathReducer(state = initialState, action: learningPathLayout.Actions) {
     switch (action.type) {
         case learningPathLayout.DETAIL_PAGE:
             return {
