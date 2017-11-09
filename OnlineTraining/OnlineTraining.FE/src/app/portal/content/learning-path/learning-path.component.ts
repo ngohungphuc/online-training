@@ -10,6 +10,7 @@ import * as fromLearningPathList from '../learning-path/store/index';
 })
 export class LearningPathComponent implements OnInit {
   pathList: any;
+  isDetailPage: boolean;
   constructor(private store: Store<any> ) { }
 
   ngOnInit() {
