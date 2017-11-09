@@ -1,11 +1,13 @@
 import * as learningPathLayout from '../actions/learning-path.layout.actions';
 
 export interface LearningPathLayoutState {
+    learningPathLayoutReducer: any;
     isDetailPage: boolean;
 }
 
 export const initialState: LearningPathLayoutState = {
-    isDetailPage: false
+    isDetailPage: false,
+    learningPathLayoutReducer: null
 };
 
 export function learningPathReducer(state = initialState, action: learningPathLayout.Actions) {

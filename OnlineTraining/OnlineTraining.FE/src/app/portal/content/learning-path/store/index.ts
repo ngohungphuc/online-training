@@ -13,7 +13,7 @@ export const selectLearningPathList = createSelector(
 
 export const selectLearningPathLayout = createSelector(
   selectLearningPathState,
-  (state: LearningPathLayoutState) => state.isDetailPage
+  (state: LearningPathLayoutState) => state.learningPathLayoutReducer
 );
 
 

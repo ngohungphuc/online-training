@@ -6,7 +6,7 @@
           <div class="card-body">
             <span>{{path.name}}</span>
             <p class="card-text">{{path.totalCourses}} Courses</p>
-            <a routerLink="{{path.slug}}" (click)="isDetailPage = true" class="btn btn-primary">Details</a>
+            <a routerLink="{{path.slug}}" (click)="toggleDetailPage()" class="btn btn-primary">Details</a>
           </div>
         </div>
       </div>

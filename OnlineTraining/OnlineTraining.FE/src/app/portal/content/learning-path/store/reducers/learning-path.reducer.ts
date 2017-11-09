@@ -5,12 +5,6 @@ export interface LearningPathState {
     learningPathReducer: any;
 }
 
-export interface LearningPath {
-    name: string;
-    totalCourses: string;
-    pathIcon: string;
-}
-
 export const initialState: LearningPathState = {
     pathList: null,
     learningPathReducer: null
