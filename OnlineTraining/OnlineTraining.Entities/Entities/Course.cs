@@ -7,5 +7,6 @@
         public string CreatedBy { get; set; }
         public string TargetAudience { get; set; }
         public string LearningPathId { get; set; }
+        public string LearningPathDescription { get; set; }
     }
 }

@@ -3,18 +3,24 @@ import {
   PortalIndexComponent,
   LearningPathComponent,
   BookmarksComponent,
-  MyCourseComponent } from './index';
+  MyCourseComponent,
+  LearningPathDetailComponent
+} from './index';
 
 const portalRoutes: Routes = [
-{
-  path: '',
-  component: PortalIndexComponent,
-  children: [
-      { path: 'path', component: LearningPathComponent},
-      { path: 'bookmarks', component: BookmarksComponent},
-      { path: 'mycourse', component: MyCourseComponent},
-  ]
-}
+  {
+    path: '',
+    component: PortalIndexComponent,
+    children: [
+      {
+        path: 'path',
+        component: LearningPathComponent,
+        children: [{ path: ':slug', component: LearningPathDetailComponent }]
+      },
+      { path: 'bookmarks', component: BookmarksComponent },
+      { path: 'mycourse', component: MyCourseComponent }
+    ]
+  }
 ];
 
 export const PortalRouting = RouterModule.forChild(portalRoutes);

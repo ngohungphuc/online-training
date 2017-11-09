@@ -436,6 +436,7 @@ main.l-main {
   -ms-transition: padding 0.5s ease-in-out;
   -o-transition: padding 0.5s ease-in-out;
   transition: padding 0.5s ease-in-out;
+  overflow-y: scroll;
 }
 main.l-main .content-wrapper {
   padding: 25px;

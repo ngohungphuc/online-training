@@ -2,6 +2,7 @@ import { AuthEffects } from '../account/store/effects/auth.effects';
 import {
   BookmarksComponent,
   LearningPathComponent,
+  LearningPathDetailComponent,
   MyCourseComponent,
   PortalHeaderComponent,
   PortalIndexComponent,
@@ -13,12 +14,12 @@ import { LearningPathEffects } from './content/learning-path/store/effects/learn
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { portalReducer } from './store/reducers/portal.reducer';
-
+import { portalReducers } from './store/index';
 import { PortalRouting } from './portal.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
-import { portalReducers } from './store/index';
+
 
 
 
@@ -38,7 +39,8 @@ import { portalReducers } from './store/index';
     PortalSidebarComponent,
     LearningPathComponent,
     BookmarksComponent,
-    MyCourseComponent
+    MyCourseComponent,
+    LearningPathDetailComponent
   ],
   exports: [
   ],
