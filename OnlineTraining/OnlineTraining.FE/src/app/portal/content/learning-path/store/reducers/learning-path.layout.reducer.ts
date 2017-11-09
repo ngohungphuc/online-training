@@ -1,7 +1,10 @@
 import * as learningPathLayout from '../actions/learning-path.layout.actions';
 
-export interface LearningPathLayoutState {
-    learningPathLayoutReducer: any;
+export interface LearningPathReducer {
+  learningPathLayoutReducer: any;
+}
+
+export interface LearningPathLayoutState extends LearningPathReducer{
     isDetailPage: boolean;
 }
 

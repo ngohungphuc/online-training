@@ -1,8 +1,11 @@
 import * as learningPath from '../actions/learning-path.actions';
 
-export interface LearningPathState {
+export interface LearningPathReducer {
+  learningPathReducer: any;
+}
+
+export interface LearningPathState extends LearningPathReducer{
     pathList: any;
-    learningPathReducer: any;
 }
 
 export const initialState: LearningPathState = {
