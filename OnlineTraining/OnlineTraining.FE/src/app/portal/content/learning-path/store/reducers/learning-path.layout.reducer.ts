@@ -6,11 +6,13 @@ export interface LearningPathReducer {
 
 export interface LearningPathLayoutState extends LearningPathReducer{
     isDetailPage: boolean;
+    pathInfo: any;
 }
 
 export const initialState: LearningPathLayoutState = {
     isDetailPage: false,
-    learningPathLayoutReducer: null
+    learningPathLayoutReducer: null,
+    pathInfo: null
 };
 
 export function learningPathReducer(state = initialState, action: learningPathLayout.Actions) {
@@ -18,7 +20,8 @@ export function learningPathReducer(state = initialState, action: learningPathLa
         case learningPathLayout.DETAIL_PAGE:
             return {
                 ...state,
-                isDetailPage: action.payload
+                isDetailPage: action.payload.isDetailPage,
+                pathInfo: action.payload.pathInfo
             };
         default:
             return state;

@@ -14,7 +14,7 @@ export class LearningPathDetailComponent implements OnInit{
 
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
       this.store
       .select(fromLearningPathList.selectLearningPathLayout)
       .subscribe(res => {
