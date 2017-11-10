@@ -81,10 +81,16 @@ namespace OnlineTraining.API.Helpers.Extensions
         public static IServiceCollection InjectServicesCollection(this IServiceCollection services)
         {
             services.AddScoped<IElasticSearch, ElasticSearch>();
+
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddScoped<IUserServices, UserServices>();
+
             services.AddSingleton<ILearningPathRepository, LearningPathRepository>();
             services.AddScoped<ILearningPathServices, LearningPathServices>();
+
+            services.AddSingleton<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseServices, CourseServices>();
+
             services.AddSingleton<IRTokenRepository, RTokenRepository>();
             return services;
         }
