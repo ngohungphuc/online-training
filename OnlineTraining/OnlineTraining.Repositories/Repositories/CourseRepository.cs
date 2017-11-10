@@ -19,9 +19,9 @@ namespace OnlineTraining.Repositories.Repositories
             _courseRepository = mongoConnect.GetConnection().GetCollection<Course>("Courses");
         }
 
-        public async Task<Course> GetCourseByPathId(string pathId)
+        public async Task<List<Course>> GetCourseByPathId(string pathId)
         {
-            return await _courseRepository.Find(c => c.LearningPathId == pathId).SingleOrDefaultAsync();
+            return await _courseRepository.Find(c => c.LearningPathId == pathId).ToListAsync();
         }
     }
 }

@@ -1,3 +1,26 @@
-<p *ngIf="isDetailPage">
-  <a class="btn btn-primary" (click)="togglePathPage()"><i class="fa fa-arrow-circle-left"></i> Back</a>
-</p>
+<div class="row" *ngIf="isDetailPage">
+  <a class="btn btn-primary" (click)="togglePathPage()">
+    <i class="fa fa-arrow-circle-left"></i> Back</a>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="card text-center" *ngIf="courseByPathId">
+    <div class="card-body">
+      <p class="card-text">{{learningPathDescription}}</p>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="row">
+  <div class="card bg-light mb-3 course-card" style="max-width: 20rem;" *ngFor="let course of courseByPathId">
+    <div class="card-header"> <span class="card-title">{{course.courseName}} </span> </div>
+    <div class="card-body">
+      <h6 class="card-title"> by {{course.createdBy}}</h6>
+      <p class="card-text"> Target Audience: {{course.targetAudience}}</p>
+      <p class="card-text"> {{course.shortDescription}}</p>
+    </div>
+  </div>
+</div>

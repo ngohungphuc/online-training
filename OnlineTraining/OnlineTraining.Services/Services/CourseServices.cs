@@ -17,7 +17,7 @@ namespace OnlineTraining.Services.Services
             _courseRepository = courseRepository;
         }
 
-        public async Task<Course> GetCourseByPathId(string pathId)
+        public async Task<List<Course>> GetCourseByPathId(string pathId)
         {
             return await _courseRepository.GetCourseByPathId(pathId);
         }

@@ -9,7 +9,7 @@ using OnlineTraining.Services.Interfaces;
 
 namespace OnlineTraining.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]/[action]")]
     public class CourseController: Controller
     {
@@ -20,8 +20,8 @@ namespace OnlineTraining.API.Controllers
             _courseServices = courseServices;
         }
 
-        [HttpGet]
-        public async Task<Course> GetCourseByPathId(string pathId)
+        [HttpGet("{pathId}")]
+        public async Task<List<Course>> GetCourseByPathId(string pathId)
         {
             return await _courseServices.GetCourseByPathId(pathId);
         }

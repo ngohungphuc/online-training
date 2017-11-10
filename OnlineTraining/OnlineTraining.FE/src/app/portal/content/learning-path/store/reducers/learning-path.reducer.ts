@@ -6,11 +6,13 @@ export interface LearningPathReducer {
 
 export interface LearningPathState extends LearningPathReducer{
     pathList: any;
+    courseByPathId: any;
 }
 
 export const initialState: LearningPathState = {
     pathList: null,
-    learningPathReducer: null
+    learningPathReducer: null,
+    courseByPathId: null
 };
 
 export function learningPathReducer(state = initialState, action: learningPath.Actions) {
@@ -20,10 +22,15 @@ export function learningPathReducer(state = initialState, action: learningPath.A
                 ...state,
                 pathList: action.payload
             };
+        case learningPath.GET_COURSE_BY_LEARNING_PATH_ID_SUCCESS:
+            return {
+                ...state,
+                courseByPathId: action.payload
+            };
         default:
             return state;
     }
 }
 
 export const getPathList = (state: LearningPathState) => state.pathList;
-
+export const getCourseByPathId = (state: LearningPathState) => state.courseByPathId;

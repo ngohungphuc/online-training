@@ -25,7 +25,8 @@ export class LearningPathComponent implements OnInit {
 
   toggleDetailPage(path) {
     const pathInfo = {
-      pathInfo: path,
+      pathId: path.id,
+      learningPathDescription: path.learningPathDescription,
       isDetailPage: true
     };
     this.store.dispatch({ type: DETAIL_PAGE, payload: pathInfo });

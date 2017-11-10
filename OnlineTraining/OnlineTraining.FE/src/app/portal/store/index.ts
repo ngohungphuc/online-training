@@ -12,5 +12,5 @@ export interface PortalState {
 
 export const portalReducers: ActionReducerMap<PortalState> = {
     learningPathReducer: fromLearningPath.learningPathReducer,
-    learningPathLayoutReducer: fromLearningPathLayout.learningPathReducer
+    learningPathLayoutReducer: fromLearningPathLayout.learningPathLayoutReducerState
 };

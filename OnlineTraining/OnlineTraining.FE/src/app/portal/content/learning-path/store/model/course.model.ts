@@ -4,4 +4,5 @@ export interface Course {
   createdBy: string;
   targetAudience: string;
   learningPathId: string;
+  learningPathDescription: string;
 }

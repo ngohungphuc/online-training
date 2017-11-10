@@ -26,7 +26,7 @@ namespace OnlineTraining.Scripts
                     Password = PasswordManager.Encrpyted("070695"),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504c"),
+                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504c").ToString(),
                     AvatarUrl = "https://avatars0.githubusercontent.com/u/13591213?s=460&v=4"
                 },
                 new User
@@ -36,7 +36,7 @@ namespace OnlineTraining.Scripts
                     Password = PasswordManager.Encrpyted("070695"),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504d"),
+                    Id = new ObjectId("59ee1ba3acf7c53bf4d2504d").ToString(),
                     AvatarUrl = "https://avatars0.githubusercontent.com/u/13591213?s=460&v=4"
                 }
             };
@@ -56,17 +56,18 @@ namespace OnlineTraining.Scripts
             {
                 new LearningPath
                 {
-                    Id = new ObjectId("5a01de5f990092a25640e1e6"),
+                    Id = new ObjectId("5a01de5f990092a25640e1e6").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "Microsoft Azure for Developers",
                     PathIcon = "path/azure-blue.png",
-                    TotalCourses = 1,
-                    Slug = "Microsoft-Azure-for-Developers"
+                    TotalCourses = 2,
+                    Slug = "Microsoft-Azure-for-Developers",
+                    LearningPathDescription = "This path is intended for those who would like to learn about Azure services and practices that will enable you to build scalable, highly available and performant applications. This path will demonstrate how to leverage Azure for common capabilities and plumbing, so that you can focus on building things that matter."
                 },
                 new LearningPath
                 {
-                    Id = new ObjectId("5a01de86990092a25640e1f2"),
+                    Id = new ObjectId("5a01de86990092a25640e1f2").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "Angular",
@@ -76,17 +77,18 @@ namespace OnlineTraining.Scripts
                 },
                 new LearningPath
                 {
-                    Id = new ObjectId("5a01de8c990092a25640e1f8"),
+                    Id = new ObjectId("5a01de8c990092a25640e1f8").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "ASP.Net MVC",
                     PathIcon = "path/asp-dot-net.png",
                     TotalCourses = 1,
-                    Slug = "ASP.Net-MVC"
+                    Slug = "ASP.Net-MVC",
+                    LearningPathDescription = "MVC is an architectural pattern that separates applications into three components: the model, the view, and the controller. ASP.NET MVC 5 provides this functionality to the ASP.NET framework as an alternative to the WebForms pattern. You’ll love working with this highly-testable and lightweight framework!"
                 },
                 new LearningPath
                 {
-                    Id = new ObjectId("5a01f9a7990092a25640ebcc"),
+                    Id = new ObjectId("5a01f9a7990092a25640ebcc").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "C#",
@@ -96,7 +98,7 @@ namespace OnlineTraining.Scripts
                 },
                 new LearningPath
                 {
-                    Id = new ObjectId("5a01f9a7990092a25640ebcd"),
+                    Id = new ObjectId("5a01f9a7990092a25640ebcd").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     Name = "Html5",
@@ -121,7 +123,7 @@ namespace OnlineTraining.Scripts
             {
                 new Course
                 {
-                    Id = new ObjectId("5a01de93990092a25640e1fc"),
+                    Id = new ObjectId("5a01de93990092a25640e1fc").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseName = "Microsoft Azure: The Big Picture",
@@ -129,12 +131,25 @@ namespace OnlineTraining.Scripts
                     ShortDescription =
                         "This course is intended to help technology professionals gain an understanding of Microsoft's cloud platform. The goal in building this course was to provide enough information to get a sense of the platform and what it can do. Follow up this course by diving into other courses that focus on specific Azure offerings and technologies to deepen your knowledge and tackle specific challenges.",
                     TargetAudience = "Beginner",
-                    LearningPathId = "5a01de5f990092a25640e1e6",
-                    LearningPathDescription = "This path is intended for those who would like to learn about Azure services and practices that will enable you to build scalable, highly available and performant applications. This path will demonstrate how to leverage Azure for common capabilities and plumbing, so that you can focus on building things that matter."
+                    LearningPathId = "5a01de5f990092a25640e1e6"
+                    
                 },
                 new Course
                 {
-                    Id = new ObjectId("5a01de98990092a25640e1fe"),
+                    Id = new ObjectId("5a05e27297a1606f748eb075").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    CourseName = "Introduction to Azure App Services",
+                    CreatedBy = "Barry Luijbregts",
+                    ShortDescription =
+                        "This course will teach you the fundamentals of using the Azure App Services Platform to build and deploy apps at scale.",
+                    TargetAudience = "Beginner",
+                    LearningPathId = "5a01de5f990092a25640e1e6"
+
+                },
+                new Course
+                {
+                    Id = new ObjectId("5a01de98990092a25640e1fe").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseName = "A Comparison of Microsoft Web Technologies",
@@ -142,8 +157,7 @@ namespace OnlineTraining.Scripts
                     ShortDescription =
                         "Before engaging in any web development project using the Microsoft web platform, a thorough knowledge of the technology options available is key to choosing the right path. In this course, A Comparison of Web Technologies, you will learn how to evaluate the strengths and challenges of each web technology, and determine which is best aligned with needs of developer. You will get to compare Web Forms, Web Pages, and MVC with each other using similar demos to showcase unique approaches. You will also get an understanding of how ASP.NET Core compares with the full ASP.NET framework. When you are finished with this course, you will have the ability to make a strategic choice as to which Microsoft web technology is best for you!",
                     TargetAudience = "Beginner",
-                    LearningPathId = "5a01de8c990092a25640e1f8",
-                    LearningPathDescription = "MVC is an architectural pattern that separates applications into three components: the model, the view, and the controller. ASP.NET MVC 5 provides this functionality to the ASP.NET framework as an alternative to the WebForms pattern. You’ll love working with this highly-testable and lightweight framework!"
+                    LearningPathId = "5a01de8c990092a25640e1f8"
                 }
             };
 
@@ -162,7 +176,7 @@ namespace OnlineTraining.Scripts
             {
                 new CourseDetail
                 {
-                    Id = new ObjectId("5a01e86f990092a25640e562"),
+                    Id = new ObjectId("5a01e86f990092a25640e562").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseId = new ObjectId("5a01de93990092a25640e1fc"),
@@ -171,7 +185,7 @@ namespace OnlineTraining.Scripts
                 },
                 new CourseDetail
                 {
-                    Id = new ObjectId("5a01e875990092a25640e566"),
+                    Id = new ObjectId("5a01e875990092a25640e566").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseId = new ObjectId("5a01de93990092a25640e1fc"),
@@ -180,7 +194,7 @@ namespace OnlineTraining.Scripts
                 },
                 new CourseDetail
                 {
-                    Id = new ObjectId("5a01e88c990092a25640e56c"),
+                    Id = new ObjectId("5a01e88c990092a25640e56c").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseId = new ObjectId("5a01de98990092a25640e1fe"),
@@ -189,7 +203,7 @@ namespace OnlineTraining.Scripts
                 },
                 new CourseDetail
                 {
-                    Id = new ObjectId("5a01e891990092a25640e570"),
+                    Id = new ObjectId("5a01e891990092a25640e570").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseId = new ObjectId("5a01de98990092a25640e1fe"),

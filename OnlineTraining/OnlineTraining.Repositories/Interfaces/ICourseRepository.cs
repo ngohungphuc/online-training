@@ -8,6 +8,6 @@ namespace OnlineTraining.Repositories.Interfaces
 {
     public interface ICourseRepository
     {
-        Task<Course> GetCourseByPathId(string pathId);
+        Task<List<Course>> GetCourseByPathId(string pathId);
     }
 }

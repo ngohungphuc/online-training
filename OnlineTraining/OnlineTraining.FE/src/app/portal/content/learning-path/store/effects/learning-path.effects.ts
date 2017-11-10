@@ -11,26 +11,24 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import { GET_LEARNING_PATH_SUCCESS, ERROR } from '../actions/learning-path.actions';
+import { GET_LEARNING_PATH_SUCCESS, ERROR, GET_COURSE_BY_LEARNING_PATH_ID_SUCCESS } from '../actions/learning-path.actions';
 
 
 @Injectable()
 export class LearningPathEffects {
-    private learningPathApi: string;
   constructor(
     private actions$: Actions,
     private router: Router,
     private authService: AuthService
   ) {
-      this.learningPathApi = `api/LearningPath`;
   }
 
   @Effect()
-  login$: Observable<Action> = this.actions$
+  getLearningPath$: Observable<Action> = this.actions$
     .ofType(learningPath.GET_LEARNING_PATH)
     .mergeMap((action: learningPath.GetLearningPath) =>
       this.authService
-        .Get(this.learningPathApi)
+        .Get('api/LearningPath')
         .map(responseData => {
           const data = responseData.json();
           return { type: GET_LEARNING_PATH_SUCCESS, payload: data };
@@ -39,4 +37,20 @@ export class LearningPathEffects {
           return of({ type: ERROR, payload: error });
         })
     );
+
+
+    @Effect()
+    getCourseByPathId$: Observable<Action> = this.actions$
+      .ofType(learningPath.GET_COURSE_BY_LEARNING_PATH_ID)
+      .mergeMap((action: learningPath.GetCourseByLearningPathId) =>
+        this.authService
+          .Get(`api/Course/GetCourseByPathId/${action.payload}`)
+          .map(responseData => {
+            const data = responseData.json();
+            return { type: GET_COURSE_BY_LEARNING_PATH_ID_SUCCESS, payload: data };
+          })
+          .catch(error => {
+            return of({ type: ERROR, payload: error });
+          })
+      );
 }

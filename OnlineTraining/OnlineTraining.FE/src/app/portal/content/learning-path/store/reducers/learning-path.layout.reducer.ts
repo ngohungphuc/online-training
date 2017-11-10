@@ -6,22 +6,25 @@ export interface LearningPathReducer {
 
 export interface LearningPathLayoutState extends LearningPathReducer{
     isDetailPage: boolean;
-    pathInfo: any;
+    pathId: any;
+    learningPathDescription: string;
 }
 
 export const initialState: LearningPathLayoutState = {
     isDetailPage: false,
     learningPathLayoutReducer: null,
-    pathInfo: null
+    pathId: null,
+    learningPathDescription: null
 };
 
-export function learningPathReducer(state = initialState, action: learningPathLayout.Actions) {
+export function learningPathLayoutReducerState(state = initialState, action: learningPathLayout.Actions) {
     switch (action.type) {
         case learningPathLayout.DETAIL_PAGE:
             return {
                 ...state,
                 isDetailPage: action.payload.isDetailPage,
-                pathInfo: action.payload.pathInfo
+                pathId: action.payload.pathId,
+                learningPathDescription: action.payload.learningPathDescription
             };
         default:
             return state;
