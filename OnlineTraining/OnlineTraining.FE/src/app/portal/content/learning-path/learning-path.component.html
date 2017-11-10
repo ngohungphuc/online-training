@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <div class="row">
-      <div class="col-3" [class.hidden]="isDetailPage" *ngFor="let path of pathList">
+      <div class="col-3 path-content" [class.hidden]="isDetailPage" *ngFor="let path of pathList">
         <div class="card path-item">
           <img class="card-img-top" src="/assets/img/{{path.pathIcon}}" alt="Card image cap">
           <div class="card-body">
             <span>{{path.name}}</span>
             <p class="card-text">{{path.totalCourses}} Courses</p>
-            <a routerLink="{{path.slug}}" (click)="toggleDetailPage()" class="btn btn-primary">Details</a>
+            <a (click)="toggleDetailPage(path.slug)" class="btn btn-primary">Details</a>
           </div>
         </div>
       </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <router-outlet></router-outlet>
+     <ota-learning-path-detail></ota-learning-path-detail>
     </div>
   </div>
 </div>

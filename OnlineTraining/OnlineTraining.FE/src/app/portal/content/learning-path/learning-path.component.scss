@@ -1,15 +1,19 @@
-.path-item{
-  .card-img-top {
-    width: 30%;
-  }
+.path-content{
+  margin-top: 2%;
 
-  img {
-    margin: 0 auto;
-    margin-top: 20px;
+  .path-item{
+    .card-img-top {
+      width: 30%;
+    }
+  
+    img {
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+  
+    .card-body {
+      padding-top:40px;
+    }
   }
-
-  .card-body {
-    padding-top:40px;
-  }
+  
 }
-

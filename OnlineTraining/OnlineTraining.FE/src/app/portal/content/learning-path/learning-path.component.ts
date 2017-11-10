@@ -12,21 +12,23 @@ import { Store } from '@ngrx/store';
 export class LearningPathComponent implements OnInit {
   pathList: any;
   isDetailPage: boolean;
-  constructor(private store: Store<any> ) { }
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.store.dispatch({type: GET_LEARNING_PATH});
-    this.store.select(fromLearningPathList.selectLearningPathList).subscribe(res => {
-       this.pathList = res.pathList;
-    });
-
+    this.store.dispatch({ type: GET_LEARNING_PATH });
+    this.store
+      .select(fromLearningPathList.selectLearningPathList)
+      .subscribe(res => {
+        this.pathList = res.pathList;
+      });
   }
 
-  toggleDetailPage() {
-    this.store.dispatch({type: DETAIL_PAGE, payload: true});
-    this.store.select(fromLearningPathList.selectLearningPathLayout).subscribe(res => {
-      console.log(res);
-      this.isDetailPage = res.isDetailPage;
-   });
+  toggleDetailPage(path) {
+    this.store.dispatch({ type: DETAIL_PAGE, payload: true });
+    this.store
+      .select(fromLearningPathList.selectLearningPathLayout)
+      .subscribe(res => {
+        this.isDetailPage = res.isDetailPage;
+      });
   }
 }

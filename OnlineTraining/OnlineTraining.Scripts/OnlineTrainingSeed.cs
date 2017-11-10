@@ -93,6 +93,16 @@ namespace OnlineTraining.Scripts
                     PathIcon = "path/csharp.png",
                     TotalCourses = 0,
                     Slug = "CSharp"
+                },
+                new LearningPath
+                {
+                    Id = new ObjectId("5a01f9a7990092a25640ebcd"),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    Name = "Html5",
+                    PathIcon = "path/html5.png",
+                    TotalCourses = 0,
+                    Slug = "html5"
                 }
             };
 
