@@ -20,19 +20,7 @@ export class AuthGuard implements CanActivate {
     private router: Router) {
   }
 
-/*   canActivate(): Observable<boolean> {
-    return this.store
-      .select(fromAuth.selectAuthStatusState)
-      .map(authed => {
-        if (!authed) {
-          this.store.dispatch({type: REDIRECT});
-          return false;
-        }
-        return true;
-      })
-      .take(1);
-  } */
-  canActivate(): Observable<boolean> | boolean{
+  canActivate(): Observable<boolean> | boolean {
     const isLogin: boolean = this.cookieService.check(environment.cookieKey);
     if (!isLogin) {
       this.store.dispatch({type: REDIRECT});

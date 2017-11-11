@@ -64,7 +64,7 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$
-    .ofType(auth.LOGOUT, auth.REDIRECT)
+    .ofType(auth.LOGOUT)
     .do(() => {
       this.storageSerivce.removeAllStorage();
       this.router.navigate(['/account/login']);
