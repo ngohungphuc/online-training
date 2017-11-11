@@ -33,7 +33,11 @@ export function authReducer(state = initialState, action: auth.Actions) {
         errorMsg: 'Invalid user credential'
       };
     case auth.LOGOUT:
-      return initialState;
+      return {
+        ...state,
+        loggedIn: false,
+        tokenInfo: null
+      };
     default:
       return state;
   }

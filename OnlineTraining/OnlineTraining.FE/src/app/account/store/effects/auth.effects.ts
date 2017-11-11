@@ -2,6 +2,7 @@ import * as auth from '../actions/auth.actions';
 import { AccessTokenInfo } from '../models/user.credential';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
+import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS } from '../actions/auth.actions';
@@ -24,7 +25,8 @@ export class AuthEffects {
     private actions$: Actions,
     private loginService: LoginService,
     private router: Router,
-    private storageSerivce: StorageService
+    private storageSerivce: StorageService,
+    private cookieService: CookieService
   ) {}
 
   @Effect()
@@ -63,5 +65,8 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$
     .ofType(auth.LOGOUT, auth.REDIRECT)
-    .do(() => this.router.navigate(['/account/login']));
+    .do(() => {
+      this.storageSerivce.removeAllStorage();
+      this.router.navigate(['/account/login']);
+    });
 }

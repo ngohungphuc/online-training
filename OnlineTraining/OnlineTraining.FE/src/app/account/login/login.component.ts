@@ -19,7 +19,7 @@ import { ToastsManager } from 'ng2-toastr';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMsg: any;
-
+  isLogging = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(formData) {
+    this.isLogging = true;
     this.store.dispatch({
       type: LOGIN,
       payload: {
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
     this.store.select(authStore.selectLoginState).subscribe(res => {
       if (res !== null) {
         this.toastr.warning(res);
+        this.isLogging = false;
         return;
       }
     });
