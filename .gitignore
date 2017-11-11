@@ -287,4 +287,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-jwt.db
+OnlineTraining/OnlineTraining.API/jwt.db

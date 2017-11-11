@@ -2,10 +2,15 @@ import * as auth from '../actions/auth.actions';
 import { AccessTokenInfo } from '../models/user.credential';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS } from '../actions/auth.actions';
+import {
+  LOGIN,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  REDIRECT
+} from '../actions/auth.actions';
 import { LoginService } from '../services/login.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -17,7 +22,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-
 
 @Injectable()
 export class AuthEffects {
@@ -63,10 +67,13 @@ export class AuthEffects {
     .do(() => this.router.navigate(['/online-training/portal']));
 
   @Effect({ dispatch: false })
-  loginRedirect$ = this.actions$
-    .ofType(auth.LOGOUT)
-    .do(() => {
-      this.storageSerivce.removeAllStorage();
-      this.router.navigate(['/account/login']);
-    });
+  logoutRedirect$ = this.actions$.ofType(auth.LOGOUT).do(() => {
+    this.storageSerivce.removeAllStorage();
+    window.location.href = '/account/login';
+  });
+
+  @Effect({ dispatch: false })
+  redirect$ = this.actions$.ofType(auth.REDIRECT).do(() => {
+    this.router.navigate(['/account/login']);
+  });
 }

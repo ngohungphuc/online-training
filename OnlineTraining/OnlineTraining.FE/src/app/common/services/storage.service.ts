@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable()
 export class StorageService {
@@ -21,7 +21,7 @@ export class StorageService {
   }
 
   removeAllStorage() {
-    this.cookieService.deleteAll();
+    this.cookieService.removeAll();
     localStorage.clear();
   }
 }

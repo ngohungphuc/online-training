@@ -9,7 +9,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import { StorageService } from '../common/services/storage.service';
 import { environment } from '../../environments/environment';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -21,8 +21,8 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> | boolean {
-    const isLogin: boolean = this.cookieService.check(environment.cookieKey);
-    if (!isLogin) {
+    const isLogin = this.cookieService.get(environment.cookieKey);
+    if (isLogin === undefined) {
       this.store.dispatch({type: REDIRECT});
       return false;
     }

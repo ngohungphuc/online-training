@@ -1,7 +1,7 @@
 import * as authStore from '../store/index';
 import { AuthService } from '../../common/services/auth.service';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie';
 import { environment } from '../../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LOGIN } from '../store/actions/auth.actions';
@@ -62,17 +62,17 @@ export class LoginComponent implements OnInit {
 
     this.store.select(authStore.selectAuthStatusState).subscribe(res => {
       if (res) {
-        const isLogin: boolean = this.cookieService.check(environment.cookieKey);
-        if (!isLogin) {
-          this.cookieService.set(environment.cookieKey, 'true', 1, null, null, false);
+        const isLogin = this.cookieService.get(environment.cookieKey);
+        if (isLogin === undefined) {
+          this.cookieService.put(environment.cookieKey, 'true');
         }
       }
     });
   }
 
   isLogin() {
-    const isLogin: boolean = this.cookieService.check(environment.cookieKey);
-    if (isLogin) {
+    const isLogin = this.cookieService.get(environment.cookieKey);
+    if (isLogin === undefined) {
       this.router.navigate(['online-training/portal']);
     }
     return;

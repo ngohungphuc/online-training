@@ -20,8 +20,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastOption } from './shared/helper/toast.options';
 import { ToastOptions } from 'ng2-toastr';
 import { PortalModule } from './portal/portal.module';
-import { CookieService } from 'ngx-cookie-service';
-
+import { CookieModule } from 'ngx-cookie';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -33,6 +32,7 @@ import { CookieService } from 'ngx-cookie-service';
     SharedModule,
     AppRoutingModule,
     NgbModule.forRoot(),
+    CookieModule.forRoot(),
       /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
@@ -68,8 +68,7 @@ import { CookieService } from 'ngx-cookie-service';
      */
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
     {provide: ToastOptions, useClass: ToastOption},
-    AuthGuard,
-    CookieService
+    AuthGuard
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

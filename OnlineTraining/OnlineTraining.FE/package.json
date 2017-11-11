@@ -33,6 +33,7 @@
     "font-awesome": "^4.7.0",
     "ng2-toastr": "^4.1.2",
     "ngrx-store-freeze": "^0.2.0",
+    "ngx-cookie": "^1.0.1",
     "ngx-cookie-service": "^1.0.9",
     "npm": "^5.5.1",
     "rxjs": "^5.4.2",
