@@ -17,5 +17,11 @@ namespace OnlineTraining.Services.Services
             var result = _userRepository.Authentication(username, password);
             return result;
         }
+
+        public string GetUserIdByName(string username)
+        {
+            var result = _userRepository.GetUserIdByName(username);
+            return result;
+        }
     }
 }

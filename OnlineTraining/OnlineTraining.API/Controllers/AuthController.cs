@@ -188,7 +188,8 @@ namespace OnlineTraining.API.Controllers
                 access_token = encodedJwt,
                 expires_in = (int)TimeSpan.FromMinutes(120).TotalSeconds,
                 refresh_token = refresh_token.Trim(),
-                account = client_name.Trim()
+                account = client_name.Trim(),
+                userId = _userServices.GetUserIdByName(client_name)
             };
 
             return JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented });

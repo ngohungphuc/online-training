@@ -288,3 +288,4 @@ __pycache__/
 *.xsd.cs
 
 OnlineTraining/OnlineTraining.API/jwt.db
+jwt.db

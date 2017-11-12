@@ -77,6 +77,9 @@ http://www.talkingdotnet.com/app-use-vs-app-run-asp-net-core-middleware/
 http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
 
 ---
+
+##### Google drive api
+https://www.daimto.com/google-drive-api-c-upload/
 ##### Deploy
 
 https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6

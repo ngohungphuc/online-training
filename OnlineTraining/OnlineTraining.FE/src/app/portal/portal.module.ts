@@ -1,5 +1,7 @@
 import { AuthEffects } from '../account/store/effects/auth.effects';
+import { BookmarkEffects } from './content/bookmarks/store/effects/bookmark.effects';
 import {
+  BookmarkIconComponent,
   BookmarksComponent,
   LearningPathComponent,
   LearningPathDetailComponent,
@@ -31,7 +33,7 @@ import { StoreModule } from '@ngrx/store';
     PortalRouting,
     NgbModule,
     StoreModule.forFeature('portalModule', portalReducers),
-    EffectsModule.forFeature([LearningPathEffects])
+    EffectsModule.forFeature([LearningPathEffects, BookmarkEffects])
   ],
   declarations: [
     PortalIndexComponent,
@@ -40,7 +42,8 @@ import { StoreModule } from '@ngrx/store';
     LearningPathComponent,
     BookmarksComponent,
     MyCourseComponent,
-    LearningPathDetailComponent
+    LearningPathDetailComponent,
+    BookmarkIconComponent
   ],
   exports: [
   ],

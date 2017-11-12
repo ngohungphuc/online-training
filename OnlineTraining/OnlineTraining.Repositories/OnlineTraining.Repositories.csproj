@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="Elasticsearch.Net" Version="5.5.0" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.30.0.1030" />
     <PackageReference Include="MongoDB.Driver" Version="2.4.4" />
     <PackageReference Include="NEST" Version="5.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />

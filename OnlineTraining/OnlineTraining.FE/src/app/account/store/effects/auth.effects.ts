@@ -47,7 +47,8 @@ export class AuthEffects {
             account: data.account,
             access_token: data.access_token,
             expire_in: data.expires_in,
-            refresh_token: data.refresh_token
+            refresh_token: data.refresh_token,
+            userId: data.userId
           };
           this.storageSerivce.setObject(environment.authKey, userInfo);
           return { type: LOGIN_SUCCESS, payload: data };

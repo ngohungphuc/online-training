@@ -24,5 +24,11 @@ namespace OnlineTraining.Repositories.Repositories
 
             return result.Count() > 0;
         }
+
+        public string GetUserIdByName(string username)
+        {
+            var result = _userRepository.Find(x => x.UserName == username).SingleOrDefault();
+            return result.Id;
+        }
     }
 }
