@@ -132,7 +132,7 @@ namespace OnlineTraining.Scripts
                         "This course is intended to help technology professionals gain an understanding of Microsoft's cloud platform. The goal in building this course was to provide enough information to get a sense of the platform and what it can do. Follow up this course by diving into other courses that focus on specific Azure offerings and technologies to deepen your knowledge and tackle specific challenges.",
                     TargetAudience = "Beginner",
                     LearningPathId = "5a01de5f990092a25640e1e6"
-                    
+
                 },
                 new Course
                 {
@@ -217,6 +217,28 @@ namespace OnlineTraining.Scripts
                 var matchedProfile = courseDetailCollection.Find(x => x.Id == courseDetail.Id).Count();
                 if (matchedProfile == 0)
                     await courseDetailCollection.InsertManyAsync(courseDetailList);
+            }
+        }
+
+        public static async Task AddBookmark()
+        {
+            var bookmarkCollection = mongoConnect.GetConnection().GetCollection<Bookmark>("Bookmarks");
+            var bookmarkList = new List<Bookmark>
+            {
+                new Bookmark
+                {
+                    Id = new ObjectId("5a090967ee25633fd44ee1d2").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    UserId = "59ee1ba3acf7c53bf4d2504c",
+                    CourseId = "5a01de93990092a25640e1fc"
+                }
+            };
+            foreach (var bookmark in bookmarkList)
+            {
+                var matchedProfile = bookmarkCollection.Find(x => x.Id == bookmark.Id).Count();
+                if (matchedProfile == 0)
+                    await bookmarkCollection.InsertManyAsync(bookmarkList);
             }
         }
     }

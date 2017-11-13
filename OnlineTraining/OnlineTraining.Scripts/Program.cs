@@ -18,6 +18,7 @@ namespace OnlineTraining.Scripts
             await OnlineTrainingSeed.AddLearningPath();
             await OnlineTrainingSeed.AddCourse();
             await OnlineTrainingSeed.AddCourseDetail();
+            await OnlineTrainingSeed.AddBookmark();
         }
     }
 }
