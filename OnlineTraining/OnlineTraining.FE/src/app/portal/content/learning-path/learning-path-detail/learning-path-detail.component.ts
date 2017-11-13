@@ -18,6 +18,7 @@ export class LearningPathDetailComponent implements OnInit {
   isDetailPage: boolean;
   pathId: string;
   courseByPathId: Course;
+  loading = true;
   learningPathDescription: string;
   userId: string;
   bookmark: any;
@@ -64,6 +65,7 @@ export class LearningPathDetailComponent implements OnInit {
         this.bookmark = res;
         this.getDataFromLearningPath();
         this.getCourseByPathId();
+        this.loading = false;
       }
     });
   }

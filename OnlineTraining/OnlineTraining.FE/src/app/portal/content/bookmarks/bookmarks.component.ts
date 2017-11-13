@@ -1,4 +1,4 @@
-import { GET_BOOK_MARK } from './store/actions/bookmark.actions';
+import { GET_BOOK_MARK, GET_BOOK_MARK_BY_USERID } from './store/actions/bookmark.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StorageService } from '../../../common/services/storage.service';
@@ -11,6 +11,8 @@ import { Course } from '../learning-path/store/model/course.model';
 })
 export class BookmarksComponent implements OnInit {
   userId: string;
+  loading = true;
+  bookmark: any;
   courseBookmark: Course;
   constructor(private store: Store<any>,
   private storageService: StorageService) {
@@ -22,6 +24,16 @@ export class BookmarksComponent implements OnInit {
     this.store.select(fromBookmark.selectCourseByBookmarkId).subscribe(res => {
       this.courseBookmark = res;
     });
+    this.getBookmarkStatus();
   }
 
+  getBookmarkStatus(){
+    this.store.dispatch({type: GET_BOOK_MARK_BY_USERID, payload: this.userId});
+    this.store.select(fromBookmark.selectBookmarkByUserId).subscribe(res => {
+      if (res) {
+        this.bookmark = res;
+        this.loading = false;
+      }
+    });
+  }
 }

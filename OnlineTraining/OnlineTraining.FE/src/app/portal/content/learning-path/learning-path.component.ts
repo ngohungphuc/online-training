@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 export class LearningPathComponent implements OnInit {
   pathList: any;
   isDetailPage: boolean;
+  loading = true;
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class LearningPathComponent implements OnInit {
       .subscribe(res => {
         this.pathList = res;
       });
+    this.loading = false;
   }
 
   toggleDetailPage(path) {

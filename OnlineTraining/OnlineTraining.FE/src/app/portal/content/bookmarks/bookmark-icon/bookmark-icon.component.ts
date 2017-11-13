@@ -38,7 +38,7 @@ export class BookmarkIconComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.userbookmark !== null) {
+    if (this.userbookmark !== undefined) {
       for (let i = 0; i < this.userbookmark.length; i++) {
         if (this.id === this.userbookmark[i].courseId) {
           this.isBookmark = true;
