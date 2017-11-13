@@ -21,7 +21,7 @@ export class LearningPathDetailComponent implements OnInit {
   ngOnInit() {
     this.store
       .select(fromLearningPathList.selectLearningPathLayout)
-      .subscribe(res => {
+      .subscribe((res: any) => {
         this.isDetailPage = res.isDetailPage;
         this.pathId = res.pathId;
         this.learningPathDescription = res.learningPathDescription;
@@ -31,9 +31,9 @@ export class LearningPathDetailComponent implements OnInit {
       payload: this.pathId
     });
     this.store
-      .select(fromLearningPathList.selectLearningPathList)
+      .select(fromLearningPathList.selectCourseByPathId)
       .subscribe(res => {
-        this.courseByPathId = res.courseByPathId;
+        this.courseByPathId = res;
       });
   }
 

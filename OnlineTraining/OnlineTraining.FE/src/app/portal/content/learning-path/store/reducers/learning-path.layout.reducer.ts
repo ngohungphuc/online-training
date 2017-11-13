@@ -1,23 +1,22 @@
 import * as learningPathLayout from '../actions/learning-path.layout.actions';
 
-export interface LearningPathReducer {
-  learningPathLayoutReducer: any;
+export interface LearningPathLayoutState {
+    learningPathLayoutState: LearningPathLayout;
 }
 
-export interface LearningPathLayoutState extends LearningPathReducer{
+export interface LearningPathLayout {
     isDetailPage: boolean;
-    pathId: any;
+    pathId: string;
     learningPathDescription: string;
 }
 
-export const initialState: LearningPathLayoutState = {
+export const initialState: LearningPathLayout = {
     isDetailPage: false,
-    learningPathLayoutReducer: null,
     pathId: null,
     learningPathDescription: null
 };
 
-export function learningPathLayoutReducerState(state = initialState, action: learningPathLayout.Actions) {
+export function learningPathLayoutReducer(state = initialState, action: learningPathLayout.Actions) {
     switch (action.type) {
         case learningPathLayout.DETAIL_PAGE:
             return {
@@ -31,5 +30,7 @@ export function learningPathLayoutReducerState(state = initialState, action: lea
     }
 }
 
-export const getPathList = (state: LearningPathLayoutState) => state.isDetailPage;
-
+export const isDetailPageState = (state: LearningPathLayoutState) => state.learningPathLayoutState.isDetailPage;
+export const pathId = (state: LearningPathLayoutState) => state.learningPathLayoutState.pathId;
+export const learningPathDescription = (state: LearningPathLayoutState) => state.learningPathLayoutState.learningPathDescription;
+export const learningPathDetail = (state: LearningPathLayoutState) => state.learningPathLayoutState;

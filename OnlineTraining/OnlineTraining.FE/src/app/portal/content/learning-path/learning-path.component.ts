@@ -19,7 +19,7 @@ export class LearningPathComponent implements OnInit {
     this.store
       .select(fromLearningPathList.selectLearningPathList)
       .subscribe(res => {
-        this.pathList = res.pathList;
+        this.pathList = res;
       });
   }
 
@@ -31,9 +31,10 @@ export class LearningPathComponent implements OnInit {
     };
     this.store.dispatch({ type: DETAIL_PAGE, payload: pathInfo });
     this.store
-      .select(fromLearningPathList.selectLearningPathLayout)
-      .subscribe(res => {
-        this.isDetailPage = res.isDetailPage;
+      .select(fromLearningPathList.selectLearningPathDetailPage)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.isDetailPage = res;
       });
   }
 }

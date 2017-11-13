@@ -1,18 +1,18 @@
+import * as fromBookmark from '../../portal/content/bookmarks/store/reducers/bookmark.reducer';
+import * as fromLearningPath from '../../portal/content/learning-path/store/reducers/learning-path.reducer';
+import * as fromLearningPathLayout from '../../portal/content/learning-path/store/reducers/learning-path.layout.reducer';
+import { ActionReducerMap } from '@ngrx/store';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 
-import { ActionReducerMap } from '@ngrx/store';
-import * as fromLearningPath from '../../portal/content/learning-path/store/reducers/learning-path.reducer';
-import * as  fromLearningPathLayout from '../../portal/content/learning-path/store/reducers/learning-path.layout.reducer';
-import * as  fromBookmark from '../../portal/content/bookmarks/store/reducers/bookmark.reducer';
 export interface PortalState {
-    learningPathReducer: fromLearningPath.LearningPathState;
-    learningPathLayoutReducer: fromLearningPathLayout.LearningPathLayoutState;
-    bookmarkReducer: fromBookmark.BookMarkState;
+    learningPathState: fromLearningPath.LearningPath;
+    learningPathLayoutState: fromLearningPathLayout.LearningPathLayout;
+    bookmarkState: fromBookmark.BookMarkState;
 }
 
 export const portalReducers: ActionReducerMap<PortalState> = {
-    learningPathReducer: fromLearningPath.learningPathReducer,
-    learningPathLayoutReducer: fromLearningPathLayout.learningPathLayoutReducerState,
-    bookmarkReducer: fromBookmark.bookmarkReducer
+    learningPathState: fromLearningPath.learningPathReducer,
+    learningPathLayoutState: fromLearningPathLayout.learningPathLayoutReducer,
+    bookmarkState: fromBookmark.bookmarkReducer
 };

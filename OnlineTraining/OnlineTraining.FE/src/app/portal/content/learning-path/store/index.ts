@@ -8,12 +8,22 @@ export const selectLearningPathState = createFeatureSelector('portalModule');
 
 export const selectLearningPathList = createSelector(
   selectLearningPathState,
-  (state: LearningPathState) => state.learningPathReducer
+  fromLearningPath.getPathList
+);
+
+export const selectCourseByPathId = createSelector(
+  selectLearningPathState,
+  fromLearningPath.getCourseByPathId
 );
 
 export const selectLearningPathLayout = createSelector(
   selectLearningPathState,
-  (state: LearningPathLayoutState) => state.learningPathLayoutReducer
+  fromLearningPathLayout.learningPathDetail
+);
+
+export const selectLearningPathDetailPage = createSelector(
+  selectLearningPathState,
+  fromLearningPathLayout.isDetailPageState
 );
 
 
