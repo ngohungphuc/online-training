@@ -11,5 +11,6 @@ namespace OnlineTraining.Services.Interfaces
         Task<List<Bookmark>> GetBookMarkByUserId(string userId);
         Task<bool> BookmarkCourse(string courseId, string userId);
         Task<bool> UnBookmarkCourse(string courseId, string userId);
+        Task<List<Course>> GetCourseBookMarkByUserId(string userId);
     }
 }

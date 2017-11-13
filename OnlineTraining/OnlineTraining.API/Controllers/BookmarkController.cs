@@ -19,12 +19,30 @@ namespace OnlineTraining.API.Controllers
             _bookmarkServices = bookmarkServices;
         }
 
+        /// <summary>
+        /// Get bookmark status to compare
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetBookMarkByUserId(string userId)
         {
             var bookmarks = await _bookmarkServices.GetBookMarkByUserId(userId);
             return Ok(bookmarks);
         }
+
+        /// <summary>
+        /// Get course by user bookmark
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetCourseBookMarkByUserId(string userId)
+        {
+            var bookmarks = await _bookmarkServices.GetCourseBookMarkByUserId(userId);
+            return Ok(bookmarks);
+        }
+
 
         [HttpGet("{courseId}/{userId}")]
         public async Task<IActionResult> BookMarkCourse(string courseId, string userId)

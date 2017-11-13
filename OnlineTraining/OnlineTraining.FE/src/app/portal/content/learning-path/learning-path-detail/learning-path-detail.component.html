@@ -14,15 +14,15 @@
 </div>
 
 <br>
-<div class="row">
+<div class="row" *ngIf="courseByPathId">
   <div class="card bg-light mb-3 course-card" style="max-width: 20rem;" *ngFor="let course of courseByPathId">
     <div class="card-header">
-      <span class="card-title">{{course.courseName}} </span>
+      <span class="card-title">{{course?.courseName}} </span>
     </div>
     <div class="card-body">
-      <h6 class="card-title"> by {{course.createdBy}}</h6>
-      <p class="card-text"> Target Audience: {{course.targetAudience}}</p>
-      <p class="card-text"> {{course.shortDescription}}</p>
+      <h6 class="card-title"> by {{course?.createdBy}}</h6>
+      <p class="card-text"> Target Audience: {{course?.targetAudience}}</p>
+      <p class="card-text"> {{course?.shortDescription}}</p>
       <a class="btn btn-primary" id="viewCourseDetailbtn" (click)="toggleCourseDetailPage()">
         <i class="fa fa-film" aria-hidden="true"></i> View detail</a>
       <ota-bookmark-icon [id]="course.id" [userbookmark]="bookmark"></ota-bookmark-icon>

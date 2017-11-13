@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
 
@@ -23,5 +24,9 @@ export class StorageService {
   removeAllStorage() {
     this.cookieService.removeAll();
     localStorage.clear();
+  }
+
+  getCurrentUserId() {
+    return this.getObject(environment.authKey).userId;
   }
 }

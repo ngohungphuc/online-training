@@ -232,6 +232,22 @@ namespace OnlineTraining.Scripts
                     ModifieddDate = DateTime.Now,
                     UserId = "59ee1ba3acf7c53bf4d2504c",
                     CourseId = "5a01de93990092a25640e1fc"
+                },
+                new Bookmark
+                {
+                    Id = new ObjectId("5a095a1eed40c73e701c4133").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    UserId = "59ee1ba3acf7c53bf4d2504c",
+                    CourseId = "5a05e27297a1606f748eb075"
+                },
+                new Bookmark
+                {
+                    Id = new ObjectId("5a095b26ed40c73e701c4134").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    UserId = "59ee1ba3acf7c53bf4d2504c",
+                    CourseId = "5a01de93990092a25640e1fc"
                 }
             };
             foreach (var bookmark in bookmarkList)

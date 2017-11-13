@@ -5,5 +5,9 @@ export const selectBookmarkState = createFeatureSelector('portalModule');
 export const selectBookmarkByUserId = createSelector(
     selectBookmarkState,
     fromBookmark.getBookmark
-  );
+);
 
+export const selectCourseByBookmarkId = createSelector(
+  selectBookmarkState,
+  fromBookmark.getCourseByBookmarkId
+);

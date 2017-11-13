@@ -12,11 +12,12 @@ namespace OnlineTraining.Repositories.Repositories
     public class BookmarkRepository : IBookmarkRepository
     {
         private readonly IMongoCollection<Bookmark> _bookmarkRepository;
-
+        private readonly IMongoCollection<Course> _courseRepository;
         public BookmarkRepository()
         {
             var mongoConnect = new MongoConnect();
             _bookmarkRepository = mongoConnect.GetConnection().GetCollection<Bookmark>("Bookmarks");
+            _courseRepository = mongoConnect.GetConnection().GetCollection<Course>("Courses");
         }
 
         public async Task<List<Bookmark>> GetBookMarkByUserId(string userId)
@@ -24,6 +25,21 @@ namespace OnlineTraining.Repositories.Repositories
             var bookmarkList = await
                 _bookmarkRepository.Find(bm => bm.UserId == userId).ToListAsync();
             return bookmarkList;
+        }
+
+        public async Task<List<Course>> GetCourseBookMarkByUserId(string userId)
+        {
+            var listCourses = new List<Course>();
+            var bookmarkList = await
+                _bookmarkRepository.Find(bm => bm.UserId == userId).ToListAsync();
+
+            foreach (var bookmark in bookmarkList)
+            {
+                var courseId = bookmark.CourseId;
+                var course = await _courseRepository.Find(c => c.Id == courseId).SingleAsync();
+                listCourses.Add(course);
+            }
+            return listCourses;
         }
 
         public async Task<bool> BookmarkCourse(string courseId, string userId)

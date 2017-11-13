@@ -6,10 +6,12 @@ export interface BookMarkState {
 
 export interface BookMark {
   bookmark: any;
+  courseByBookmarkId: any;
 }
 
 export const initialState: BookMark = {
-  bookmark: null
+  bookmark: null,
+  courseByBookmarkId: null
 };
 
 export function bookmarkReducer(state = initialState, action: bookMark.Actions) {
@@ -22,7 +24,7 @@ export function bookmarkReducer(state = initialState, action: bookMark.Actions) 
         case bookMark.GET_BOOK_MARK_SUCCESS:
             return {
                 ...state,
-                bookmark: action.payload
+                courseByBookmarkId: action.payload
             };
         case bookMark.GET_BOOK_MARK_BY_USERID_SUCCESS:
             return {
@@ -43,3 +45,5 @@ export function bookmarkReducer(state = initialState, action: bookMark.Actions) 
 
 
 export const getBookmark = (state: BookMarkState) => state.bookmarkState.bookmark;
+export const getCourseByBookmarkId = (state: BookMarkState) => state.bookmarkState.courseByBookmarkId;
+

@@ -9,6 +9,7 @@ namespace OnlineTraining.Repositories.Interfaces
     public interface IBookmarkRepository
     {
         Task<List<Bookmark>> GetBookMarkByUserId(string userId);
+        Task<List<Course>> GetCourseBookMarkByUserId(string userId);
         Task<bool> BookmarkCourse(string courseId, string userId);
         Task<bool> UnBookmarkCourse(string courseId, string userId);
     }

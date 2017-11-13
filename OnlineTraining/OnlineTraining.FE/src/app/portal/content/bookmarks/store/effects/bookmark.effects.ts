@@ -33,7 +33,7 @@ export class BookmarkEffects {
   @Effect()
   getBookMark$: Observable<Action> = this.actions$
     .ofType(bookmark.GET_BOOK_MARK_BY_USERID)
-    .mergeMap((action: bookmark.GetBookMark) =>
+    .mergeMap((action: bookmark.GetBookMarkByUserId) =>
       this.authService
         .Get(`api/Bookmark/GetBookMarkByUserId/${action.payload}`)
         .map(responseData => {
@@ -45,6 +45,21 @@ export class BookmarkEffects {
         })
     );
 
+
+    @Effect()
+    getCourseBookMarkByUserId$: Observable<Action> = this.actions$
+      .ofType(bookmark.GET_BOOK_MARK)
+      .mergeMap((action: bookmark.GetBookMark) =>
+        this.authService
+          .Get(`api/Bookmark/GetCourseBookMarkByUserId/${action.payload}`)
+          .map(responseData => {
+            const data = responseData.json();
+            return { type: GET_BOOK_MARK_SUCCESS, payload: data };
+          })
+          .catch(error => {
+            return of({ type: ERROR, payload: error });
+          })
+      );
 
     @Effect()
     bookMarkCourse$: Observable<Action> = this.actions$

@@ -31,5 +31,10 @@ namespace OnlineTraining.Services.Services
         {
             return await _bookmarkRepository.UnBookmarkCourse(courseId, userId);
         }
+
+        public async Task<List<Course>> GetCourseBookMarkByUserId(string userId)
+        {
+            return await _bookmarkRepository.GetCourseBookMarkByUserId(userId);
+        }
     }
 }

@@ -10,7 +10,6 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
 import { StorageService } from '../../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
 import { ToastsManager } from 'ng2-toastr';
@@ -35,8 +34,7 @@ export class BookmarkIconComponent implements OnInit {
     vcr: ViewContainerRef
   ) {
     this.toastr.setRootViewContainerRef(vcr);
-    const currentUserInfo = this.storageService.getObject(environment.authKey);
-    this.userId = currentUserInfo.userId;
+    this.userId = this.storageService.getCurrentUserId();
   }
 
   ngOnInit() {

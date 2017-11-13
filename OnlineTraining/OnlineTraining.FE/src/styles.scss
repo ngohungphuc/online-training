@@ -483,3 +483,14 @@ main.l-main .page-title {
 .sidebar-is-expanded main.l-main {
   padding-left: 220px;
 }
+
+.course-card {
+  margin-right:20px;
+  .card-title {
+    font-size:15px;
+  }
+  #viewCourseDetailbtn {
+    float:left;
+    margin-right:40px;
+  }
+}
