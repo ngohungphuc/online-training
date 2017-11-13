@@ -19,6 +19,13 @@ namespace OnlineTraining.API.Controllers
             _bookmarkServices = bookmarkServices;
         }
 
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetBookMarkByUserId(string userId)
+        {
+            var bookmarks = await _bookmarkServices.GetBookMarkByUserId(userId);
+            return Ok(bookmarks);
+        }
+
         [HttpGet("{courseId}/{userId}")]
         public async Task<IActionResult> BookMarkCourse(string courseId, string userId)
         {

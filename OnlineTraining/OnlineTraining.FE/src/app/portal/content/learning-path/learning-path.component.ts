@@ -33,7 +33,6 @@ export class LearningPathComponent implements OnInit {
     this.store
       .select(fromLearningPathList.selectLearningPathDetailPage)
       .subscribe((res: any) => {
-        console.log(res);
         this.isDetailPage = res;
       });
   }

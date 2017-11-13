@@ -2,8 +2,14 @@ import * as bookmark from '../actions/bookmark.actions';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { AuthService } from './../../../../../common/services/auth.service';
-import { BOOK_MARK_SUCCESS, GET_BOOK_MARK_SUCCESS, UNDO_BOOK_MARK_SUCCESS } from '../actions/bookmark.actions';
+import {
+  BOOK_MARK_SUCCESS,
+  GET_BOOK_MARK_BY_USERID_SUCCESS,
+  GET_BOOK_MARK_SUCCESS,
+  UNDO_BOOK_MARK_SUCCESS
+  } from '../actions/bookmark.actions';
 import { ERROR } from '../../../../store/actions/portal.actions';
+import { GET_BOOK_MARK_BY_USERID } from './../actions/bookmark.actions';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -26,13 +32,13 @@ export class BookmarkEffects {
 
   @Effect()
   getBookMark$: Observable<Action> = this.actions$
-    .ofType(bookmark.GET_BOOK_MARK)
+    .ofType(bookmark.GET_BOOK_MARK_BY_USERID)
     .mergeMap((action: bookmark.GetBookMark) =>
       this.authService
-        .Get('api/BookMark')
+        .Get(`api/Bookmark/GetBookMarkByUserId/${action.payload}`)
         .map(responseData => {
           const data = responseData.json();
-          return { type: GET_BOOK_MARK_SUCCESS, payload: data };
+          return { type: GET_BOOK_MARK_BY_USERID_SUCCESS, payload: data };
         })
         .catch(error => {
           return of({ type: ERROR, payload: error });

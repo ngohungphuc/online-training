@@ -9,7 +9,7 @@ using OnlineTraining.Repositories.Interfaces;
 
 namespace OnlineTraining.Repositories.Repositories
 {
-    public class BookmarkRepository: IBookmarkRepository
+    public class BookmarkRepository : IBookmarkRepository
     {
         private readonly IMongoCollection<Bookmark> _bookmarkRepository;
 
@@ -18,9 +18,12 @@ namespace OnlineTraining.Repositories.Repositories
             var mongoConnect = new MongoConnect();
             _bookmarkRepository = mongoConnect.GetConnection().GetCollection<Bookmark>("Bookmarks");
         }
-        public Task<List<Bookmark>> GetBookMarkByUserId(string userId)
+
+        public async Task<List<Bookmark>> GetBookMarkByUserId(string userId)
         {
-            throw new NotImplementedException();
+            var bookmarkList = await
+                _bookmarkRepository.Find(bm => bm.UserId == userId).ToListAsync();
+            return bookmarkList;
         }
 
         public async Task<bool> BookmarkCourse(string courseId, string userId)

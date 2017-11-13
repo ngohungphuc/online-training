@@ -1,1 +1,1 @@
-<button type="button" class="btn btn-light bookmark-icon" #bookmark (click)="bookmarkCourse(id)"><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmark </button>
+<button type="button" class="btn btn-light bookmark-icon" [class.active]="isBookmark" #bookmark (click)="bookmarkCourse(id)"><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmark </button>

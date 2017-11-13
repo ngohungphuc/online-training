@@ -8,7 +8,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 export interface PortalState {
     learningPathState: fromLearningPath.LearningPath;
     learningPathLayoutState: fromLearningPathLayout.LearningPathLayout;
-    bookmarkState: fromBookmark.BookMarkState;
+    bookmarkState: fromBookmark.BookMark;
 }
 
 export const portalReducers: ActionReducerMap<PortalState> = {

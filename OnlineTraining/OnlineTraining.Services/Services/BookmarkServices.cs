@@ -17,9 +17,9 @@ namespace OnlineTraining.Services.Services
         {
             _bookmarkRepository = bookmarkRepository;
         }
-        public Task<List<Bookmark>> GetBookMarkByUserId(string userId)
+        public async Task<List<Bookmark>> GetBookMarkByUserId(string userId)
         {
-            throw new NotImplementedException();
+            return await _bookmarkRepository.GetBookMarkByUserId(userId);
         }
 
         public async Task<bool> BookmarkCourse(string courseId, string userId)

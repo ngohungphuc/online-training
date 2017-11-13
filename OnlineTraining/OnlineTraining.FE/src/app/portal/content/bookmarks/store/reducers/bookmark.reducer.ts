@@ -1,16 +1,15 @@
 import * as bookMark from '../actions/bookmark.actions';
 
-export interface BookMarkReducer {
-  bookmarkReducer: any;
+export interface BookMarkState {
+  bookmarkState: BookMark;
 }
 
-export interface BookMarkState extends BookMarkReducer{
-    bookmark: any;
+export interface BookMark {
+  bookmark: any;
 }
 
-export const initialState: BookMarkState = {
-  bookmark: null,
-  bookmarkReducer: null,
+export const initialState: BookMark = {
+  bookmark: null
 };
 
 export function bookmarkReducer(state = initialState, action: bookMark.Actions) {
@@ -21,6 +20,11 @@ export function bookmarkReducer(state = initialState, action: bookMark.Actions) 
                 id: action.payload
             };
         case bookMark.GET_BOOK_MARK_SUCCESS:
+            return {
+                ...state,
+                bookmark: action.payload
+            };
+        case bookMark.GET_BOOK_MARK_BY_USERID_SUCCESS:
             return {
                 ...state,
                 bookmark: action.payload
@@ -37,3 +41,5 @@ export function bookmarkReducer(state = initialState, action: bookMark.Actions) 
     }
 }
 
+
+export const getBookmark = (state: BookMarkState) => state.bookmarkState.bookmark;

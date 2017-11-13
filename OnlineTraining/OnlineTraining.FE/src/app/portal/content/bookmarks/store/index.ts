@@ -1,2 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-export const selectLearningPathState = createFeatureSelector('portalModule');
+import * as fromBookmark from './reducers/bookmark.reducer';
+export const selectBookmarkState = createFeatureSelector('portalModule');
+
+export const selectBookmarkByUserId = createSelector(
+    selectBookmarkState,
+    fromBookmark.getBookmark
+  );
+

@@ -25,7 +25,7 @@
       <p class="card-text"> {{course.shortDescription}}</p>
       <a class="btn btn-primary" id="viewCourseDetailbtn" (click)="toggleCourseDetailPage()">
         <i class="fa fa-film" aria-hidden="true"></i> View detail</a>
-      <ota-bookmark-icon [id]="course.id"></ota-bookmark-icon>
+      <ota-bookmark-icon [id]="course.id" [userbookmark]="bookmark"></ota-bookmark-icon>
     </div>
   </div>
 </div>
