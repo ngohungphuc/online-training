@@ -1,6 +1,6 @@
 import * as fromLearningPathList from '../learning-path/store/index';
 import { Component, OnInit } from '@angular/core';
-import { DETAIL_PAGE } from './store/actions/learning-path.layout.actions';
+import { PATH_DETAIL_PAGE } from './store/actions/learning-path.layout.actions';
 import { GET_LEARNING_PATH } from './store/actions/learning-path.actions';
 import { Store } from '@ngrx/store';
 
@@ -31,7 +31,7 @@ export class LearningPathComponent implements OnInit {
       learningPathDescription: path.learningPathDescription,
       isDetailPage: true
     };
-    this.store.dispatch({ type: DETAIL_PAGE, payload: pathInfo });
+    this.store.dispatch({ type: PATH_DETAIL_PAGE, payload: pathInfo });
     this.store
       .select(fromLearningPathList.selectLearningPathDetailPage)
       .subscribe((res: any) => {

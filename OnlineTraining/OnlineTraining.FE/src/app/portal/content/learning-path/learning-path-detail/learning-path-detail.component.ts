@@ -3,7 +3,7 @@ import * as fromLearningPathList from '../../learning-path/store/index';
 import { AuthService } from '../../../../common/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../store/model/course.model';
-import { DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
+import { PATH_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
 import { GET_BOOK_MARK_BY_USERID } from '../../bookmarks/store/actions/bookmark.actions';
 import { GET_COURSE_BY_LEARNING_PATH_ID } from '../store/actions/learning-path.actions';
 import { StorageService } from '../../../../common/services/storage.service';
@@ -15,7 +15,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./learning-path-detail.component.scss']
 })
 export class LearningPathDetailComponent implements OnInit {
-  isDetailPage: boolean;
+  isPathDetailPage: boolean;
   pathId: string;
   courseByPathId: Course;
   loading = true;
@@ -33,14 +33,14 @@ export class LearningPathDetailComponent implements OnInit {
   }
 
   togglePathPage() {
-    this.store.dispatch({ type: DETAIL_PAGE, payload: false });
+    this.store.dispatch({ type: PATH_DETAIL_PAGE, payload: false });
   }
 
   getDataFromLearningPath() {
     this.store
     .select(fromLearningPathList.selectLearningPathLayout)
     .subscribe((res: any) => {
-      this.isDetailPage = res.isDetailPage;
+      this.isPathDetailPage = res.isPathDetailPage;
       this.pathId = res.pathId;
       this.learningPathDescription = res.learningPathDescription;
     });

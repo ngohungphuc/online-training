@@ -25,8 +25,7 @@
           <h6 class="card-title"> by {{course?.createdBy}}</h6>
           <p class="card-text"> Target Audience: {{course?.targetAudience}}</p>
           <p class="card-text"> {{course?.shortDescription}}</p>
-          <a class="btn btn-primary" id="viewCourseDetailbtn" (click)="toggleCourseDetailPage()">
-            <i class="fa fa-film" aria-hidden="true"></i> View detail</a>
+          <ota-course-detail-btn [course]="course"></ota-course-detail-btn>
           <ota-bookmark-icon [id]="course.id" [userbookmark]="bookmark"></ota-bookmark-icon>
         </div>
       </div>
