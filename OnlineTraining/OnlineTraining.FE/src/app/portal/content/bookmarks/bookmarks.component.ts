@@ -1,9 +1,11 @@
-import { GET_BOOK_MARK, GET_BOOK_MARK_BY_USERID } from './store/actions/bookmark.actions';
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { StorageService } from '../../../common/services/storage.service';
 import * as fromBookmark from './store/index';
+import { Component, OnInit } from '@angular/core';
 import { Course } from '../learning-path/store/model/course.model';
+import { GET_BOOK_MARK, GET_BOOK_MARK_BY_USERID } from './store/actions/bookmark.actions';
+import { StorageService } from '../../../common/services/storage.service';
+import { Store } from '@ngrx/store';
+
+
 @Component({
   selector: 'ota-bookmarks',
   templateUrl: './bookmarks.component.html',

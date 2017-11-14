@@ -174,41 +174,92 @@ namespace OnlineTraining.Scripts
             var courseDetailCollection = mongoConnect.GetConnection().GetCollection<CourseDetail>("CourseDetails");
             var courseDetailList = new List<CourseDetail>
             {
+                //parent module
+                new CourseDetail
+                {
+                    Id = new ObjectId("5a0aada4d6e344327b9390a2").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    CourseId = new ObjectId("5a01de93990092a25640e1fc").ToString(),
+                    ModuleId = "",
+                    Order = 1,
+                    Title = "Introduction"
+                },
+                //child module
                 new CourseDetail
                 {
                     Id = new ObjectId("5a01e86f990092a25640e562").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    CourseId = new ObjectId("5a01de93990092a25640e1fc"),
-                    CourseMediaId = new ObjectId(),
+                    CourseId = new ObjectId("5a01de93990092a25640e1fc").ToString(),
+                    CourseMediaId = new ObjectId("5a0aade86857fdea6cb47947").ToString(),
+                    ModuleId = new ObjectId("5a0aada4d6e344327b9390a2").ToString(),
                     Title = "Course Overview"
+                },
+                new CourseDetail
+                {
+                    Id = new ObjectId("5a0aadd7429b1dd2742b9b35").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    CourseId = new ObjectId("5a01de93990092a25640e1fc").ToString(),
+                    CourseMediaId = "",
+                    ModuleId = "",
+                    Order = 2,
+                    Title = "Introduction"
                 },
                 new CourseDetail
                 {
                     Id = new ObjectId("5a01e875990092a25640e566").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    CourseId = new ObjectId("5a01de93990092a25640e1fc"),
-                    CourseMediaId = new ObjectId(),
+                    CourseId = new ObjectId("5a01de93990092a25640e1fc").ToString(),
+                    CourseMediaId = new ObjectId("5a0aadb467cc358b200419d7").ToString(),
+                    ModuleId = new ObjectId("5a0aadd7429b1dd2742b9b35").ToString(),
                     Title = "Microsoft Azure: The Big Picture"
                 },
+
+
                 new CourseDetail
                 {
                     Id = new ObjectId("5a01e88c990092a25640e56c").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    CourseId = new ObjectId("5a01de98990092a25640e1fe"),
-                    CourseMediaId = new ObjectId(),
+                    CourseId = new ObjectId("5a01de98990092a25640e1fe").ToString(),
+                    CourseMediaId = "",
+                    ModuleId = "",
+                    Order = 1,
+                    Title = "Overview"
+                },
+                new CourseDetail
+                {
+                    Id = new ObjectId("5a0ab150c2859eecbc6b75e2").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    CourseId = new ObjectId("5a01de98990092a25640e1fe").ToString(),
+                    CourseMediaId = new ObjectId("5a0ab1170632adb2ffae88ba").ToString(),
+                    ModuleId = new ObjectId("5a01e88c990092a25640e56c").ToString(),
                     Title = "Course Overview"
+                },
+                new CourseDetail
+                {
+                    Id = new ObjectId("5a0ab16c3812b9c8aa69448e").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    CourseId = new ObjectId("5a01de98990092a25640e1fe").ToString(),
+                    CourseMediaId = "",
+                    ModuleId = "",
+                    Order = 2,
+                    Title = "Introduction"
                 },
                 new CourseDetail
                 {
                     Id = new ObjectId("5a01e891990092a25640e570").ToString(),
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
-                    CourseId = new ObjectId("5a01de98990092a25640e1fe"),
-                    CourseMediaId = new ObjectId(),
-                    Title = "An Introduction to the Microsoft Web Platform"
+                    CourseId = new ObjectId("5a01de98990092a25640e1fe").ToString(),
+                    CourseMediaId = new ObjectId("5a0ab184c66268be44baf703").ToString(),
+                    Title = "An Introduction to the Microsoft Web Platform",
+                    ModuleId = new ObjectId("5a0ab16c3812b9c8aa69448e").ToString()
                 }
             };
 
