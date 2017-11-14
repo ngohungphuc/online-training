@@ -55,6 +55,7 @@ export class LearningPathDetailComponent implements OnInit {
     .select(fromLearningPathList.selectCourseByPathId)
     .subscribe(res => {
       this.courseByPathId = res;
+      debugger
     });
   }
 
