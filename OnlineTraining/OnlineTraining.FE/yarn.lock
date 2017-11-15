@@ -3965,6 +3965,10 @@ ngrx-store-freeze@^0.2.0:
   dependencies:
     deep-freeze-strict "^1.1.1"
 
+ngx-bootstrap@^2.0.0-beta.8:
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.0-beta.8.tgz#3209c818e89a4b4ea88c7c45fc53cebf000c0699"
+
 ngx-cookie-service@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-1.0.9.tgz#b88ef198299c93d363608545036dd38ed767b0ec"

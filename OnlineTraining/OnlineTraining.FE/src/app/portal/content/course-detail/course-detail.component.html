@@ -1,0 +1,10 @@
+<accordion>
+  <div *ngFor="let data of courseDetailList">
+    <accordion-group heading="{{data.courseDetail.title}}">
+        <p *ngFor="let courseDetail of data.courseModule">
+          {{courseDetail.title}}
+        </p>
+    </accordion-group>
+  </div>
+
+</accordion>

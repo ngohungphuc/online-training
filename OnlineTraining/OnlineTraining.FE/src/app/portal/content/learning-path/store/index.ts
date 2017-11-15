@@ -27,6 +27,11 @@ export const selectLearningPathDetailPage = createSelector(
 );
 
 
+export const selectCourseDetailByCourseId = createSelector(
+  selectLearningPathState,
+  fromLearningPathLayout.courseDetail
+);
+
 
 
 

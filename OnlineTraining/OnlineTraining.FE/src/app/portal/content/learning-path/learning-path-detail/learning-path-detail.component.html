@@ -1,5 +1,5 @@
 <ota-spinner [loading]="loading"></ota-spinner>
-<div *ngIf="!loading">
+<div *ngIf="!loading" [class.hidden]="isCourseDetailPage">
   <div class="row" *ngIf="isDetailPage">
     <a class="btn btn-primary" (click)="togglePathPage()">
       <i class="fa fa-arrow-circle-left"></i> Back</a>
@@ -25,7 +25,10 @@
           <h6 class="card-title"> by {{course?.createdBy}}</h6>
           <p class="card-text"> Target Audience: {{course?.targetAudience}}</p>
           <p class="card-text"> {{course?.shortDescription}}</p>
-          <ota-course-detail-btn [course]="course"></ota-course-detail-btn>
+          <!-- <ota-course-detail-btn [course]="course"></ota-course-detail-btn> -->
+          <a class="btn btn-primary" id="viewCourseDetailbtn" (click)="toggleCourseDetailPage(course)">
+            <i class="fa fa-film" aria-hidden="true"></i> View detail</a>
+          
           <ota-bookmark-icon [id]="course.id" [userbookmark]="bookmark"></ota-bookmark-icon>
         </div>
       </div>
@@ -42,5 +45,11 @@
         </blockquote>
       </div>
     </div>
+  </ng-container>
+
+</div>
+<div *ngIf="isCourseDetailPage">
+  <ng-container>
+    <ota-course-detail></ota-course-detail>
   </ng-container>
 </div>

@@ -8,7 +8,8 @@ import {
   MyCourseComponent,
   PortalHeaderComponent,
   PortalIndexComponent,
-  PortalSidebarComponent
+  PortalSidebarComponent,
+  CourseDetailComponent
   } from './index';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,7 +22,7 @@ import { PortalRouting } from './portal.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
-
+import { AccordionModule } from 'ngx-bootstrap';
 
 
 
@@ -32,6 +33,7 @@ import { StoreModule } from '@ngrx/store';
     ReactiveFormsModule,
     PortalRouting,
     NgbModule,
+    AccordionModule.forRoot(),
     StoreModule.forFeature('portalModule', portalReducers),
     EffectsModule.forFeature([LearningPathEffects, BookmarkEffects])
   ],
@@ -43,7 +45,8 @@ import { StoreModule } from '@ngrx/store';
     BookmarksComponent,
     MyCourseComponent,
     LearningPathDetailComponent,
-    BookmarkIconComponent
+    BookmarkIconComponent,
+    CourseDetailComponent
   ],
   exports: [
   ],

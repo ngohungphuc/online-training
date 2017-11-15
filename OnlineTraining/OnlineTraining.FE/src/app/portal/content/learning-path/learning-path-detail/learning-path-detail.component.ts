@@ -3,7 +3,7 @@ import * as fromLearningPathList from '../../learning-path/store/index';
 import { AuthService } from '../../../../common/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../store/model/course.model';
-import { PATH_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
+import { PATH_DETAIL_PAGE, GET_COURSE_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
 import { GET_BOOK_MARK_BY_USERID } from '../../bookmarks/store/actions/bookmark.actions';
 import { GET_COURSE_BY_LEARNING_PATH_ID } from '../store/actions/learning-path.actions';
 import { StorageService } from '../../../../common/services/storage.service';
@@ -22,6 +22,7 @@ export class LearningPathDetailComponent implements OnInit {
   learningPathDescription: string;
   userId: string;
   bookmark: any;
+  isCourseDetailPage = false;
   constructor(
     private store: Store<any>,
     private storageService: StorageService) {
@@ -68,5 +69,11 @@ export class LearningPathDetailComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  toggleCourseDetailPage(course) {
+    console.log(course);
+    this.store.dispatch({type: GET_COURSE_DETAIL_PAGE, payload: course.id});
+    this.isCourseDetailPage = true;
   }
 }

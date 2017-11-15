@@ -62,7 +62,7 @@ export class LearningPathEffects {
         .ofType(learningPathLayout.GET_COURSE_DETAIL_PAGE)
         .mergeMap((action: learningPathLayout.GetCourseDetailPage) =>
           this.authService
-            .Get(`api/Course/GetCourseDetailByCourseId/${action.payload}`)
+            .Get(`api/CourseDetail/GetCourseDetailByCourseId/${action.payload}`)
             .map(responseData => {
               const data = responseData.json();
               console.log(data);
