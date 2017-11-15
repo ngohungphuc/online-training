@@ -217,7 +217,16 @@ namespace OnlineTraining.Scripts
                     ModuleId = new ObjectId("5a0aadd7429b1dd2742b9b35").ToString(),
                     Title = "Microsoft Azure: The Big Picture"
                 },
-
+                new CourseDetail
+                {
+                    Id = new ObjectId("5a0be4d4a0e56051fe1465fd").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    CourseId = new ObjectId("5a01de93990092a25640e1fc").ToString(),
+                    CourseMediaId = new ObjectId("5a0be4db4f5eb939edc60a2b").ToString(),
+                    ModuleId = new ObjectId("5a0aadd7429b1dd2742b9b35").ToString(),
+                    Title = "Microsoft Azure: The Big Picture - Part 2"
+                },
 
                 new CourseDetail
                 {

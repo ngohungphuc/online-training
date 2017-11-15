@@ -91,6 +91,9 @@ namespace OnlineTraining.API.Helpers.Extensions
             services.AddSingleton<ICourseRepository, CourseRepository>();
             services.AddScoped<ICourseServices, CourseServices>();
 
+            services.AddSingleton<ICourseDetailRepository, CourseDetailRepository>();
+            services.AddScoped<ICourseDetailServices, CourseDetailServices>();
+
             services.AddSingleton<IBookmarkRepository, BookmarkRepository>();
             services.AddScoped<IBookmarkServices, BookmarkServices>();
 
