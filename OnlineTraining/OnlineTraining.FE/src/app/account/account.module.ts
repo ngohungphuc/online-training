@@ -11,7 +11,6 @@ import { AuthService } from '../common/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginService } from './store/services/login.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -26,7 +25,6 @@ import { AuthGuard } from './auth.guard';
     SharedModule,
     ReactiveFormsModule,
     AccountRouting,
-    NgbModule,
     StoreModule.forFeature('authModule', authReducer),
     EffectsModule.forFeature([AuthEffects])
   ],

@@ -1,5 +1,6 @@
 import * as fromBookmark from '../../bookmarks/store/index';
 import * as fromLearningPathList from '../../learning-path/store/index';
+import * as fromLearningLayout from '../store/index';
 import { AuthService } from '../../../../common/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../store/model/course.model';
@@ -31,6 +32,7 @@ export class LearningPathDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getBookmarkStatus();
+    this.courseDetailPage();
   }
 
   togglePathPage() {
@@ -51,7 +53,7 @@ export class LearningPathDetailComponent implements OnInit {
     });
   }
 
-  getCourseByPathId(){
+  getCourseByPathId() {
     this.store
     .select(fromLearningPathList.selectCourseByPathId)
     .subscribe(res => {
@@ -59,7 +61,7 @@ export class LearningPathDetailComponent implements OnInit {
     });
   }
 
-  getBookmarkStatus(){
+  getBookmarkStatus() {
     this.store.dispatch({type: GET_BOOK_MARK_BY_USERID, payload: this.userId});
     this.store.select(fromBookmark.selectBookmarkByUserId).subscribe(res => {
       if (res) {
@@ -71,9 +73,9 @@ export class LearningPathDetailComponent implements OnInit {
     });
   }
 
-  toggleCourseDetailPage(course) {
-    console.log(course);
-    this.store.dispatch({type: GET_COURSE_DETAIL_PAGE, payload: course.id});
-    this.isCourseDetailPage = true;
+  courseDetailPage() {
+    this.store.select(fromLearningLayout.selectLearningPathLayout).subscribe(res => {
+      res.isCourseDetailPage === true ? this.isCourseDetailPage = true : this.isCourseDetailPage = false;
+    });
   }
 }

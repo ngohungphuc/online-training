@@ -15,7 +15,6 @@ export class CourseDetailBtnComponent implements OnInit {
   }
 
   toggleCourseDetailPage(course) {
-    console.log(course);
     this.store.dispatch({type: GET_COURSE_DETAIL_PAGE, payload: course.id});
   }
 }

@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { metaReducers, reducers } from './common/core/state-management/reducers/index';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
@@ -31,7 +30,6 @@ import { CookieModule } from 'ngx-cookie';
     HttpModule,
     SharedModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
     CookieModule.forRoot(),
       /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer

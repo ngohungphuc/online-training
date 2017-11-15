@@ -14,7 +14,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { LearningPathEffects } from './content/learning-path/store/effects/learning-path.effects';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { portalReducer } from './store/reducers/portal.reducer';
 import { portalReducers } from './store/index';
@@ -32,7 +31,6 @@ import { AccordionModule } from 'ngx-bootstrap';
     SharedModule,
     ReactiveFormsModule,
     PortalRouting,
-    NgbModule,
     AccordionModule.forRoot(),
     StoreModule.forFeature('portalModule', portalReducers),
     EffectsModule.forFeature([LearningPathEffects, BookmarkEffects])

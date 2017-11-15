@@ -41,6 +41,11 @@ export function learningPathLayoutReducer(state = initialState, action: learning
               courseDetail: action.payload,
               isCourseDetailPage: true
             };
+        case learningPathLayout.BACK_TO_COURSE_DETAIL_PAGE_PATH:
+            return {
+              ...state,
+              isCourseDetailPage: false
+            };
         default:
             return state;
     }
