@@ -1,4 +1,5 @@
-OnlineTraining/OnlineTraining-FE/src/app/typescripts/**
-OnlineTraining/OnlineTraining-FE/gulpfile.js
 OnlineTraining/OnlineTraining-FE/karma.conf.js
 OnlineTraining/OnlineTraining-FE/protractor.conf.js
+OnlineTraining/OnlineTraining-FE/src/assets/**
+OnlineTraining/OnlineTraining-FE/src/enviroments/**
+Ref/**

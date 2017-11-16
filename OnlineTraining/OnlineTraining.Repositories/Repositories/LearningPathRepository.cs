@@ -14,10 +14,8 @@ namespace OnlineTraining.Repositories.Repositories
     public class LearningPathRepository: ILearningPathRepository
     {
         private readonly IMongoCollection<LearningPath> _learningPathRepository;
-        private readonly IOptions<OtaConfig> config;
-        public LearningPathRepository(IOptions<OtaConfig> Config)
+        public LearningPathRepository(IOptions<OtaConfig> config)
         {
-            config = Config;
             var mongoConnect = new MongoContext(config);
             _learningPathRepository = mongoConnect.GetConnection().GetCollection<LearningPath>("LearningPaths");
         }

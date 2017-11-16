@@ -14,10 +14,8 @@ namespace OnlineTraining.Repositories.Repositories
     public class CourseRepository: ICourseRepository
     {
         private readonly IMongoCollection<Course> _courseRepository;
-        private readonly IOptions<OtaConfig> config;
-        public CourseRepository(IOptions<OtaConfig> Config)
+        public CourseRepository(IOptions<OtaConfig> config)
         {
-            config = Config;
             var mongoConnect = new MongoContext(config);
             _courseRepository = mongoConnect.GetConnection().GetCollection<Course>("Courses");
         }

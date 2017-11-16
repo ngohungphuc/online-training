@@ -40,7 +40,7 @@ namespace OnlineTraining.Helper.Hash
         {
             var EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var result = input;
-            result.Replace(" ", "+");
+            result = result.Replace(" ", "+");
             var cipherBytes = Convert.FromBase64String(input);
 
             using (var encryptor = Aes.Create())

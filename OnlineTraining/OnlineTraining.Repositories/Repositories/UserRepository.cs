@@ -12,11 +12,9 @@ namespace OnlineTraining.Repositories.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly IMongoCollection<User> _userRepository;
-        private readonly IOptions<OtaConfig> config;
 
-        public UserRepository(IOptions<OtaConfig> Config)
+        public UserRepository(IOptions<OtaConfig> config)
         {
-            config = Config;
             var mongoConnect = new MongoContext(config);
             _userRepository = mongoConnect.GetConnection().GetCollection<User>("Users");
         }

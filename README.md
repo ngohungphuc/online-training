@@ -10,7 +10,7 @@
   -  Gzip compression
   -  JWT Authentication with refresh token
   -  SignalR Core
-  -  Elasticsearch
+  -  Elasticsearch (Apply later)
   -  Automapper
   -  MongoDB
   -  Webpack
@@ -18,11 +18,10 @@
   -  Redux
   -  Effect
   -  SASS
-  -  [Bootstrap materialize design](https://mdbootstrap.com) 
   -  [MongoDb Driver](https://github.com/mongodb/mongo-csharp-driver)
   -  Google drive API 
   -  Video streaming
-  -  Web job background task
+  -  Web job background task (Apply later)
 
 ### Ref doc
 

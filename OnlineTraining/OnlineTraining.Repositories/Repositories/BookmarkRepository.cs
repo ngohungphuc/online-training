@@ -15,10 +15,8 @@ namespace OnlineTraining.Repositories.Repositories
     {
         private readonly IMongoCollection<Bookmark> _bookmarkRepository;
         private readonly IMongoCollection<Course> _courseRepository;
-        private readonly IOptions<OtaConfig> config;
-        public BookmarkRepository(IOptions<OtaConfig> Config)
+        public BookmarkRepository(IOptions<OtaConfig> config)
         {
-            config = Config;
             var mongoConnect = new MongoContext(config);
             _bookmarkRepository = mongoConnect.GetConnection().GetCollection<Bookmark>("Bookmarks");
             _courseRepository = mongoConnect.GetConnection().GetCollection<Course>("Courses");
@@ -43,6 +41,7 @@ namespace OnlineTraining.Repositories.Repositories
                 var course = await _courseRepository.Find(c => c.Id == courseId).SingleAsync();
                 listCourses.Add(course);
             }
+
             return listCourses;
         }
 
@@ -50,7 +49,11 @@ namespace OnlineTraining.Repositories.Repositories
         {
             var bookmarkExist =
                  _bookmarkRepository.Find(bm => bm.CourseId == courseId && bm.UserId == userId);
-            if (bookmarkExist.Count() > 0) return false;
+            
+            if (bookmarkExist.Count() > 0) {
+                return false;
+            }
+
             var bookmark = new Bookmark
             {
                 CourseId = courseId,
@@ -59,6 +62,7 @@ namespace OnlineTraining.Repositories.Repositories
                 ModifieddDate = DateTime.Now
             };
             await _bookmarkRepository.InsertOneAsync(bookmark);
+
             return true;
         }
 
