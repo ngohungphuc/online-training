@@ -1,0 +1,20 @@
+[
+	{
+		"_id" : ObjectId("59ee1ba3acf7c53bf4d2504c"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.044Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.045Z"),
+		"UserName" : "phucngo",
+		"Password" : "KUECO99H2HWuZQc2q9Nytw==",
+		"Email" : "ngohungphuc95@gmail.com",
+		"AvatarUrl" : "https://avatars0.githubusercontent.com/u/13591213?s=460&v=4"
+	},
+	{
+		"_id" : ObjectId("59ee1ba3acf7c53bf4d2504d"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.050Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.050Z"),
+		"UserName" : "phucngo1",
+		"Password" : "KUECO99H2HWuZQc2q9Nytw==",
+		"Email" : "ngohungphuc7695@gmail.com",
+		"AvatarUrl" : "https://avatars0.githubusercontent.com/u/13591213?s=460&v=4"
+	}
+]

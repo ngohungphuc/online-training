@@ -1,0 +1,52 @@
+[
+	{
+		"_id" : ObjectId("5a01de5f990092a25640e1e6"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.493Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.493Z"),
+		"Name" : "Microsoft Azure for Developers",
+		"Slug" : "Microsoft-Azure-for-Developers",
+		"TotalCourses" : 2,
+		"PathIcon" : "path/azure-blue.png",
+		"LearningPathDescription" : "This path is intended for those who would like to learn about Azure services and practices that will enable you to build scalable, highly available and performant applications. This path will demonstrate how to leverage Azure for common capabilities and plumbing, so that you can focus on building things that matter."
+	},
+	{
+		"_id" : ObjectId("5a01de86990092a25640e1f2"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"Name" : "Angular",
+		"Slug" : "Angular",
+		"TotalCourses" : 0,
+		"PathIcon" : "path/angular.png",
+		"LearningPathDescription" : null
+	},
+	{
+		"_id" : ObjectId("5a01de8c990092a25640e1f8"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"Name" : "ASP.Net MVC",
+		"Slug" : "ASP.Net-MVC",
+		"TotalCourses" : 1,
+		"PathIcon" : "path/asp-dot-net.png",
+		"LearningPathDescription" : "MVC is an architectural pattern that separates applications into three components: the model, the view, and the controller. ASP.NET MVC 5 provides this functionality to the ASP.NET framework as an alternative to the WebForms pattern. You’ll love working with this highly-testable and lightweight framework!"
+	},
+	{
+		"_id" : ObjectId("5a01f9a7990092a25640ebcc"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"Name" : "C#",
+		"Slug" : "CSharp",
+		"TotalCourses" : 0,
+		"PathIcon" : "path/csharp.png",
+		"LearningPathDescription" : null
+	},
+	{
+		"_id" : ObjectId("5a01f9a7990092a25640ebcd"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.494Z"),
+		"Name" : "Html5",
+		"Slug" : "html5",
+		"TotalCourses" : 0,
+		"PathIcon" : "path/html5.png",
+		"LearningPathDescription" : null
+	}
+]

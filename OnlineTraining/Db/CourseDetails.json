@@ -1,0 +1,92 @@
+[
+	{
+		"_id" : ObjectId("5a0aada4d6e344327b9390a2"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "",
+		"Order" : 1,
+		"Title" : "Introduction",
+		"CourseId" : "5a01de93990092a25640e1fc",
+		"CourseMediaId" : null
+	},
+	{
+		"_id" : ObjectId("5a01e86f990092a25640e562"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "5a0aada4d6e344327b9390a2",
+		"Order" : null,
+		"Title" : "Course Overview",
+		"CourseId" : "5a01de93990092a25640e1fc",
+		"CourseMediaId" : "5a0aade86857fdea6cb47947"
+	},
+	{
+		"_id" : ObjectId("5a0aadd7429b1dd2742b9b35"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "",
+		"Order" : 2,
+		"Title" : "Introduction",
+		"CourseId" : "5a01de93990092a25640e1fc",
+		"CourseMediaId" : ""
+	},
+	{
+		"_id" : ObjectId("5a01e875990092a25640e566"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "5a0aadd7429b1dd2742b9b35",
+		"Order" : null,
+		"Title" : "Microsoft Azure: The Big Picture",
+		"CourseId" : "5a01de93990092a25640e1fc",
+		"CourseMediaId" : "5a0aadb467cc358b200419d7"
+	},
+	{
+		"_id" : ObjectId("5a0be4d4a0e56051fe1465fd"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "5a0aadd7429b1dd2742b9b35",
+		"Order" : null,
+		"Title" : "Microsoft Azure: The Big Picture - Part 2",
+		"CourseId" : "5a01de93990092a25640e1fc",
+		"CourseMediaId" : "5a0be4db4f5eb939edc60a2b"
+	},
+	{
+		"_id" : ObjectId("5a01e88c990092a25640e56c"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "",
+		"Order" : 1,
+		"Title" : "Overview",
+		"CourseId" : "5a01de98990092a25640e1fe",
+		"CourseMediaId" : ""
+	},
+	{
+		"_id" : ObjectId("5a0ab150c2859eecbc6b75e2"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "5a01e88c990092a25640e56c",
+		"Order" : null,
+		"Title" : "Course Overview",
+		"CourseId" : "5a01de98990092a25640e1fe",
+		"CourseMediaId" : "5a0ab1170632adb2ffae88ba"
+	},
+	{
+		"_id" : ObjectId("5a0ab16c3812b9c8aa69448e"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "",
+		"Order" : 2,
+		"Title" : "Introduction",
+		"CourseId" : "5a01de98990092a25640e1fe",
+		"CourseMediaId" : ""
+	},
+	{
+		"_id" : ObjectId("5a01e891990092a25640e570"),
+		"CreatedDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModifieddDate" : ISODate("2017-11-15T06:55:58.330Z"),
+		"ModuleId" : "5a0ab16c3812b9c8aa69448e",
+		"Order" : null,
+		"Title" : "An Introduction to the Microsoft Web Platform",
+		"CourseId" : "5a01de98990092a25640e1fe",
+		"CourseMediaId" : "5a0ab184c66268be44baf703"
+	}
+]

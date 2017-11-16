@@ -1,0 +1,14 @@
+//robo mongo
+records = [];
+var cursor = db.getCollection('').find({}, {});
+while(cursor.hasNext()) {
+    records.push(cursor.next())
+}
+print(tojson(records));
+
+//mlab
+mongoimport -h ds111336.mlab.com:11336 -d online-training -c Users -u <user> -p <password> --file <input file>
+mongoexport -h ds111336.mlab.com:11336 -d online-training -c Users -u <user> -p <password> -o Users.json
+
+
+mongoimport -h ds111336.mlab.com:11336 -d online-training -c Users -u phucngo -p 070695 --file D:\Study\online-training\OnlineTraining\Db\Users.json --jsonArray

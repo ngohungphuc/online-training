@@ -1,0 +1,32 @@
+[
+	{
+		"_id" : ObjectId("5a01de93990092a25640e1fc"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.504Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.504Z"),
+		"CourseName" : "Microsoft Azure: The Big Picture",
+		"ShortDescription" : "This course is intended to help technology professionals gain an understanding of Microsoft's cloud platform. The goal in building this course was to provide enough information to get a sense of the platform and what it can do. Follow up this course by diving into other courses that focus on specific Azure offerings and technologies to deepen your knowledge and tackle specific challenges.",
+		"CreatedBy" : "Matt Milner",
+		"TargetAudience" : "Beginner",
+		"LearningPathId" : "5a01de5f990092a25640e1e6"
+	},
+	{
+		"_id" : ObjectId("5a05e27297a1606f748eb075"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.505Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.505Z"),
+		"CourseName" : "Introduction to Azure App Services",
+		"ShortDescription" : "This course will teach you the fundamentals of using the Azure App Services Platform to build and deploy apps at scale.",
+		"CreatedBy" : "Barry Luijbregts",
+		"TargetAudience" : "Beginner",
+		"LearningPathId" : "5a01de5f990092a25640e1e6"
+	},
+	{
+		"_id" : ObjectId("5a01de98990092a25640e1fe"),
+		"CreatedDate" : ISODate("2017-11-15T04:41:08.505Z"),
+		"ModifieddDate" : ISODate("2017-11-15T04:41:08.505Z"),
+		"CourseName" : "A Comparison of Microsoft Web Technologies",
+		"ShortDescription" : "Before engaging in any web development project using the Microsoft web platform, a thorough knowledge of the technology options available is key to choosing the right path. In this course, A Comparison of Web Technologies, you will learn how to evaluate the strengths and challenges of each web technology, and determine which is best aligned with needs of developer. You will get to compare Web Forms, Web Pages, and MVC with each other using similar demos to showcase unique approaches. You will also get an understanding of how ASP.NET Core compares with the full ASP.NET framework. When you are finished with this course, you will have the ability to make a strategic choice as to which Microsoft web technology is best for you!",
+		"CreatedBy" : "Michael Palermo",
+		"TargetAudience" : "Beginner",
+		"LearningPathId" : "5a01de8c990092a25640e1f8"
+	}
+]
