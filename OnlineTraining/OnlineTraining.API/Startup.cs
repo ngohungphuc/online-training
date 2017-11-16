@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using OnlineTraining.API.Helpers.Extensions;
 using OnlineTraining.Entities.Db;
-
+using OnlineTraining.Helper.Config;
 
 namespace OnlineTraining.API
 {
@@ -36,6 +36,9 @@ namespace OnlineTraining.API
             services.AddSignalR();
             services.UseCompressionCollection();
             services.AddMvc();
+            services.AddOptions();
+            // Add our Config object so it can be injected
+            services.Configure<OtaConfig>(option => Configuration.GetSection("MongoConnection").Bind(option));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

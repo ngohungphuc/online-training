@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using OnlineTraining.Entities.Db;
 using OnlineTraining.Entities.Entities;
 using OnlineTraining.Entities.ViewModels;
+using OnlineTraining.Helper.Config;
 using OnlineTraining.Repositories.Interfaces;
 
 namespace OnlineTraining.Repositories.Repositories
@@ -13,10 +16,11 @@ namespace OnlineTraining.Repositories.Repositories
     public class CourseDetailRepository : ICourseDetailRepository
     {
         private readonly IMongoCollection<CourseDetail> _courseDetailRepository;
-
-        public CourseDetailRepository()
+        private readonly IOptions<OtaConfig> config;
+        public CourseDetailRepository(IOptions<OtaConfig> Config)
         {
-            var mongoConnect = new MongoConnect();
+            config = Config;
+            var mongoConnect = new MongoContext(config);
             _courseDetailRepository = mongoConnect.GetConnection().GetCollection<CourseDetail>("CourseDetails");
         }
 

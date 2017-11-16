@@ -1,7 +1,9 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using OnlineTraining.Entities.Db;
 using OnlineTraining.Entities.Entities;
+using OnlineTraining.Helper.Config;
 using OnlineTraining.Helper.Hash;
 using OnlineTraining.Repositories.Interfaces;
 
@@ -10,10 +12,12 @@ namespace OnlineTraining.Repositories.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly IMongoCollection<User> _userRepository;
+        private readonly IOptions<OtaConfig> config;
 
-        public UserRepository()
+        public UserRepository(IOptions<OtaConfig> Config)
         {
-            var mongoConnect = new MongoConnect();
+            config = Config;
+            var mongoConnect = new MongoContext(config);
             _userRepository = mongoConnect.GetConnection().GetCollection<User>("Users");
         }
 

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using OnlineTraining.Entities.Db;
 using OnlineTraining.Entities.Entities;
+using OnlineTraining.Helper.Config;
 using OnlineTraining.Repositories.Interfaces;
 
 namespace OnlineTraining.Repositories.Repositories
@@ -13,9 +15,11 @@ namespace OnlineTraining.Repositories.Repositories
     {
         private readonly IMongoCollection<Bookmark> _bookmarkRepository;
         private readonly IMongoCollection<Course> _courseRepository;
-        public BookmarkRepository()
+        private readonly IOptions<OtaConfig> config;
+        public BookmarkRepository(IOptions<OtaConfig> Config)
         {
-            var mongoConnect = new MongoConnect();
+            config = Config;
+            var mongoConnect = new MongoContext(config);
             _bookmarkRepository = mongoConnect.GetConnection().GetCollection<Bookmark>("Bookmarks");
             _courseRepository = mongoConnect.GetConnection().GetCollection<Course>("Courses");
         }

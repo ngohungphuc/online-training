@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using OnlineTraining.Entities.Db;
 using OnlineTraining.Entities.Entities;
+using OnlineTraining.Helper.Config;
 using OnlineTraining.Helper.Hash;
 
 namespace OnlineTraining.Scripts
 {
     public class OnlineTrainingSeed
     {
-        private static readonly MongoConnect mongoConnect = new MongoConnect();
+        private static readonly MongoClient client = new MongoClient("mongodb://localhost:27017");
+        private static readonly IMongoDatabase database = client.GetDatabase("online-training");
 
         public static async Task AddUserToDb()
         {
-            var repo = mongoConnect.GetConnection().GetCollection<User>("Users");
+            var repo = database.GetCollection<User>("Users");
 
             var userList = new List<User>
             {
@@ -51,7 +54,7 @@ namespace OnlineTraining.Scripts
 
         public static async Task AddLearningPath()
         {
-            var pathCollection = mongoConnect.GetConnection().GetCollection<LearningPath>("LearningPaths");
+            var pathCollection = database.GetCollection<LearningPath>("LearningPaths");
             var pathList = new List<LearningPath>
             {
                 new LearningPath
@@ -118,7 +121,7 @@ namespace OnlineTraining.Scripts
 
         public static async Task AddCourse()
         {
-            var courseCollection = mongoConnect.GetConnection().GetCollection<Course>("Courses");
+            var courseCollection = database.GetCollection<Course>("Courses");
             var courseList = new List<Course>
             {
                 new Course
@@ -171,7 +174,7 @@ namespace OnlineTraining.Scripts
 
         public static async Task AddCourseDetail()
         {
-            var courseDetailCollection = mongoConnect.GetConnection().GetCollection<CourseDetail>("CourseDetails");
+            var courseDetailCollection = database.GetCollection<CourseDetail>("CourseDetails");
             var courseDetailList = new List<CourseDetail>
             {
                 //parent module
@@ -282,7 +285,7 @@ namespace OnlineTraining.Scripts
 
         public static async Task AddBookmark()
         {
-            var bookmarkCollection = mongoConnect.GetConnection().GetCollection<Bookmark>("Bookmarks");
+            var bookmarkCollection = database.GetCollection<Bookmark>("Bookmarks");
             var bookmarkList = new List<Bookmark>
             {
                 new Bookmark
