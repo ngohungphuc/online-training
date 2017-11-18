@@ -65,7 +65,6 @@ export class LearningPathEffects {
             .Get(`api/CourseDetail/GetCourseDetailByCourseId/${action.payload}`)
             .map(responseData => {
               const data = responseData.json();
-              console.log(data);
               return { type: GET_COURSE_DETAIL_PAGE_SUCCESS, payload: data };
             })
             .catch(error => {

@@ -25,7 +25,7 @@
         "styles.scss"
       ],
       "scripts": [
-        "assets/js/signalr-client-1.0.0-alpha2-final.min.js"
+        "../node_modules/@aspnet/signalr-client/dist/browser/signalr-clientES5-1.0.0-alpha2-final.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

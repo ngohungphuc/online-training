@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import * as signalR from '@aspnet/signalr-client';
+// import * as signalR from '@aspnet/signalr-client';
+declare var signalR: any;
 import { HubConnection } from '@aspnet/signalr-client';
 import { environment } from './../../../environments';
 

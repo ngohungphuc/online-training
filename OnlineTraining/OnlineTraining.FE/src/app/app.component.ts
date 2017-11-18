@@ -1,4 +1,3 @@
-import {SignalRService} from '../app/shared/index';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +10,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  constructor(private signalRService: SignalRService) {
+  constructor() {
 
   }
 }

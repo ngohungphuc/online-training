@@ -1,7 +1,7 @@
 <ota-spinner [loading]="loading"></ota-spinner>
-<ng-container *ngIf="courseBookmark != 0">
+<ng-container *ngIf="courseBookmark != null">
   <div class="row" *ngIf="!loading">
-    <div class="card bg-light mb-3 course-card" style="max-width: 20rem;" *ngFor="let course of courseBookmark">
+    <div  [class.hidden]="isCourseDetailPage" class="card bg-light mb-3 course-card" style="max-width: 20rem;" *ngFor="let course of courseBookmark">
       <div class="card-header">
         <span class="card-title">{{course?.courseName}} </span>
       </div>
@@ -17,7 +17,7 @@
 </ng-container>
 
 
-<ng-container  *ngIf="courseBookmark == 0">
+<ng-container  *ngIf="courseBookmark == null">
   <div class="card">
     <div class="card-header">
       Bookmark not found
@@ -29,3 +29,9 @@
     </div>
   </div>
 </ng-container>
+
+<div *ngIf="isCourseDetailPage">
+  <ng-container>
+    <ota-course-detail></ota-course-detail>
+  </ng-container>
+</div>
