@@ -10,8 +10,7 @@ export class LoginService {
     }
 
     login(userCredentials: UserCredentials): Observable<any> {
-        const loginUrl =  `${environment.serverUrl}/auth?grant_type=password&username=
-        ${userCredentials.account}&password=${userCredentials.password}`;
+        const loginUrl =  `${environment.serverUrl}/auth?grant_type=password&username=${userCredentials.account}&password=${userCredentials.password}`;
         return this.http.get(loginUrl);
     }
 }

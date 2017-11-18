@@ -2,14 +2,13 @@
   "name": "online-training.fe",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "server.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "start": "node server.js",
     "postinstall": "ng build --aot -prod"
   },
   "private": true,
