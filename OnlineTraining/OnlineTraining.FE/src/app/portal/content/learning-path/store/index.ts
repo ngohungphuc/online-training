@@ -32,6 +32,11 @@ export const selectCourseDetailByCourseId = createSelector(
   fromLearningPathLayout.courseDetail
 );
 
+export const selectCourseMediaByCourseDetailId = createSelector(
+  selectLearningPathState,
+  fromLearningPath.getCourseMediaByCourseDetailId
+);
+
 
 
 

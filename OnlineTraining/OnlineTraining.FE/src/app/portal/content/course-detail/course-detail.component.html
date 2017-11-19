@@ -13,9 +13,9 @@
       </div>
     </accordion>
   </div>
-  <div class="col-9">
+  <div class="col-9" *ngIf="blobUrl">
     <video controls="controls">
-      <source src="https://drive.google.com/uc?export=download&id=19_Y3M4OKu2Eeblu8CdUOOh1--1xlkqKB" type='video/webm' />
+      <source src="https://drive.google.com/uc?export=download&id={{blobUrl}}" type='video/webm' />
     </video>
   </div>
 </div>

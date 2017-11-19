@@ -4,7 +4,7 @@ import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { AuthService } from './../../../../../common/services/auth.service';
 import { ERROR } from '../../../../store/actions/portal.actions';
-import { GET_COURSE_BY_LEARNING_PATH_ID_SUCCESS, GET_LEARNING_PATH_SUCCESS } from '../actions/learning-path.actions';
+import { GET_COURSE_BY_LEARNING_PATH_ID_SUCCESS, GET_LEARNING_PATH_SUCCESS, GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID_SUCCESS } from '../actions/learning-path.actions';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -71,4 +71,21 @@ export class LearningPathEffects {
               return of({ type: ERROR, payload: error });
             })
         );
+
+
+        @Effect()
+        getCourseMediaByCourseDetailId$: Observable<Action> = this.actions$
+          .ofType(learningPath.GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID)
+          .mergeMap((action: learningPath.GetCourseMediaByCourseDetailId) =>
+            this.authService
+              .Get(`api/CourseMedia/GetCourseMediaByCourseId/${action.payload}`)
+              .map(responseData => {
+                const data = responseData.json();
+                debugger;
+                return { type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID_SUCCESS, payload: data };
+              })
+              .catch(error => {
+                return of({ type: ERROR, payload: error });
+              })
+          );
 }

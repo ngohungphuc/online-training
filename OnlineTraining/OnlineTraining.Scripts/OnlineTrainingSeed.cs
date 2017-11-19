@@ -184,6 +184,7 @@ namespace OnlineTraining.Scripts
                     CreatedDate = DateTime.Now,
                     ModifieddDate = DateTime.Now,
                     CourseId = new ObjectId("5a01de93990092a25640e1fc").ToString(),
+                    CourseMediaId = "",
                     ModuleId = "",
                     Order = 1,
                     Title = "Introduction"
@@ -283,6 +284,46 @@ namespace OnlineTraining.Scripts
             }
         }
 
+        public static async Task AddCourseMedia()
+        {
+            var mediaCollection = database.GetCollection<CourseMedia>("CourseMedias");
+            var mediaList = new List<CourseMedia>
+            {
+                new CourseMedia
+                {
+                    Id = new ObjectId("5a0aade86857fdea6cb47947").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    BlobUrl = "19_Y3M4OKu2Eeblu8CdUOOh1--1xlkqKB",
+                    CourseDetailId = new ObjectId("5a01e86f990092a25640e562").ToString(),
+                    ThumbnailUrl = ""
+                },
+                new CourseMedia
+                {
+                    Id = new ObjectId("5a0aadb467cc358b200419d7").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    BlobUrl = "1oqOYhetKmOUuRUlrGty2U5Yxjk8HO-sl",
+                    CourseDetailId = new ObjectId("5a01e875990092a25640e566").ToString(),
+                    ThumbnailUrl = ""
+                },
+                new CourseMedia
+                {
+                    Id = new ObjectId("5a0be4db4f5eb939edc60a2b").ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifieddDate = DateTime.Now,
+                    BlobUrl = "18lOL4ZUnOtrgrO1JRz-Q5rhMG4zYPAPe",
+                    CourseDetailId = new ObjectId("5a0be4d4a0e56051fe1465fd").ToString(),
+                    ThumbnailUrl = ""
+                }
+            };
+            foreach (var media in mediaList)
+            {
+                var matchedProfile = mediaCollection.Find(x => x.Id == media.Id).Count();
+                if (matchedProfile == 0)
+                    await mediaCollection.InsertManyAsync(mediaList);
+            }
+        }
         public static async Task AddBookmark()
         {
             var bookmarkCollection = database.GetCollection<Bookmark>("Bookmarks");
