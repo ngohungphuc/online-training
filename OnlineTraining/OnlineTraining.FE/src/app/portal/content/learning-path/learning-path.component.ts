@@ -1,7 +1,7 @@
 import * as fromLearningPathList from '../learning-path/store/index';
 import { Component, OnInit } from '@angular/core';
-import { PATH_DETAIL_PAGE } from './store/actions/learning-path.layout.actions';
 import { GET_LEARNING_PATH } from './store/actions/learning-path.actions';
+import { PATH_DETAIL_PAGE } from './store/actions/learning-path.layout.actions';
 import { Store } from '@ngrx/store';
 
 @Component({

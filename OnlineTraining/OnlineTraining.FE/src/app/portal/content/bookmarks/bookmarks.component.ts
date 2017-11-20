@@ -1,10 +1,10 @@
+import * as course from '../course/store/index';
 import * as fromBookmark from './store/index';
+import * as fromLearningLayout from '../learning-path/store/index';
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../learning-path/store/model/course.model';
 import { GET_BOOK_MARK, GET_BOOK_MARK_BY_USERID } from './store/actions/bookmark.actions';
 import { StorageService } from '../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
-import * as fromLearningLayout from '../learning-path/store/index';
 
 @Component({
   selector: 'ota-bookmarks',
@@ -42,8 +42,8 @@ export class BookmarksComponent implements OnInit {
   }
 
   courseDetailPage() {
-    this.store.select(fromLearningLayout.selectLearningPathLayout).subscribe(res => {
-      res.isCourseDetailPage === true ? this.isCourseDetailPage = true : this.isCourseDetailPage = false;
+    this.store.select(course.selectCourseDetailPageState).subscribe(res => {
+      res === true ? this.isCourseDetailPage = true : this.isCourseDetailPage = false;
     });
   }
 }

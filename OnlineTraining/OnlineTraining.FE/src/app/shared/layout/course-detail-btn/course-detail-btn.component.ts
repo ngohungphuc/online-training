@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { GET_COURSE_DETAIL_PAGE } from '../../../portal/content/course/store/actions/course.actions';
 import { Store } from '@ngrx/store';
-import { GET_COURSE_DETAIL_PAGE } from '../../../portal/content/learning-path/store/actions/learning-path.layout.actions';
 
 @Component({
   selector: 'ota-course-detail-btn',

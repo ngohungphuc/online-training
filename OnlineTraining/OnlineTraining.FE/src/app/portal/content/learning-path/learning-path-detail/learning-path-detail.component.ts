@@ -1,14 +1,15 @@
 import * as fromBookmark from '../../bookmarks/store/index';
-import * as fromLearningPathList from '../../learning-path/store/index';
+import * as course from '../../course/store/index';
 import * as fromLearningLayout from '../store/index';
+import * as fromLearningPathList from '../../learning-path/store/index';
 import { AuthService } from '../../../../common/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Course } from '../store/model/course.model';
-import { PATH_DETAIL_PAGE, GET_COURSE_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
+import { PATH_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
 import { GET_BOOK_MARK_BY_USERID } from '../../bookmarks/store/actions/bookmark.actions';
-import { GET_COURSE_BY_LEARNING_PATH_ID } from '../store/actions/learning-path.actions';
 import { StorageService } from '../../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
+import { Course } from '../../course/store/reducers/course.reducers';
+import { GET_COURSE_BY_LEARNING_PATH_ID } from '../../course/store/actions/course.actions';
 
 @Component({
   selector: 'ota-learning-path-detail',
@@ -55,7 +56,7 @@ export class LearningPathDetailComponent implements OnInit {
 
   getCourseByPathId() {
     this.store
-    .select(fromLearningPathList.selectCourseByPathId)
+    .select(course.selectCourseByPathId)
     .subscribe(res => {
       this.courseByPathId = res;
     });
@@ -74,8 +75,8 @@ export class LearningPathDetailComponent implements OnInit {
   }
 
   courseDetailPage() {
-    this.store.select(fromLearningLayout.selectLearningPathLayout).subscribe(res => {
-      res.isCourseDetailPage === true ? this.isCourseDetailPage = true : this.isCourseDetailPage = false;
+    this.store.select(course.selectCourseDetailPageState).subscribe(res => {
+      res === true ? this.isCourseDetailPage = true : this.isCourseDetailPage = false;
     });
   }
 }

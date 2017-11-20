@@ -11,11 +11,6 @@ export const selectLearningPathList = createSelector(
   fromLearningPath.getPathList
 );
 
-export const selectCourseByPathId = createSelector(
-  selectLearningPathState,
-  fromLearningPath.getCourseByPathId
-);
-
 export const selectLearningPathLayout = createSelector(
   selectLearningPathState,
   fromLearningPathLayout.learningPathDetail
@@ -25,18 +20,6 @@ export const selectLearningPathDetailPage = createSelector(
   selectLearningPathState,
   fromLearningPathLayout.isDetailPageState
 );
-
-
-export const selectCourseDetailByCourseId = createSelector(
-  selectLearningPathState,
-  fromLearningPathLayout.courseDetail
-);
-
-export const selectCourseMediaByCourseDetailId = createSelector(
-  selectLearningPathState,
-  fromLearningPath.getCourseMediaByCourseDetailId
-);
-
 
 
 

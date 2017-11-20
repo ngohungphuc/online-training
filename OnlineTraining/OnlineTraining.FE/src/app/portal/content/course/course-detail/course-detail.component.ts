@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store/';
-import * as fromCourseDetail from '../learning-path/store/index';
-import { PATH_DETAIL_PAGE, BACK_TO_COURSE_DETAIL_PAGE_PATH } from '../learning-path/store/actions/learning-path.layout.actions';
-import { GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID } from '../learning-path/store/actions/learning-path.actions';
+import * as fromCourseDetail from '../store/index';
+import { GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID } from '../store/actions/course.actions';
+import { BACK_TO_COURSE_DETAIL_PAGE_PATH } from '../../learning-path/store/actions/learning-path.layout.actions';
+
 @Component({
   selector: 'ota-course-detail',
   templateUrl: './course-detail.component.html',
