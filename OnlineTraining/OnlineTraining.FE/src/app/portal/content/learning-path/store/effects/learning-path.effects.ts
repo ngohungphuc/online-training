@@ -7,22 +7,13 @@ import { GET_LEARNING_PATH_SUCCESS } from '../actions/learning-path.actions';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-
 @Injectable()
 export class LearningPathEffects {
-  constructor(
-    private actions$: Actions,
-    private router: Router,
-    private authService: AuthService
-  ) {
-  }
+  constructor(private actions$: Actions, private authService: AuthService) {}
 
   @Effect()
   getLearningPath$: Observable<Action> = this.actions$

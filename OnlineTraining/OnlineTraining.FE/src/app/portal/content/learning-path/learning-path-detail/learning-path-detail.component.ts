@@ -1,15 +1,15 @@
-import * as fromBookmark from '../../bookmarks/store/index';
 import * as course from '../../course/store/index';
+import * as fromBookmark from '../../bookmarks/store/index';
 import * as fromLearningLayout from '../store/index';
 import * as fromLearningPathList from '../../learning-path/store/index';
 import { AuthService } from '../../../../common/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { PATH_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
+import { Course } from '../../course/store/reducers/course.reducers';
 import { GET_BOOK_MARK_BY_USERID } from '../../bookmarks/store/actions/bookmark.actions';
+import { GET_COURSE_BY_LEARNING_PATH_ID } from '../../course/store/actions/course.actions';
+import { PATH_DETAIL_PAGE } from '../store/actions/learning-path.layout.actions';
 import { StorageService } from '../../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
-import { Course } from '../../course/store/reducers/course.reducers';
-import { GET_COURSE_BY_LEARNING_PATH_ID } from '../../course/store/actions/course.actions';
 
 @Component({
   selector: 'ota-learning-path-detail',

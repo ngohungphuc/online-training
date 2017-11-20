@@ -1,15 +1,14 @@
 import {
   BOOK_MARK_COURSE,
   GET_BOOK_MARK_BY_USERID,
-  UNDO_BOOK_MARK_COURSE
-} from '../store/actions/bookmark.actions';
+  UNDO_BOOK_MARK_COURSE } from '../store/actions/bookmark.actions';
 import {
   Component,
   Input,
   OnInit,
   ViewChild,
   ViewContainerRef
-} from '@angular/core';
+  } from '@angular/core';
 import { StorageService } from '../../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
 import { ToastsManager } from 'ng2-toastr';
@@ -38,13 +37,7 @@ export class BookmarkIconComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.userbookmark !== undefined) {
-      for (let i = 0; i < this.userbookmark.length; i++) {
-        if (this.id === this.userbookmark[i].courseId) {
-          this.isBookmark = true;
-        }
-      }
-    }
+    this.isBookmarkPage();
   }
 
   bookmarkCourse(data) {
@@ -53,6 +46,7 @@ export class BookmarkIconComponent implements OnInit {
       userId: this.userId
     };
     const bookmarkStatus = this.bookMarkIcon.nativeElement.classList.contains('active');
+
      if (!bookmarkStatus) {
       this.bookMarkIcon.nativeElement.classList.add('active');
       this.store.dispatch({ type: BOOK_MARK_COURSE, payload: bookmarkInfo });
@@ -61,6 +55,16 @@ export class BookmarkIconComponent implements OnInit {
       this.bookMarkIcon.nativeElement.classList.remove('active');
       this.store.dispatch({ type: UNDO_BOOK_MARK_COURSE, payload: bookmarkInfo });
       this.toastr.warning('Remove bookmark success');
+    }
+  }
+
+  isBookmarkPage() {
+    if (this.userbookmark !== undefined) {
+      for (let i = 0; i < this.userbookmark.length; i++) {
+        if (this.id === this.userbookmark[i].courseId) {
+          this.isBookmark = true;
+        }
+      }
     }
   }
 }

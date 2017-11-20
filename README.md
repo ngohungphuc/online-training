@@ -10,18 +10,18 @@
   -  Gzip compression
   -  JWT Authentication with refresh token
   -  SignalR Core
-  -  Elasticsearch (Apply later)
   -  Automapper
   -  MongoDB
   -  Webpack
   -  Angular 4 CLI
-  -  Redux
+  -  Redux (ngrx)
   -  Effect
-  -  SASS
   -  [MongoDb Driver](https://github.com/mongodb/mongo-csharp-driver)
   -  Google drive API 
   -  Video streaming
+  -  Docker
   -  Web job background task (Apply later)
+  -  Elasticsearch (Apply later)
 
 ### Ref doc
 

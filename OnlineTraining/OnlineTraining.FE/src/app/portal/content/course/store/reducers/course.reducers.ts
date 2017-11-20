@@ -41,6 +41,11 @@ export function courseReducer(state = initialState, action: course.Actions) {
               ...state,
               courseMedia: action.payload
             };
+        case course.BACK_TO_COURSE_DETAIL_PAGE_PATH:
+            return {
+              ...state,
+              isCourseDetailPage: false
+            };
         default:
             return state;
     }

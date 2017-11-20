@@ -23,11 +23,15 @@ export class BookmarksComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getBookMark();
+    this.getBookmarkStatus();
+  }
+
+  getBookMark() {
     this.store.dispatch({type: GET_BOOK_MARK, payload: this.userId});
     this.store.select(fromBookmark.selectCourseByBookmarkId).subscribe(res => {
       this.courseBookmark = res;
     });
-    this.getBookmarkStatus();
   }
 
   getBookmarkStatus() {

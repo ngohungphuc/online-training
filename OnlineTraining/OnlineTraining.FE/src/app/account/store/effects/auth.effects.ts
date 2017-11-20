@@ -65,7 +65,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
     .ofType(auth.LOGIN_SUCCESS)
-    .do(() => this.router.navigate(['/online-training/portal']));
+    .do(() => this.router.navigate(['/online-training/portal/path']));
 
   @Effect({ dispatch: false })
   logoutRedirect$ = this.actions$.ofType(auth.LOGOUT).do(() => {

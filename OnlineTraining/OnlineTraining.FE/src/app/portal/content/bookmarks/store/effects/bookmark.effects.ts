@@ -9,22 +9,17 @@ import {
   UNDO_BOOK_MARK_SUCCESS
   } from '../actions/bookmark.actions';
 import { ERROR } from '../../../../store/actions/portal.actions';
-import { GET_BOOK_MARK_BY_USERID } from './../actions/bookmark.actions';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { Router } from '@angular/router';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class BookmarkEffects {
   constructor(
     private actions$: Actions,
-    private router: Router,
     private authService: AuthService
   ) {
 

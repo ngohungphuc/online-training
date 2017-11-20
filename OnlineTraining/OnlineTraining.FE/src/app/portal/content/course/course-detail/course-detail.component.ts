@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store/';
 import * as fromCourseDetail from '../store/index';
-import { GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID } from '../store/actions/course.actions';
-import { BACK_TO_COURSE_DETAIL_PAGE_PATH } from '../../learning-path/store/actions/learning-path.layout.actions';
+import {
+  GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID,
+  BACK_TO_COURSE_DETAIL_PAGE_PATH } from '../store/actions/course.actions';
 
 @Component({
   selector: 'ota-course-detail',
@@ -16,6 +17,19 @@ export class CourseDetailComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.getCourseMedia();
+    this.getBlobUrl();
+  }
+
+  getBlobUrl(){
+    this.store.select(fromCourseDetail.selectCourseMediaByCourseDetailId).subscribe(res => {
+      if (res !== null) {
+        this.blobUrl = res.blobUrl;
+      }
+    });
+  }
+
+  getCourseMedia() {
     this.store.select(fromCourseDetail.selectCourseDetailByCourseId).subscribe(res => {
       this.courseDetailList = res;
       this.loading = false;
@@ -23,15 +37,10 @@ export class CourseDetailComponent implements OnInit {
       this.store.dispatch({type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID, payload: res[0].courseModule[0].courseMediaId
       });
     });
-    this.store.select(fromCourseDetail.selectCourseMediaByCourseDetailId).subscribe(res => {
-      if (res !== null) {
-        this.blobUrl = res.blobUrl;
-      }
-      //
-    });
   }
 
   back() {
     this.store.dispatch({ type: BACK_TO_COURSE_DETAIL_PAGE_PATH });
   }
+
 }

@@ -31,7 +31,6 @@ export class GetBookMarkByUserIdSuccess implements Action {
   constructor(public payload: any) {}
 }
 
-
 export class BookMarkCourse implements Action {
   readonly type = BOOK_MARK_COURSE;
   constructor(public payload: any) {}

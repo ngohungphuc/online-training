@@ -6,14 +6,12 @@ export interface LearningPathLayoutState {
 
 export interface LearningPathLayout {
     isPathDetailPage: boolean;
-    isCourseDetailPage: boolean;
     pathId: string;
     learningPathDescription: string;
 }
 
 export const initialState: LearningPathLayout = {
     isPathDetailPage: false,
-    isCourseDetailPage: false,
     pathId: null,
     learningPathDescription: null,
 };
@@ -26,11 +24,6 @@ export function learningPathLayoutReducer(state = initialState, action: learning
                 isPathDetailPage: action.payload.isDetailPage,
                 pathId: action.payload.pathId,
                 learningPathDescription: action.payload.learningPathDescription
-            };
-        case learningPathLayout.BACK_TO_COURSE_DETAIL_PAGE_PATH:
-            return {
-              ...state,
-              isCourseDetailPage: false
             };
         default:
             return state;
