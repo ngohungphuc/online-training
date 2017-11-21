@@ -26,6 +26,7 @@ export class BookmarkIconComponent implements OnInit {
   active = false;
   isBookmark = false;
   userId: string;
+
   constructor(
     private store: Store<any>,
     private storageService: StorageService,

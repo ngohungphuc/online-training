@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store/';
 import * as fromCourseDetail from '../store/index';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import {
-  GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID,
-  BACK_TO_COURSE_DETAIL_PAGE_PATH } from '../store/actions/course.actions';
+   BACK_TO_COURSE_DETAIL_PAGE_PATH,
+  GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID } from '../store/actions/course.actions';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store/';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'ota-course-detail',
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss']
 })
-export class CourseDetailComponent implements OnInit {
-  courseDetailList: any;
+@AutoUnsubscribe()
+export class CourseDetailComponent implements OnInit, OnDestroy {
+  courseDetailList: Subscription;
   loading = true;
   blobUrl: string;
+
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
@@ -34,13 +38,17 @@ export class CourseDetailComponent implements OnInit {
       this.courseDetailList = res;
       this.loading = false;
       // init for default video to load
-      this.store.dispatch({type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID, payload: res[0].courseModule[0].courseMediaId
-      });
+      this.store.dispatch(
+        {type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID,
+        payload: res[0].courseModule[0].courseMediaId});
     });
   }
 
-  back() {
+  backToPrevious() {
     this.store.dispatch({ type: BACK_TO_COURSE_DETAIL_PAGE_PATH });
   }
 
+  ngOnDestroy() {
+
+  }
 }

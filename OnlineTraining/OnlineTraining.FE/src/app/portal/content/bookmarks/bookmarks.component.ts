@@ -1,25 +1,32 @@
 import * as course from '../course/store/index';
 import * as fromBookmark from './store/index';
 import * as fromLearningLayout from '../learning-path/store/index';
-import { Component, OnInit } from '@angular/core';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Component, OnInit , OnDestroy} from '@angular/core';
 import { GET_BOOK_MARK, GET_BOOK_MARK_BY_USERID } from './store/actions/bookmark.actions';
 import { StorageService } from '../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
+
+
 
 @Component({
   selector: 'ota-bookmarks',
   templateUrl: './bookmarks.component.html',
   styleUrls: ['./bookmarks.component.scss']
 })
-export class BookmarksComponent implements OnInit {
+@AutoUnsubscribe()
+export class BookmarksComponent implements OnInit, OnDestroy {
   userId: string;
   loading = true;
-  bookmark: any;
-  courseBookmark: any;
+  bookmark: Subscription;
+  courseBookmark: Subscription;
   isCourseDetailPage = false;
-  constructor(private store: Store<any>,
-  private storageService: StorageService) {
-    this.userId = this.storageService.getCurrentUserId();
+
+  constructor(
+    private store: Store<any>,
+    private storageService: StorageService) {
+      this.userId = this.storageService.getCurrentUserId();
   }
 
   ngOnInit() {
@@ -49,5 +56,9 @@ export class BookmarksComponent implements OnInit {
     this.store.select(course.selectCourseDetailPageState).subscribe(res => {
       res === true ? this.isCourseDetailPage = true : this.isCourseDetailPage = false;
     });
+  }
+
+  ngOnDestroy() {
+
   }
 }

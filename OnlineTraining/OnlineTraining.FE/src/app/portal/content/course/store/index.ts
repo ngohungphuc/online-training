@@ -3,7 +3,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const selectCourseState = createFeatureSelector('portalModule');
 
-
 export const selectCourseByPathId = createSelector(
   selectCourseState,
   fromCourse.getCourseByPathId

@@ -1,18 +1,22 @@
+import { Subscription } from 'rxjs/Subscription';
 import * as fromLearningPathList from '../learning-path/store/index';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GET_LEARNING_PATH } from './store/actions/learning-path.actions';
 import { PATH_DETAIL_PAGE } from './store/actions/learning-path.layout.actions';
 import { Store } from '@ngrx/store';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 @Component({
   selector: 'ota-learning-path',
   templateUrl: './learning-path.component.html',
   styleUrls: ['./learning-path.component.scss']
 })
-export class LearningPathComponent implements OnInit {
-  pathList: any;
+@AutoUnsubscribe()
+export class LearningPathComponent implements OnInit, OnDestroy {
+  pathList: Subscription;
   isDetailPage: boolean;
   loading = true;
+
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
@@ -37,5 +41,8 @@ export class LearningPathComponent implements OnInit {
       .subscribe((res: any) => {
         this.isDetailPage = res;
       });
+  }
+
+  ngOnDestroy() {
   }
 }

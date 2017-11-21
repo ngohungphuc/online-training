@@ -53,7 +53,5 @@ export function courseReducer(state = initialState, action: course.Actions) {
 
 export const courseDetail = (state: CourseState) => state.courseState.courseDetail;
 export const isCourseDetailPage = (state: CourseState) => state.courseState.isCourseDetailPage;
-export const getCourseByPathId = (state: CourseState) =>
-state.courseState.courseByPathId;
-export const getCourseMediaByCourseDetailId = (state: CourseState) =>
-state.courseState.courseMedia;
+export const getCourseByPathId = (state: CourseState) => state.courseState.courseByPathId;
+export const getCourseMediaByCourseDetailId = (state: CourseState) => state.courseState.courseMedia;
