@@ -77,6 +77,9 @@ http://www.talkingdotnet.com/app-use-vs-app-run-asp-net-core-middleware/
 
 http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
 
+https://angular.io/api/core/ChangeDetectorRef#detectChanges
+
+http://plnkr.co/edit/GC512b?p=preview
 ---
 
 ##### Google drive api

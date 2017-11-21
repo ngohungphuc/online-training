@@ -65,8 +65,10 @@ h3 {
 a {
   color:white !important;
 }
+
 a, a:hover {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .u-list {

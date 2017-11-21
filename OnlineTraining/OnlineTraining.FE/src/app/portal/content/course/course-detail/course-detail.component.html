@@ -6,8 +6,8 @@
     <accordion>
       <div *ngFor="let data of courseDetailList">
         <accordion-group heading="{{data.courseDetail.title}}">
-          <p *ngFor="let courseDetail of data.courseModule">
-            {{courseDetail.title}}
+          <p  *ngFor="let courseDetail of data.courseModule">
+            <span class="courseTitle" (click)="viewCourse(courseDetail.courseMediaId)">{{courseDetail.title}}</span>
           </p>
         </accordion-group>
       </div>
