@@ -14,7 +14,7 @@
     </accordion>
   </div>
   <div class="col-9" *ngIf="blobUrl">
-    <video controls="controls">
+    <video #videoPlayer controls (click)="toggleVideo()" preload="metadata">
       <source src="https://drive.google.com/uc?export=download&id={{blobUrl}}" type='video/webm' />
     </video>
   </div>
