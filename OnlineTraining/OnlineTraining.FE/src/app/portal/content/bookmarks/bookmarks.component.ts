@@ -2,12 +2,12 @@ import * as course from '../course/store/index';
 import * as fromBookmark from './store/index';
 import * as fromLearningLayout from '../learning-path/store/index';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Component, OnInit , OnDestroy} from '@angular/core';
+import { BACK_TO_INDEX } from '../course/store/actions/course.actions';
 import { GET_BOOK_MARK, GET_BOOK_MARK_BY_USERID } from './store/actions/bookmark.actions';
 import { StorageService } from '../../../common/services/storage.service';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
-
+import { Component, OnInit , OnDestroy} from '@angular/core';
 
 
 @Component({
@@ -30,6 +30,7 @@ export class BookmarksComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.store.dispatch({ type: BACK_TO_INDEX });
     this.getBookMark();
     this.getBookmarkStatus();
   }

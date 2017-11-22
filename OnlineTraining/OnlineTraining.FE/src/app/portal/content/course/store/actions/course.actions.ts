@@ -9,6 +9,7 @@ export const GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID_SUCCESS = 'GET_COURSE_MEDIA_BY
 export const GET_COURSE_DETAIL_PAGE = 'GET_COURSE_DETAIL_PAGE';
 export const GET_COURSE_DETAIL_PAGE_SUCCESS = 'GET_COURSE_DETAIL_PAGE_SUCCESS';
 export const BACK_TO_COURSE_DETAIL_PAGE_PATH = 'BACK_TO_COURSE_DETAIL_PAGE_PATH';
+export const BACK_TO_INDEX = 'BACK_TO_INDEX';
 
 export class GetCourseByLearningPathId implements Action {
     readonly type = GET_COURSE_BY_LEARNING_PATH_ID;
@@ -52,6 +53,10 @@ export class BackToCourseDetailPagePath implements Action {
   readonly type = BACK_TO_COURSE_DETAIL_PAGE_PATH;
 }
 
+export class BackToIndex implements Action {
+  readonly type = BACK_TO_INDEX;
+}
+
 export type Actions =
 | GetCourseByLearningPathId
 | GetCourseByLearningPathIdSuccess
@@ -60,4 +65,5 @@ export type Actions =
 | GetCourseMediaByCourseDetailIdSuccess
 | GetCourseDetailPage
 | GetCourseDetailPageSuccess
-| BackToCourseDetailPagePath;
+| BackToCourseDetailPagePath
+| BackToIndex;
