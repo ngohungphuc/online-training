@@ -1,21 +1,35 @@
 <ota-spinner [loading]="loading"></ota-spinner>
-<div class="row" *ngIf="!loading">
-  <div class="col-3">
-    <a class="btn back-btn btn-primary" (click)="backToPrevious()">
-      <i class="fa fa-arrow-circle-left"></i> Back</a>
-    <accordion>
-      <div *ngFor="let data of courseDetailList">
-        <accordion-group heading="{{data.courseDetail.title}}">
-          <p  *ngFor="let courseDetail of data.courseModule">
-            <span class="courseTitle" (click)="viewCourse(courseDetail.courseMediaId)">{{courseDetail.title}}</span>
-          </p>
-        </accordion-group>
-      </div>
-    </accordion>
+<a class="btn back-btn btn-primary" (click)="backToPrevious()">
+  <i class="fa fa-arrow-circle-left"></i> Back</a>
+<ng-container *ngIf="!loading && courseDetailList">
+  <div class="row">
+    <div class="col-3" id="courseList">
+      <accordion>
+        <div *ngFor="let data of courseDetailList">
+          <accordion-group heading="{{data.courseDetail.title}}">
+            <p *ngFor="let courseDetail of data.courseModule">
+              <span class="courseTitle" (click)="viewCourse(courseDetail.courseMediaId)">{{courseDetail.title}}</span>
+            </p>
+          </accordion-group>
+        </div>
+      </accordion>
+    </div>
+    <div class="col-9" *ngIf="blobUrl">
+      <video #videoPlayer controls (click)="toggleVideo()" preload="metadata">
+        <source src="https://drive.google.com/uc?export=download&id={{blobUrl}}" type='video/webm' />
+      </video>
+    </div>
   </div>
-  <div class="col-9" *ngIf="blobUrl">
-    <video #videoPlayer controls (click)="toggleVideo()" preload="metadata">
-      <source src="https://drive.google.com/uc?export=download&id={{blobUrl}}" type='video/webm' />
-    </video>
+</ng-container>
+<ng-container *ngIf="!courseDetailList">
+  <div class="card">
+    <div class="card-header">
+      Course detail not found
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>The video course is being construct. Please visit later</p>
+      </blockquote>
+    </div>
   </div>
-</div>
+</ng-container>

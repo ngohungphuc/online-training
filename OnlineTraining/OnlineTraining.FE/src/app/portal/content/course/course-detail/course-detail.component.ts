@@ -40,12 +40,14 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
 
   getCourseMedia() {
     this.store.select(fromCourseDetail.selectCourseDetailByCourseId).subscribe(res => {
-      this.courseDetailList = res;
+      if (res.length > 0) {
+        this.courseDetailList = res;
+        // init for default video to load
+        this.store.dispatch(
+          {type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID,
+          payload: res[0].courseModule[0].courseMediaId});
+      }
       this.loading = false;
-      // init for default video to load
-      this.store.dispatch(
-        {type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID,
-        payload: res[0].courseModule[0].courseMediaId});
     });
   }
 
