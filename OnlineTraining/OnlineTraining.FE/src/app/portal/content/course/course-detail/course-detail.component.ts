@@ -32,7 +32,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       if (res !== null) {
         this.blobUrl = res.blobUrl;
       }
-      if (!isInit) {
+      if (!isInit && this.videoplayer.nativeElement) {
         this.videoplayer.nativeElement.load();
       }
     });
