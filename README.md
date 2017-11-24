@@ -89,6 +89,8 @@ https://www.daimto.com/google-drive-api-c-upload/
 
 https://blog.devcenter.co/deploy-asp-net-core-2-0-apps-on-heroku-eea8efd918b6
 
+https://scotch.io/tutorials/deploying-an-angular-cli-app-to-production-with-firebase
+
 ### Tool
 https://www.json-generator.com/
 

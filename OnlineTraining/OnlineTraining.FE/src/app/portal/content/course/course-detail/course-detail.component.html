@@ -1,7 +1,7 @@
 <ota-spinner [loading]="loading"></ota-spinner>
 <a class="btn back-btn btn-primary" (click)="backToPrevious()">
   <i class="fa fa-arrow-circle-left"></i> Back</a>
-<ng-container *ngIf="!loading && courseDetailList">
+<ng-container *ngIf="!loading && courseDetailList != null">
   <div class="row">
     <div class="col-3" id="courseList">
       <accordion>
@@ -14,7 +14,7 @@
         </div>
       </accordion>
     </div>
-    <div class="col-9" *ngIf="blobUrl">
+    <div class="col-9" *ngIf="blobUrl != null">
       <video #videoPlayer controls (click)="toggleVideo()" preload="metadata">
         <source src="https://drive.google.com/uc?export=download&id={{blobUrl}}" type='video/webm' />
       </video>
