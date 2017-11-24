@@ -16,7 +16,6 @@ import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { ToastOption } from './shared/helper/toast.options';
 import { ToastOptions } from 'ng2-toastr';
 import { PortalModule } from './portal/portal.module';
 import { CookieModule } from 'ngx-cookie';
@@ -65,7 +64,6 @@ import { CookieModule } from 'ngx-cookie';
      * by `@ngrx/router-store` to include only the desired pieces of the snapshot.
      */
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
-    {provide: ToastOptions, useClass: ToastOption},
     AuthGuard
   ],
   bootstrap: [AppComponent],
