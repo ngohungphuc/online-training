@@ -19,6 +19,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastOptions } from 'ng2-toastr';
 import { PortalModule } from './portal/portal.module';
 import { CookieModule } from 'ngx-cookie';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

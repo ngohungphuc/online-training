@@ -1,6 +1,5 @@
-<ota-spinner [loading]="loading"></ota-spinner>
 <ng-container *ngIf="courseBookmark != null">
-  <div class="row" *ngIf="!loading">
+  <div class="row">
     <div  [class.hidden]="isCourseDetailPage" class="card bg-light mb-3 course-card" style="max-width: 20rem;" *ngFor="let course of courseBookmark">
       <div class="card-header">
         <span class="card-title">{{course?.courseName}} </span>

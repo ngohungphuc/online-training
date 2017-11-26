@@ -1,7 +1,6 @@
-<ota-spinner [loading]="loading"></ota-spinner>
 <a class="btn back-btn btn-primary" (click)="backToPrevious()">
   <i class="fa fa-arrow-circle-left"></i> Back</a>
-<ng-container *ngIf="!loading &&  courseDetailList != null">
+<ng-container *ngIf="courseDetailList != null">
   <div class="row">
     <div class="col-3" id="courseList">
       <accordion>

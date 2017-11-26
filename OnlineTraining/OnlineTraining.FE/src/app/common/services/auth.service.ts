@@ -1,25 +1,35 @@
 import { environment } from './../../../environments';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { Observable } from 'rxjs/Observable';
 import { StatusCode } from '../enum/status-code';
 import { StorageService } from './storage.service';
 import { TokenModel } from '../models/token.model';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
   private tokenKey = 'currentUserInfo';
   private currentUser;
-  constructor(private http: Http, private storageService: StorageService) {
+  constructor(
+    private http: Http,
+    private storageService: StorageService,
+    private loaderService: LoaderService) {
   }
 
   Get(url: string): Observable<any> {
+    this.showLoader();
     const apiUrl = this.generateOTApiUrl(url);
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
-    return this.http.get(apiUrl, options).catch((error) => this.handleServerError(error));
+    return this.http.get(apiUrl, options)
+      .catch((error) => this.handleServerError(error))
+      .finally(() => {
+        this.onEnd();
+      });
   }
 
   Post(url: string, data: any): Observable<any> {
@@ -28,7 +38,8 @@ export class AuthService {
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(apiUrl, body, options).catch((error) => this.handleServerError(error));
+    return this.http.post(apiUrl, body, options)
+      .catch((error) => this.handleServerError(error));
   }
 
   Put(url: string, data: Object): Observable<any> {
@@ -37,7 +48,8 @@ export class AuthService {
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.put(apiUrl, body, options).catch((error) => this.handleServerError(error));
+    return this.http.put(apiUrl, body, options)
+      .catch((error) => this.handleServerError(error));
   }
 
   Delete(url: string): Observable<any> {
@@ -45,7 +57,8 @@ export class AuthService {
     const headers = this.initAuthHeaders();
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.delete(apiUrl, options).catch((error) => this.handleServerError(error));
+    return this.http.delete(apiUrl, options)
+      .catch((error) => this.handleServerError(error));
   }
 
   private initAuthHeaders(): Headers {
@@ -94,5 +107,17 @@ export class AuthService {
      this.generateRefreshTokenUrl();
     }
     return Observable.throw('backend server error');
+  }
+
+  private onEnd(): void {
+    this.hideLoader();
+  }
+
+  private showLoader(): void {
+      this.loaderService.show();
+  }
+
+  private hideLoader(): void {
+      this.loaderService.hide();
   }
 }

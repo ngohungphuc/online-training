@@ -1,18 +1,21 @@
-import { FooterComponent } from './layout/footer/footer.component';
-import { NgModule } from '@angular/core';
-import { NotFoundComponent } from './layout/notfound/notfound.component';
-import { SignalRService } from './index';
-import { SpinnerComponent } from './layout/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { CourseDetailBtnComponent } from './layout/course-detail-btn/course-detail-btn.component';
-
+import { FooterComponent } from './layout/footer/footer.component';
+import { LoaderService } from './loader/loader.service';
+import { NgModule } from '@angular/core';
+import { NgProgressModule } from 'ngx-progressbar';
+import { NotFoundComponent } from './layout/notfound/notfound.component';
+import { SignalRService } from './index';
+import { SpinnerComponent } from './loader/spinner/spinner.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgProgressModule
   ],
   providers: [
-      SignalRService
+      SignalRService,
+      LoaderService
   ],
   exports: [
       FooterComponent,
@@ -23,7 +26,8 @@ import { CourseDetailBtnComponent } from './layout/course-detail-btn/course-deta
     FooterComponent,
     SpinnerComponent,
     CourseDetailBtnComponent,
-    NotFoundComponent]
+    NotFoundComponent
+  ]
 })
 
 export class SharedModule {}

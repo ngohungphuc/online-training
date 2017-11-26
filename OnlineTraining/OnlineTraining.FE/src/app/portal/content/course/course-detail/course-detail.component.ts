@@ -16,7 +16,6 @@ import { Subscription } from 'rxjs/Subscription';
 export class CourseDetailComponent implements OnInit, OnDestroy {
   @ViewChild('videoPlayer') videoplayer: any;
   courseDetailList: Subscription;
-  loading = true;
   blobUrl: string;
 
   constructor(
@@ -47,7 +46,6 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
           {type: GET_COURSE_MEDIA_BY_COURSE_DETAIL_ID,
           payload: res[0].courseModule[0].courseMediaId});
       }
-      this.loading = false;
     });
   }
 

@@ -15,7 +15,6 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 export class LearningPathComponent implements OnInit, OnDestroy {
   pathList: Subscription;
   isDetailPage: boolean;
-  loading = true;
 
   constructor(private store: Store<any>) {}
 
@@ -26,7 +25,6 @@ export class LearningPathComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         this.pathList = res;
       });
-    this.loading = false;
   }
 
   toggleDetailPage(path) {

@@ -18,7 +18,6 @@ import { Component, OnInit , OnDestroy} from '@angular/core';
 @AutoUnsubscribe()
 export class BookmarksComponent implements OnInit, OnDestroy {
   userId: string;
-  loading = true;
   bookmark: Subscription;
   courseBookmark: Subscription;
   isCourseDetailPage = false;
@@ -47,7 +46,7 @@ export class BookmarksComponent implements OnInit, OnDestroy {
     this.store.select(fromBookmark.selectBookmarkByUserId).subscribe(res => {
       if (res) {
         this.bookmark = res;
-        this.loading = false;
+
         this.courseDetailPage();
       }
     });

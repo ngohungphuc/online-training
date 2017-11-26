@@ -80,6 +80,16 @@ http://www.talkingdotnet.com/use-dapper-orm-with-asp-net-core/
 https://angular.io/api/core/ChangeDetectorRef#detectChanges
 
 http://plnkr.co/edit/GC512b?p=preview
+
+https://medium.com/front-end-hacking/javascript-make-your-code-cleaner-with-decorators-d34fc72af947
+
+https://medium.com/beautiful-angular/show-loader-on-every-request-in-angular-2-9a0fca86afef
+
+https://netbasal.com/listening-for-actions-in-ngrx-store-a699206d2210
+
+https://netbasal.com/boosting-performance-with-the-new-updateon-option-in-angular-v5-18857279ace2
+
+https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354
 ---
 
 ##### Google drive api

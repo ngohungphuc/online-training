@@ -1,0 +1,5 @@
+<div [class.loader-hidden]="!loading">
+  <div *ngIf="loading">
+      <ng-progress [speed]="4000"></ng-progress>
+  </div>
+</div>

@@ -39,6 +39,7 @@
     "ngx-auto-unsubscribe": "^2.0.0",
     "ngx-bootstrap": "^2.0.0-beta.8",
     "ngx-cookie": "^1.0.1",
+    "ngx-progressbar": "^2.1.1",
     "rxjs": "^5.5.2",
     "typescript": "~2.4.2",
     "zone.js": "^0.8.14"

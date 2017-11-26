@@ -23,7 +23,6 @@ export class LearningPathDetailComponent implements OnInit, OnDestroy {
   isPathDetailPage: boolean;
   pathId: string;
   courseByPathId: Course;
-  loading = true;
   learningPathDescription: string;
   userId: string;
   bookmark: Subscription;
@@ -73,7 +72,6 @@ export class LearningPathDetailComponent implements OnInit, OnDestroy {
         this.bookmark = res;
         this.getDataFromLearningPath();
         this.getCourseByPathId();
-        this.loading = false;
       }
     });
   }
