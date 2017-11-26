@@ -22,7 +22,7 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 export class LearningPathDetailComponent implements OnInit, OnDestroy {
   isPathDetailPage: boolean;
   pathId: string;
-  courseByPathId: Course;
+  courseByPathId: any;
   learningPathDescription: string;
   userId: string;
   bookmark: Subscription;

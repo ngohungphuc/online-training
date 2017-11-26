@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
   isLogin() {
     const isLogin = this.cookieService.get(environment.cookieKey);
     if (isLogin !== undefined) {
-      this.router.navigate(['online-training/portal']);
+      this.router.navigate(['online-training/portal/path']);
     }
     return;
   }
