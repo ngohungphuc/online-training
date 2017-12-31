@@ -1,5 +1,7 @@
 # Online Training website 
 
+> Help wanted: Currently I dont have time to develop this project so if anybody want to help I would love to invite to the contribution list
+
 > Online Training website like udemy or pluralsight using ASP.Net Core and Angular 4
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/76d4da06634540c39741c7f8afd211f6)](https://www.codacy.com/app/ngohungphuc95/online-training?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ngohungphuc/online-training&amp;utm_campaign=Badge_Grade)
