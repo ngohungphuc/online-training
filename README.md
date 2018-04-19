@@ -25,6 +25,10 @@
   -  Web job background task (Apply later)
   -  Elasticsearch (Apply later)
 
+### Account Info
+* username: phucngo
+* pass: 070695
+
 ### Ref doc
 
 ##### Angular
@@ -92,6 +96,7 @@ https://netbasal.com/listening-for-actions-in-ngrx-store-a699206d2210
 https://netbasal.com/boosting-performance-with-the-new-updateon-option-in-angular-v5-18857279ace2
 
 https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354
+
 ---
 
 ##### Google drive api
